@@ -1,0 +1,238 @@
+\documentclass[headsepline,titlepage,twoside,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+\usepackage[a4paper,top=4cm,bottom=3cm,left=4cm,right=3cm]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{setspace}
+\usepackage{csquotes}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{aurl}
+\usepackage{microtype}
+\usepackage{natbib}
+\usepackage{hyperref}
+\PassOptionsToPackage{pdfborder={0 0 0}}{hyperref} %Für finale gedruckte Ausgabe, ohne hervorgehobene Links
+%\usepackage{hypernat}
+\daurl{ob}{http://www.snik.eu/ontology/ob/}
+\daurl{bb}{http://www.snik.eu/ontology/bb/}
+\daurl{ciox}{http://www.snik.eu/ontology/ciox/}
+\daurl{he}{http://www.snik.eu/ontology/he/}
+\daurl{it4it}{http://www.snik.eu/ontology/it4it/}
+\daurl{meta}{http://www.snik.eu/ontology/meta/}
+\author{Vorname Name}
+%\newcommand\todo[1]{\textcolor{teal}{#1}}%show comments for students, comment out for finished work or remove the todo statements and their content
+\newcommand\todo[1]{}%hide comments for students, uncomment for the finished work 
+%remove "Kapitel X" headers *****
+
+\begin{document}
+
+\allowdisplaybreaks%Mathe darf auch umbrechen
+
+\onehalfspace
+
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{center}
+
+{\large\bf UNIVERSITÄT LEIPZIG\\[1mm]}
+Institut für Medizinische Informatik, Statistik und Epidemiologie (IMISE)
+
+\vspace*{4cm}
+
+{\Huge\textbf{Thema der Seminararbeit}\\}
+\vspace{0.5cm}
+{\large Seminararbeit}\\
+\vspace{2cm}
+\todo{15--20 Seiten. Zwei Möglichkeiten:\\
+(1) Vergleich, Zusammenfassung und \textbf{eigene} Bewertung zweier wissenschaftlicher Paper.\\
+(2) Nutzenbewertung eines wissenschaftlichen Papers hinsichtlich einer konkreten Forschungssituation
+}
+
+\vspace*{4cm}
+
+\begin{tabularx}{\textwidth}{lr}
+Leipzig, <Monat> <Jahr>		&vorgelegt von:\\
+\\
+				&\makeatletter \@author \makeatother\\
+				&geb. am: <tt,mm,jjjj>\\
+\\
+				&Betreuer:\\
+				&<Titel> <Vorname> <Nachname>\\
+\end{tabularx}
+\vspace{1cm}
+
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section*{Schlagwörter}
+\todo{
+Verschlagworten Sie Ihre Seminararbeit.
+Mindestens 3 Schlagworte.
+Wenn möglich nutzen Sie dazu Begriffe aus der SNIK-Ontologie, inbesondere bei Arbeiten aus dem Bereich Management von Informationssystemen.
+Sie finden die URLs über die Suche auf SNIK Graph unter \url{http://www.snik.eu/graph}.
+Achten Sie auch in der Seminararbeit auf die Verwendung dieser Schlagworte.
+Eine Anleitung dazu finden Sie in der Auftaktveranstaltung.
+}
+
+{
+\centering
+\begin{tabularx}{\textwidth}{XX}
+\toprule
+Schlagwort		&SNIK-URL\\
+\midrule
+Informationsmanagement	&\aurl{ob}{InformationManagement}\\
+\bottomrule
+\end{tabularx}
+}
+
+\section*{Begriffs- und Abkürzungsverzeichnis}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textrm{Begriff}			&\textrm{Erklärung des Begriffs}\\
+\midrule
+ARIS					&Architektur integrierter Informationssysteme\\
+$\ldots$				&$\ldots$\\
+$\ldots$				&$\ldots$\\
+$\ldots$				&$\ldots$\\
+$\ldots$				&$\ldots$\\
+$\ldots$				&$\ldots$\\
+$\ldots$				&$\ldots$\\
+$\ldots$				&$\ldots$\\
+$\ldots$				&$\ldots$\\
+UKL					&Universitätsklinikum Leipzig\\
+3LGM$^2$				&Drei-Ebenen-Metamodell\\
+\bottomrule
+\end{tabularx}
+
+\chapter{Einleitung}
+\section{Gegenstand und Motivation \todo{(aus Sicht der Autoren der Paper)}}
+\subsection{Gegenstand}
+\todo{
+\begin{itemize}
+\item In welcher Welt/Domäne oder welchem Arbeitsbereich/-gebiet bewegen wir uns im Rahmen der Seminararbeit/der ausgewählten Papers?
+\item Worum geht es eigentlich?
+\end{itemize}
+Aus den Papers bzw. dem Antrag des Forschungsprojektes entnehmen.
+}
+
+\subsection{Problematik}
+\todo{
+\begin{itemize}
+\item Worin bestehen die Probleme?
+\item Warum ist die geschilderte vorliegende Situation problematisch?
+\item Für wen ist sie problematisch?
+\end{itemize}
+Aus den Papers bzw. dem Antrag des Forschungsprojektes entnehmen.\\
+}
+\todo{
+Hier ist auf die generelle Problemlage einzugehen, die dem Aufsatz im Wissenschaftsfeld zu Grunde liegt.\\
+Bsp.: Daten aus der Krankenversorgung stehen aus rechtlichen und technischen Gründen nicht für die Forschung zur Verfügung, sodass klinische Forscher eigene Datenerhebungen planen müssen.
+}
+\subsection{Motivation}
+\todo{
+\begin{itemize}
+\item Warum lohnt es sich, die genannten Probleme zu lösen?
+\item Wer wird welchen Nutzen von dieser Abschlussarbeit haben?
+\item Warum sind die Papers wichtig?
+\end{itemize}
+Aus den Papers bzw. dem Antrag des Forschungsprojektes entnehmen.
+}
+\todo{
+Worin liegt der zusätzliche Nutzen, die beiden Ansätze zu vergleichen? Worin liegt der Nutzen, den Ansatz des Papers auf die Problematik des Forschungsprojektes anzuwenden?\\
+Bsp.: Gelänge es, Daten aus der Krankenversorgung vollständig zu anonymisieren, könnten sie für beliebige Forschungsvorhaben genutzt werden.
+}
+
+\section{Zielsetzung}
+\todo{
+Beschreiben Sie kurz die Zielsetzung ihrer Seminararbeit.
+Beachten Sie dazu die Beschreibung des Betreuers zu Ihrem Seminarthema.\\
+Beispiel:\\
+Es soll herausgearbeitet werden, ob einer der in den Papers vorgestellten Lösungsansätze im aktuellen Forschungsprojekt angewendet werden kann: „Untersuchung der Eignung des Anonymisierungskonzept der statistischen Landesämter für medizinische Daten unter besonderer Betrachtung der Risiken des Zusatzwissens behandelnder Ärzte.“
+Es soll eine Übersicht erarbeitet werden, die es ermöglicht, in einem konkreten Anwendungsfall den dort geeigneten Lösungsansatz auszuwählen.
+}
+
+\section{Vorgehensweise}
+\todo{
+Stellen Sie Ihre Methode bzw. Herangehensweise dar.
+Was ist Ihre konkrete Aufgabenstellung im Rahmen der Seminararbeit? Das könnte z.B. sein:
+\begin{itemize}
+\item Vorstellen verschiedener Lösungsansätze, Vergleich und Bewertung der Lösungsansätze, Literaturrecherche nach weiteren vergleichbaren Papers.
+\item Bewertung eines Lösungsansatzes hinsichtlich einer konkreten Forschungssituation. Literaturrecherche nach weiteren vergleichbaren Papers.
+\end{itemize}
+}
+\todo{
+Beschreiben Sie Ihre Vorgehensweise in einzelnen Schritten und stellen Sie die Reihenfolge der Abarbeitung dar.
+Auf diese Punkte sollten Sie in der Diskussion wieder eingehen.
+}
+\todo{
+\begin{enumerate}
+\item Schritt 1 
+\item Schritt 2
+\item ... 
+\item Schritt n
+\end{enumerate}
+}
+\todo{
+Vermeiden Sie Formulierungen wie \enquote{Es ist nicht bekannt, ob...} oder \enquote{Es existiert kein...}.
+Solche Formulierungen kehren in der Regel einfach das bereits angedachte Lösungsmodell um und postulieren das Fehlen der angedachten Lösung einfach als Problem.
+Das ist ähnlich, wie wenn es in der Werbung hieße \enquote{Wenn Sie das Problem haben, dass Ihnen Aspirin fehlt, dann kaufen Sie doch Aspirin.}
+Sinnvoller ist diese Aussage: \enquote{Wenn Sie das Problem haben, dass Ihnen der Kopf weh tut, dann kaufen Sie doch Aspirin.}
+Es ist also bei der Problembeschreibung erforderlich, sich in die Lage dessen zu versetzen, den man mit der angedachten Lösung beglücken möchte.
+Sein Problem ist zu ermitteln und so zu formulieren, er/sie das Problem wiedererkennt und dadurch geneigt ist, sich für die Lösung des Problems zu interessieren.
+}
+
+\chapter{Grundlagen \todo{(2--3 Seiten)}}
+\todo{
+Erklären Sie alle fachlichen Grundlagen, die notwendig sind, um der Bearbeitung Ihres Seminar­themas folgen zu können.
+Beachten Sie, dass die Darstellung für den durchschnittlichen Vorlesungs­hörer verständlich ist.
+}
+\section{Unterkapitel n}
+\subsection{Unterunterkapitel n}
+
+\chapter{Lösungsansatz/Lösungsansätze \todo{(bezogen auf Paper, 2--4 Seiten)}}
+\todo{Kapitel 3 ist Vorschlag gedacht, der nicht wörtlich übernommen werden muss.
+Der Lösungsansatz ist eine kurze Beschreibung der Arbeitshypothese sowie des Vorgehens zur Lösung der in der Einleitung beschriebenen Probleme.}
+
+\section{Ergebnis/Lösungsansatz Paper n}
+\section{Vergleich mit Projekt}
+
+\chapter{Ergebnis \todo{der Seminararbeit, 1--2 Seiten, ihre Ergebnisse}}
+\todo{
+Im Ergebniskapitel soll beschrieben werden, inwiefern Sie Ihre in 1.2/1.3 aufgestellten Ziele bzw. Aufgaben im Rahmen der Seminararbeit erreicht wurden oder auch weshalb sie (teilweise) nicht erreicht werden konnten.
+So soll es möglich sein, dass ein Leser von der Arbeit lediglich die Einleitung und die Zusammenfassung liest und doch die Ergebnisse der Arbeit erfassen kann.
+Dieses Kapitel kann auch in mehrere Unterkapitel aufgeteilt werden, wenn das sinnvoll ist!
+}
+
+\chapter{Diskussion und Ausblick \todo{1--2 Seiten}}
+\todo{
+In der Diskussion wird das Ergebnis der Arbeit noch einmal kritisch bewertet.
+Dies umfasst auch neue Probleme, die erst während der Bearbeitung erkannt wurden.
+Die Eignung für ein konkretes Forschungsprojekt sollte hier diskutiert werden.
+In der Diskussion kann auch die Kritik des Autors an dem stehen, was er in der Literatur zu dem zu bearbeitenden Thema hier und da gelesen hat.
+Außerdem soll ein Ausblick gegeben werden, welche weiteren Fragestellungen noch bearbeitet werden sollten.
+}
+
+\renewcommand{\bibpreamble}{
+\todo{
+Zentrale Literatur, die den untersuchten Artikeln zugrunde liegt, können Sie im bibtex-Format in die seminar.bib einfügen und dann im Text zitieren, wodurch diese automatisch in das Literaturverzeichnis übernommen werden.
+Sie können auch weitere referierte Veröffentlichungen (wissenschaftliche Zeitschriften (auch elektronisch), Bücher) in die Erarbeitung einbeziehen zitieren.
+Sie können dafür Literaturdatenbanken wie Pubmed oder Google Scholar durchsuchen und dort direkt als bibtex-Eintrag herunterladen.
+Bitte beachten Sie, dass die \href{https://www.openoffice.org/bibliographic/bibtex-defs.html}{bibtex-Einträge vollständig sind}, z.B. sind das bei Büchern Autor, Editor, Title, Kapitel oder Seiten, Herausgeber und Jahr..
+Weitere Informationen zum Thema der Literaturrecherche finden sich in den \href{http://www.imise.uni-leipzig.de/Lehre/MedInf/Abschlussarbeiten/Literaturrecherche.jsp}{Hinweisen zur Literaturrecherche}.
+\paragraph{Beispielzitierungen}
+\citet{his} beschreiben ein Verfahren zur X von Y auf Basis von Z.
+Alternativ: X von Y lässt sich auf Basis von Z ermitteln~\citep{his}.
+}
+}
+
+
+
+\end{document}
+
+
