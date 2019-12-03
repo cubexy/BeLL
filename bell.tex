@@ -37,6 +37,7 @@
 \acro{HTML}{Hypertext Markup Language}
 \acro{XML}{Extensible Markup Language}
 \acro{URIs}{Universal Resource Identifier}
+\acro{SNIK}{semantische Netz des Informationsmanagements im Krankenhaus}
 \end{acronym}
 \allowdisplaybreaks%Mathe darf auch umbrechen
 
@@ -216,8 +217,8 @@ Solche URIs werden im semantischen Netz dazu genutzt, Beziehungen zwischen Dinge
 \toprule
 \textrm{Subjekt}			&\textrm{Prädikat}			&\textrm{Objekt}\\
 \midrule
-Photoshop					&öffnet				&Grafiken\\
-Rasenmäher				&mäht					&Rasen\\
+New York				&liegt in				&Amerika\\
+Adobe				    &verkauft				&Software\\
 Google					&produziert				&Prozessoren\\
 \bottomrule
 \end{tabularx}
@@ -225,8 +226,9 @@ Google					&produziert				&Prozessoren\\
 \caption{Beispiel für RDF-Tripel.}
 \label{tab:rdfexample}
 \end{table}
+Diese entstandenen Tripel werden letztendlich von RDF an SPARQL weitergereicht. 
 \section{SPARQL}
-\ac{SPARQL} ist ein recht neuer Standard für die Abfrage von in RDF spezialisierten Informationen sowie für die Darstellung der zugehörigen Resultate, siehe \cref{img:semanticwebstack1}. Es basiert auf einfachen RDF-Anfragen in Form von Graphmustern, enthält jedoch auch erweiterte Funktionen für die Konstruktion komplexerer Anfragemuster, die Verwendung zusätzlich hinzufügbarer Filterbedingungen und für die Formatierung der schlussendlichen Ausgabe.
+\ac{SPARQL} ist ein recht neuer Standard für die Abfrage von in RDF spezialisierten Informationen sowie für die Darstellung der zugehörigen Resultate, siehe \cref{img:semanticwebstack1}. Es basiert auf einfachen RDF-Anfragen in Form von Graphmustern, also einer Menge von Tripeln, enthält jedoch auch erweiterte Funktionen für die Konstruktion komplexerer Anfragemuster, die Verwendung zusätzlich hinzufügbarer Filterbedingungen und für die Formatierung der schlussendlichen Ausgabe. Man könnte also SPARQL als Vokabular des semantischen Webs bezeichnen.
 \begin{figure}
 \includegraphics[width=0.7\textwidth]{images/swebstackde.pdf}
 \caption{Der Semantic Web Stack.}
@@ -234,7 +236,16 @@ Google					&produziert				&Prozessoren\\
 
 \end{figure}
 \section {Ontologien}
-Ontologien sind (im informatischen Kontext) meist sprachlich gefasste und geordnete Darstellungen einer Menge von Begrifflichkeiten mit festen Beziehungen untereinander. Diese Beziehungen befassen sich stets auf einen bestimmten Gegenstandsbereich und werden dazu genutzt, Wissen in digitalisierter Form zwischen Anwendungen und Diensten auszutauschen. Dabei müssen bestimmte Interferenz- und Integritätsregeln eingehalten werden, also Regeln zu Schlussfolgerungen sowie zu der Gewährleistung ihrer Gültigkeit. Ontologien erfreuen sich seit der Idee des semantischen Webs einem stets wachsenden Bekanntheitsgrad, was dazu führt, dass sie als Teil der Wissensrepräsentation im Teilgebiet \ac{KI} einen großen Einfluss haben. Dabei beschreibt die Idee des Semantic Web eine Erweiterung des vorhandenen Netzes, um Daten zwischen Rechnern einfacher austausch- und verwertbar zu machen und sie somit besser zu explizieren, anstatt sie unkonstruiert stehen zu lassen. Zum Sinne dieser Realisierung dienen Standards zur Veröffentlichung und Nutzung maschinenlesbarer Daten, insbesondere RDF.
+Ontologien sind (im informatischen Kontext) meist sprachlich gefasste und geordnete Darstellungen einer Menge von Begrifflichkeiten mit festen Beziehungen untereinander. Diese Beziehungen befassen sich stets auf einen bestimmten Gegenstandsbereich und werden dazu genutzt, Wissen in digitalisierter Form zwischen Anwendungen und Diensten auszutauschen. Dabei müssen bestimmte Interferenz- und Integritätsregeln eingehalten werden, also Regeln zu Schlussfolgerungen sowie zu der Gewährleistung ihrer Gültigkeit. Ontologien erfreuen sich seit der Idee des semantischen Webs einem stets wachsenden Bekanntheitsgrad, was dazu führt, dass sie als Teil der Wissensrepräsentation im Teilgebiet \ac{KI} einen großen Einfluss haben. Dabei beschreibt die Idee des Semantic Web eine Erweiterung des vorhandenen Netzes, um Daten zwischen Rechnern einfacher austausch- und verwertbar zu machen und sie somit besser zu explizieren, anstatt sie unkonstruiert stehen zu lassen. Zum Sinne dieser Realisierung dienen Standards zur Veröffentlichung und Nutzung maschinenlesbarer Daten - insbesondere RDF.
+
+\section{SNIK-Projekt}
+Das \ac{SNIK} ist ein vollendetes Projekt, welches Begriffe des Informationsmanagements sowie deren Beziehungen untereinander beschreibt. Dabei benutzt es eine abgeänderte Version des Semantic Web Stack (\cref{img:semanticwebstack2}). 
+\begin{figure}
+\includegraphics[width=0.7\textwidth]{images/swebstackde_snik.pdf}
+\caption{Das semantische Modell von SNIK.}
+\label{img:semanticwebstack2}
+\end{figure}
+
 \chapter{Lösungsansatz/Lösungsansätze \todo{(bezogen auf Paper, 2--4 Seiten)}}
 \todo{Kapitel 3 ist Vorschlag gedacht, der nicht wörtlich übernommen werden muss.
 Der Lösungsansatz ist eine kurze Beschreibung der Arbeitshypothese sowie des Vorgehens zur Lösung der in der Einleitung beschriebenen Probleme.}
