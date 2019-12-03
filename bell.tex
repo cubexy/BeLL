@@ -1,7 +1,7 @@
-\documentclass[headsepline,titlepage,twoside,12pt]{report}
+\documentclass[headsepline,titlepage,ngerman,twoside,12pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[german]{babel}
+\usepackage[ngerman]{babel}
 \usepackage[a4paper,top=4cm,bottom=3cm,left=4cm,right=3cm]{geometry}
 \usepackage[pdftex]{graphicx}
 \usepackage{setspace}
@@ -15,6 +15,7 @@
 \usepackage{natbib}
 \usepackage{hyperref}
 \usepackage{acronym}
+\usepackage{cleveref}
 \PassOptionsToPackage{pdfborder={0 0 0}}{hyperref} %Für finale gedruckte Ausgabe, ohne hervorgehobene Links
 %\usepackage{hypernat}
 \daurl{ob}{http://www.snik.eu/ontology/ob/}
@@ -32,6 +33,10 @@
 \acro{SPARQL}{SPARQL Protocol and RDF Query Language}
 \acro{W3C}{World Wide Web Consortium}
 \acro{KI}{Künstliche Intelligenz}
+\acro{RDF}{Resource Description Framework}
+\acro{HTML}{Hypertext Markup Language}
+\acro{XML}{Extensible Markup Language}
+\acro{URIs}{Universal Resource Identifier}
 \end{acronym}
 \allowdisplaybreaks%Mathe darf auch umbrechen
 
@@ -201,10 +206,25 @@ Erklären Sie alle fachlichen Grundlagen, die notwendig sind, um der Bearbeitung
 Beachten Sie, dass die Darstellung für den durchschnittlichen Vorlesungs­hörer verständlich ist.
 }
 \section{RDF}
-RDF ist ein Standardmodell für den Datenaustausch im Web, welches in den 90er Jahren des letzten Jahrtausends seine Anfänge findet. Im Gegensatz zu HTML und XML ist es in der Lage, 
- enthaltene Informationen zu kombinieren und weiter zu verarbeiten, anstatt diese nur korrekt anzuzeigen. Daher wird RDF auch oft als grundlegendes Darstellungsformat für die Entwicklung im Semantic Web angesehen.
-Es erweitert die Verknüpfungsstruktur von diesem, um URIs (Universal Resource Identifier) einzubinden.
-Solche URIs werden im semantischen Netz dazu genutzt, Beziehungen zwischen Dingen beziehungsweise zwischen den beiden Enden der Verknüpfung herzustellen, um Dateien zu verknüpfen, verfügbar zu machen und für Anwendungen freizugeben. Dadurch können Daten zusammengeführt werden, die sich eigentlich im Schema grundlegend unterscheiden, ohne dass alle Datenkonsumenten geändert werden müssen. Diese Zusammenführung geschieht in einem Schichtenmodell: Aussagen werden als Tripel modelliert und bilden eine Aussage, die aus Subjekt, Prädikat und Objekt zusammengefügt werden kann. Man kann also einen Tripel mit einem einfachen Satz vergleichen: als Beispiel hier einmal der Teilsatz "Google produziert Prozessoren". Hier stellt \textit{Google} das Subjekt dar, \textit{produziert} ist das Prädikat und \textit{Prozessoren} sind das Objekt. Hat man eine Menge von Tripeln, bilden diese ein semantisches Netz, was dann in dem Fall einfach tabellarisch
+\ac{RDF} ist ein Standardmodell für den Datenaustausch im Web, welches in den 90er Jahren des letzten Jahrtausends seine Anfänge findet. Im Gegensatz zu \ac{HTML} und \ac{XML} ist es in der Lage, enthaltene Informationen zu kombinieren und weiter zu verarbeiten, anstatt diese nur korrekt anzuzeigen. Daher wird RDF auch oft als grundlegendes Darstellungsformat für die Entwicklung im Semantic Web angesehen.
+Es erweitert die Verknüpfungsstruktur von diesem, um \ac{URIs} einzubinden.
+Solche URIs werden im semantischen Netz dazu genutzt, Beziehungen zwischen Dingen beziehungsweise zwischen den beiden Enden der Verknüpfung herzustellen, um Dateien zu verknüpfen, verfügbar zu machen und für Anwendungen freizugeben. Dadurch können Daten zusammengeführt werden, die sich eigentlich im Schema grundlegend unterscheiden, ohne dass alle Datenkonsumenten geändert werden müssen. Diese Zusammenführung geschieht in einem Schichtenmodell: Aussagen werden als Tripel modelliert und bilden eine Aussage, die aus Subjekt, Prädikat und Objekt zusammengefügt werden kann. Man kann also einen Tripel mit einem einfachen Satz vergleichen: als Beispiel hier einmal der Teilsatz \textit{Google produziert Prozessoren}. Hier stellt \textit{Google} das Subjekt dar, \textit{produziert} ist das Prädikat und \textit{Prozessoren} sind das Objekt. Hat man eine Menge von Tripeln, bilden diese ein semantisches Netz, was man sich dann in dem Fall einfach tabellarisch vorstellen kann, siehe \cref{tab:rdfexample}.
+
+\begin{table}
+\begin{centering}
+\begin{tabularx}{\textwidth}{XXX}
+\toprule
+\textrm{Subjekt}			&\textrm{Prädikat}			&\textrm{Objekt}\\
+\midrule
+Paint					&erstellt				&Grafiken\\
+Rasenmäher				&mäht					&Rasen\\
+Google					&produziert				&Prozessoren\\
+\bottomrule
+\end{tabularx}
+\end{centering}
+\caption{Beispiel für RDF-Tripel}
+\label{tab:rdfexample}
+\end{table}
 \section{SPARQL}
 \ac{SPARQL} ist ein recht neuer Standard für die Abfrage von in RDF spezialisierten Informationen sowie für die Darstellung der zugehörigen Resultate. Es basiert auf einfachen RDF-Anfragen in Form von Graphmustern, enthält jedoch auch erweiterte Funktionen für die Konstruktion komplexerer Anfragemuster, die Verwendung zusätzlich hinzufügbarer Filterbedingungen und für die Formatierung der schlussendlichen Ausgabe.
 \section {Ontologien}
