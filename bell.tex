@@ -175,21 +175,19 @@ Erklären Sie alle fachlichen Grundlagen, die notwendig sind, um der Bearbeitung
 Beachten Sie, dass die Darstellung für den durchschnittlichen Vorlesungs­hörer verständlich ist.
 }
 
-\section{WWW}
+\section{\acs{WWW}}
 Das \ac{WWW} bildet ein verknüpftes Kommunikationsmodell zwischen allen Ressourcen und Nutzern des Internets, die das \ac{HTTP} nutzen. Es wurde vom Direktor der \ac{W3C} Tim Berners-Lee 1991 entwickelt und ermöglicht den Zugriff auf sowie den Datenaustausch mit \acs{HTML}-Dokumenten. Es definiert also das, was die Allgemeinheit als \enquote{das Web} bezeichnen würde. 
 
 \section{Semantic Web}
-TODO
+Das Semantic Web (oder auch: semantisches Netz) stellt eine Methode dar, um maschinenlesbares Wissen über das \ac{WWW} in Form von HTML-Dokumenten zu verbreiten. Anders als bei der klassischen Website aber wird hier nicht nur primär Wert auf die Lesbarkeit durch einen Menschen, sondern auch auf die Maschinenlesbarkeit Wert gelegt, indem die Seite nebst dem normalen HTML-Code auch Informationen, die durch Computer gelesen werden können, hinterlegt. Diese sind durch Technologien des semantischen Webs ( \acs{RDF}, \acs{SPARQL}, ... ) einles- und verarbeitbar.
 
 \section{Linked Data}
-TODO
+Der Begriff "Linked Data" bezieht sich auf eine Reihe bewährter Methoden zum Veröffentlichen und Verbinden strukturierter Daten im Web. Es verknüpft Dateien aus dem semantischen Web untereinander, sodass sie durch semantische Abfragen benutzbar werden. Linked Data basiert auf standardisierten Webtechnologien wie \acs{HTTP} und \acs{RDF}, um auch wie beim semantischen Prinzip maschinenlesbare Daten zu generieren. Zielsetzung von Linked Data ist es, das Internet zu einer globalen, computerverbarbeitbaren Datenbank weiterzuentwickeln und so den Zugriff für technische Endgeräte weiter zu vereinfachen.
 
-\section{RDF}
+\section{\acs{RDF}}
 \ac{RDF} ist ein weiteres Standardmodell für den Datenaustausch im Web, welches in den 90er Jahren des letzten Jahrtausends seine Anfänge findet. Im Gegensatz zu \ac{HTML} und \ac{XML} ist es in der Lage, enthaltene Informationen zu kombinieren und weiter zu verarbeiten, anstatt diese nur korrekt anzuzeigen. Daher ist RDF auch oft als grundlegendes Repräsentationsformat für die Entwicklung im Semantic Web angesehen.
 Es erweitert die Verknüpfungsstruktur von diesem, um \ac{URIs} einzubinden.
-Solche URIs werden im semantischen Netz dazu genutzt, Beziehungen zwischen Dingen beziehungsweise zwischen den beiden Enden der Verknüpfung herzustellen, um Dateien zu verknüpfen, verfügbar zu machen und für Anwendungen freizugeben. Dadurch können Daten zusammengeführt werden, die sich eigentlich im Schema grundlegend unterscheiden, ohne dass alle Datenkonsumenten geändert werden müssen.
-Diese Zusammenführung geschieht in einem Schichtenmodell: Aussagen werden als Tripel modelliert und bilden eine Aussage, die aus Subjekt, Prädikat und Objekt zusammengefügt werden kann. Man kann also einen Tripel mit einem einfachen Satz vergleichen: als Beispiel hier einmal der Teilsatz \textit{Google produziert Prozessoren}. 
-Hier stellt \textit{Google} das Subjekt dar, \textit{produziert} ist das Prädikat und \textit{Prozessoren} sind das Objekt. Hat man eine Menge von Tripeln, bilden diese ein semantisches Netz, was tabellarisch übersichtlich dargestellt werden kann, siehe \cref{tab:rdfexample}.
+Solche URIs werden im semantischen Netz dazu genutzt, Beziehungen zwischen Dingen beziehungsweise zwischen den beiden Enden der Verknüpfung herzustellen, um Dateien zu verknüpfen, verfügbar zu machen und für Anwendungen freizugeben. Dadurch können Daten zusammengeführt werden, die sich eigentlich im Schema grundlegend unterscheiden, ohne dass alle Datenkonsumenten geändert werden müssen. Diese Zusammenführung geschieht in einem Schichtenmodell: Aussagen werden als Tripel modelliert und bilden eine Aussage, die aus Subjekt, Prädikat und Objekt zusammengefügt werden kann. Man kann also einen Tripel mit einem einfachen Satz vergleichen: als Beispiel hier einmal der Teilsatz \textit{Google produziert Prozessoren}. Hier stellt \textit{Google} das Subjekt dar, \textit{produziert} ist das Prädikat und \textit{Prozessoren} sind das Objekt. Hat man eine Menge von Tripeln, bilden diese ein semantisches Netz, was tabellarisch übersichtlich dargestellt werden kann, siehe \cref{tab:rdfexample}.
 
 \begin{table}
 \begin{centering}
@@ -208,7 +206,7 @@ Google					&produziert				&Prozessoren\\
 \end{table}
 
 
-\section{SPARQL}
+\section{\acs{SPARQL}}
 \ac{SPARQL} ist ein Standard für die Abfrage von in \ac{RDF} spezialisierten Informationen sowie für die Darstellung der zugehörigen Resultate, siehe \cref{img:semanticwebstack1}. Es basiert auf einfachen \ac{RDF}-Anfragen in Form von Graphmustern, also einer Menge von Tripeln, enthält jedoch auch erweiterte Funktionen für die Konstruktion komplexerer Anfragemuster, die Verwendung zusätzlich hinzufügbarer Filterbedingungen und für die Formatierung der schlussendlichen Ausgabe. Man könnte also \ac{SPARQL} als eine faktische Abfragesprache des semantischen Webs bezeichnen.
 \begin{figure}
 \centering
@@ -226,8 +224,8 @@ Google					&produziert				&Prozessoren\\
 \noindent Ontologien sind (im informatischen Kontext) meist sprachlich gefasste und geordnete Darstellungen einer Menge von Begrifflichkeiten mit festen Beziehungen untereinander. Diese Beziehungen befassen sich stets auf einen bestimmten Gegenstandsbereich und werden dazu genutzt, Wissen in digitalisierter Form zwischen Anwendungen und Diensten auszutauschen. Dabei müssen bestimmte Interferenz- und Integritätsregeln eingehalten werden, also Regeln zu Schlussfolgerungen sowie zu der Gewährleistung ihrer Gültigkeit. Ontologien erfreuen sich seit der Idee des semantischen Webs einem stets wachsenden Bekanntheitsgrad, was dazu führt, dass sie als Teil der Wissensrepräsentation im Teilgebiet \acs{KI} einen großen Einfluss haben. Dabei beschreibt die Idee des Semantic Web eine Erweiterung des vorhandenen Netzes, um Daten zwischen Rechnern einfacher austausch- und verwertbar zu machen und sie somit besser zu explizieren, anstatt sie unkonstruiert stehen zu lassen. Zum Sinne dieser Realisierung dienen Standards zur Veröffentlichung und Nutzung maschinenlesbarer Daten -- insbesondere \ac{RDF}.
 
 \section{Künstliche Intelligenz}
-\ac{KI} (oder \ac{AI}) ist ein Teilgebiet der Informatik, welches sich mit Machine Learning (maschinellem Lernen) und damit der Automatisierung intelligenten Verhaltens befasst. \ac{KI} spiegelt eine Möglichkeit wieder, bestimmte Entscheidungsstrukturen des Menschen nachzubilden und es somit Computern zu ermöglichen, komplexe Probleme selbstständig zu bearbeiten und zu lösen. Dabei spielt das Lernen und die Lernfähigkeit eine wichtige Rolle. Hierzu werden Informationen aus einer Knowledge Base, also z.B. einer Ontologie benötigt, um diesen Lernprozess zu ermöglichen.
-\section{SNIK-Projekt}
+\ac{KI} (oder \ac{AI}) ist ein Teilgebiet der Informatik, welches sich mit Machine Learning (maschinellem Lernen) und damit der Automatisierung intelligenten Verhaltens befasst. \ac{KI} spiegelt eine Möglichkeit wieder, bestimmte Entscheidungsstrukturen des Menschen nachzubilden und es somit Computern zu ermöglichen, komplexe Probleme selbstständig zu bearbeiten und zu lösen. Dabei spielt das Lernen und die Lernfähigkeit eine wichtige Rolle. Hierzu werden Informationen aus einer Knowledge Base, also 
+\section{\acs{SNIK}-Projekt}
 Das \ac{SNIK} ist ein vollendetes Projekt, welches Begriffe des Informationsmanagements sowie deren Beziehungen untereinander beschreibt. Es ist in der Lage, diese Menge an Informationen in einer Ontologie darzustellen und diese sowie maschinen- als auch menschenlesbar auszugeben.  Dabei nutzt es ein dem Semantic Web Stack ähniches Modell(\cref{img:semanticwebstack2}), welches Anwendungen wie \ac{SNIK} Graph 
 \begin{figure}
 \centering
