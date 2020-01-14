@@ -26,8 +26,8 @@
 \daurl{it4it}{http://www.snik.eu/ontology/it4it/}
 \daurl{meta}{http://www.snik.eu/ontology/meta/}
 \author{Max Niclas Wächtler}
-%\newcommand\todo[1]{\textcolor{teal}{#1}}%show comments for students, comment out for finished work or remove the todo statements and their content
-\newcommand\todo[1]{}%hide comments for students, uncomment for the finished work 
+\newcommand\todo[1]{\textcolor{teal}{#1}}%show comments for students, comment out for finished work or remove the todo statements and their content
+%\newcommand\todo[1]{}%hide comments for students, uncomment for the finished work 
 %remove "Kapitel X" headers *****
 \begin{document}
 \allowdisplaybreaks%Mathe darf auch umbrechen
@@ -47,10 +47,6 @@ Institut für Medizinische Informatik, Statistik und Epidemiologie (IMISE)
 \vspace{0.5cm}
 {\large Besondere Lernleistung}\\
 \vspace{2cm}
-\todo{15--20 Seiten. Zwei Möglichkeiten:\\
-(1) Vergleich, Zusammenfassung und \textbf{eigene} Bewertung zweier wissenschaftlicher Paper.\\
-(2) Nutzenbewertung eines wissenschaftlichen Papers hinsichtlich einer konkreten Forschungssituation
-}
 
 \vspace*{4cm}
 
@@ -76,6 +72,7 @@ Zusammenfassung hier schreiben
 
 
 \section*{Begriffs- und Abkürzungsverzeichnis}
+\todo{AI würde ich rausnehmen}
 \begin{acronym} [SPARQL]
 \acro{SPARQL}{SPARQL Protocol and RDF Query Language}
 \acro{W3C}{World Wide Web Consortium}
@@ -160,8 +157,8 @@ Auf diese Punkte sollten Sie in der Diskussion wieder eingehen.
 \todo{
 Vermeiden Sie Formulierungen wie \enquote{Es ist nicht bekannt, ob...} oder \enquote{Es existiert kein...}.
 Solche Formulierungen kehren in der Regel einfach das bereits angedachte Lösungsmodell um und postulieren das Fehlen der angedachten Lösung einfach als Problem.
-\item ... 
-\item Schritt n
+... \\
+Schritt n\\
 Das ist ähnlich, wie wenn es in der Werbung hieße \enquote{Wenn Sie das Problem haben, dass Ihnen Aspirin fehlt, dann kaufen Sie doch Aspirin.}
 Sinnvoller ist diese Aussage: \enquote{Wenn Sie das Problem haben, dass Ihnen der Kopf weh tut, dann kaufen Sie doch Aspirin.}
 Es ist also bei der Problembeschreibung erforderlich, sich in die Lage dessen zu versetzen, den man mit der angedachten Lösung beglücken möchte.
@@ -169,20 +166,20 @@ Sein Problem ist zu ermitteln und so zu formulieren, er/sie das Problem wiederer
 }
 
 %\todo{(2--3 Seiten)}
-\chapter{Grundlagen }
+\chapter{Grundlagen}
 \todo{
 Erklären Sie alle fachlichen Grundlagen, die notwendig sind, um der Bearbeitung Ihres Seminar­themas folgen zu können.
 Beachten Sie, dass die Darstellung für den durchschnittlichen Vorlesungs­hörer verständlich ist.
 }
 
 \section{\acs{WWW}}
-Das \ac{WWW} bildet ein verknüpftes Kommunikationsmodell zwischen allen Ressourcen und Nutzern des Internets, die das \ac{HTTP} nutzen. Es wurde vom Direktor der \ac{W3C} Tim Berners-Lee 1991 entwickelt und ermöglicht den Zugriff auf sowie den Datenaustausch mit \acs{HTML}-Dokumenten. Es definiert also das, was die Allgemeinheit als \enquote{das Web} bezeichnen würde. 
+Das \ac{WWW} bildet ein verknüpftes Kommunikationsmodell zwischen allen Ressourcen und Nutzern des Internets, die das \ac{HTTP} nutzen. Es wurde vom Direktor der \ac{W3C} Tim Berners-Lee 1991 entwickelt und ermöglicht den Zugriff auf sowie den Datenaustausch mit \acs{HTML}-Dokumenten. Es definiert also das, was die Allgemeinheit als \enquote{das Web} bezeichnen würde.\todo{nicht im Konjunktiv schreiben}
 
 \section{Semantic Web}
 Das Semantic Web (oder auch: semantisches Netz) stellt eine Methode dar, um maschinenlesbares Wissen über das \ac{WWW} in Form von HTML-Dokumenten zu verbreiten. Anders als bei der klassischen Website aber wird hier nicht nur primär Wert auf die Lesbarkeit durch einen Menschen, sondern auch auf die Maschinenlesbarkeit Wert gelegt, indem die Seite nebst dem normalen HTML-Code auch Informationen, die durch Computer gelesen werden können, hinterlegt. Diese sind durch Technologien des semantischen Webs ( \acs{RDF}, \acs{SPARQL}, ... ) einles- und verarbeitbar.
 
 \section{Linked Data}
-Der Begriff "Linked Data" bezieht sich auf eine Reihe bewährter Methoden zum Veröffentlichen und Verbinden strukturierter Daten im Web. Es verknüpft Dateien aus dem semantischen Web untereinander, sodass sie durch semantische Abfragen benutzbar werden. Linked Data basiert auf standardisierten Modellen für den Datenaustausch im Web, besipielsweise \acs{HTML}, um auch wie beim semantischen Prinzip maschinenlesbare Daten zu generieren. Zielsetzung von Linked Data ist es, das Internet zu einer globalen, computerverbarbeitbaren Datenbank weiterzuentwickeln und so den Zugriff für technische Endgeräte weiter zu vereinfachen.
+\todo{enquote für anführungszeichen}Der Begriff "Linked Data" bezieht sich auf eine Reihe bewährter Methoden zum Veröffentlichen und Verbinden strukturierter Daten im Web. Es verknüpft Dateien aus dem semantischen Web untereinander, sodass sie durch semantische Abfragen benutzbar werden. Linked Data basiert auf standardisierten Modellen für den Datenaustausch im Web, besipielsweise \acs{HTML}, um auch wie beim semantischen Prinzip maschinenlesbare Daten zu generieren. Zielsetzung von Linked Data ist es, das Internet zu einer globalen, computerverbarbeitbaren Datenbank weiterzuentwickeln und so den Zugriff für technische Endgeräte weiter zu vereinfachen.
 
 \section{\acs{RDF}}
 \ac{RDF} ist ein weiteres Standardmodell für den Datenaustausch im Web, welches in den 90er Jahren des letzten Jahrtausends seine Anfänge findet. Im Gegensatz zu \ac{HTML} und \ac{XML} ist es in der Lage, enthaltene Informationen zu kombinieren und weiter zu verarbeiten, anstatt diese nur korrekt anzuzeigen. Daher ist RDF auch oft als grundlegendes Repräsentationsformat für die Entwicklung im Semantic Web angesehen.
@@ -219,11 +216,12 @@ Google					&produziert				&Prozessoren\\
 \setlength\epigraphwidth{.9\textwidth}
 \setlength\epigraphrule{0pt}
 
-\epigraph{\itshape An ontology is an explicit specification of a conceptualization.}{---Thomas R. Gruber}
+\epigraph{\itshape An ontology is an explicit specification of a conceptualization.}{---Thomas R. Gruber\todo{quelle zitieren}}
 
 \noindent Ontologien sind (im informatischen Kontext) meist sprachlich gefasste und geordnete Darstellungen einer Menge von Begrifflichkeiten mit festen Beziehungen untereinander. Diese Beziehungen befassen sich stets auf einen bestimmten Gegenstandsbereich und werden dazu genutzt, Wissen in digitalisierter Form zwischen Anwendungen und Diensten auszutauschen. Dabei müssen bestimmte Interferenz- und Integritätsregeln eingehalten werden, also Regeln zu Schlussfolgerungen sowie zu der Gewährleistung ihrer Gültigkeit. Ontologien erfreuen sich seit der Idee des semantischen Webs einem stets wachsenden Bekanntheitsgrad, was dazu führt, dass sie als Teil der Wissensrepräsentation im Teilgebiet \acs{KI} einen großen Einfluss haben. Dabei beschreibt die Idee des Semantic Web eine Erweiterung des vorhandenen Netzes, um Daten zwischen Rechnern einfacher austausch- und verwertbar zu machen und sie somit besser zu explizieren, anstatt sie unkonstruiert stehen zu lassen. Zum Sinne dieser Realisierung dienen Standards zur Veröffentlichung und Nutzung maschinenlesbarer Daten -- insbesondere \ac{RDF}.
 
 \section{Künstliche Intelligenz}
+\todo{machine learning rausnehmen. KI mehr an semantic web anpassen}
 \ac{KI} (oder \ac{AI}) ist ein Teilgebiet der Informatik, welches sich mit Machine Learning (maschinellem Lernen) und damit der Automatisierung intelligenten Verhaltens befasst. \ac{KI} spiegelt eine Möglichkeit wieder, bestimmte Entscheidungsstrukturen des Menschen nachzubilden und es somit Computern zu ermöglichen, komplexe Probleme selbstständig zu bearbeiten und zu lösen. Dabei spielt das Lernen und die Lernfähigkeit eine wichtige Rolle. Hierzu werden Informationen aus einer Knowledge Base, also 
 \section{\acs{SNIK}-Projekt}
 Das \ac{SNIK} ist ein vollendetes Projekt, welches Begriffe des Informationsmanagements sowie deren Beziehungen untereinander beschreibt. Es ist in der Lage, diese Menge an Informationen in einer Ontologie darzustellen und diese sowie maschinen- als auch menschenlesbar auszugeben.  Dabei nutzt es ein dem Semantic Web Stack ähniches Modell(\cref{img:semanticwebstack2}), welches Anwendungen wie \ac{SNIK} Graph 
@@ -233,8 +231,17 @@ Das \ac{SNIK} ist ein vollendetes Projekt, welches Begriffe des Informationsmana
 \caption{Das semantische Modell von SNIK.}
 \label{img:semanticwebstack2}
 \end{figure}
+\todo{hier auf die lehre eingehen, denn dafür brauchen wir ja das quiz. unterstützung von lehrenden und lernenden durch tools, welche die SNIK Ontologie benutzen}
 
-\chapter{Lösungsansatz/Lösungsansätze \todo{(bezogen auf Paper, 2--4 Seiten)}}
+\section{Krankenhausinformationssysteme}
+Definitionen (kannst auch die LaTeX Definition Umgebung benutzen)
+zitieren vom "blauen buch"
+\paragraph{Informationssystem}
+\paragraph{Krankenhausinformationssystem}
+\paragraph{Wissen}
+\paragraph{Daten}
+
+\chapter{Lösungsansatz/Lösungsansätze \todo{(2--4 Seiten)}}
 \todo{Kapitel 3 ist Vorschlag gedacht, der nicht wörtlich übernommen werden muss.
 Der Lösungsansatz ist eine kurze Beschreibung der Arbeitshypothese sowie des Vorgehens zur Lösung der in der Einleitung beschriebenen Probleme.}
 
