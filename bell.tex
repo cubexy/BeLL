@@ -8,8 +8,10 @@
 \usepackage{csquotes}
 \usepackage{tabularx}
 \usepackage{xcolor}
+\usepackage{listings}
 \usepackage{booktabs}
 \usepackage{amsmath}
+\usepackage{comment}
 \usepackage{aurl}
 \usepackage{microtype}
 \usepackage{natbib}
@@ -31,6 +33,7 @@
 %remove "Kapitel X" headers *****
 \begin{document}
 \allowdisplaybreaks%Mathe darf auch umbrechen
+\lstset{language=SQL,morekeywords={PREFIX,owl,rdf,rdfs,meta,FILTER,str,bb,ob,SAMPLE,STR,AS,REPLACE,LANGMATCHES,skos,LANG,LIMIT}}
 
 \onehalfspace
 
@@ -84,11 +87,25 @@ Zusammenfassung hier schreiben
 \acro{WWW}{World Wide Web}
 \acro{W3C}{World Wide Web Consortium}
 \acro{HTTP}{Hypertext Transfer Protocol}
+\acro{MIG}{Management von Informationssystemen im Gesundheitswesen}
 \end{acronym}
 
 \chapter{Einleitung}
 \section{Gegenstand und Motivation \todo{(aus Sicht der Autoren der Paper)}}
 \subsection{Gegenstand}
+
+Das \ac{SNIK} ist ein vollendetes Projekt, welches Begriffe des Informationsmanagements in dem Teilgebiet der  medizinischen Informatik sowie deren Beziehungen untereinander beschreibt.
+Es ist in der Lage, diese Menge an Informationen in einer Ontologie darzustellen und diese sowie maschinen- als auch menschenlesbar auszugeben.
+ Dabei nutzt es ein dem Semantic Web Stack ähnliches Modell (\cref{img:semanticwebstack2}), welches Anwendungen wie dem \ac{SNIK} Graph ermöglicht, Informationen abzufragen und diese Endnutzern in aufbereiteter Form zur Verfügung zu stellen.
+ \begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{images/swebstackde_snik.pdf}
+\caption{Das semantische Modell von SNIK.}
+\label{img:semanticwebstack2}
+\end{figure}
+Das Projekt konzentriert sich dabei hauptsächlich auf die Daten der medizinischen Lehre, um diese für Krankenhausinformationssysteme zur Verfügung zu stellen und die Arbeit für medizinisches Personal zu erleichtern, speziell hat der durch Prof. Dr. Alfred Winter geleitete Teilbereich \ac{MIG} die Zielsetzung, durch Entwicklung von Methoden und Werkzeugen für das Informationsmanagement zu einer besseren Gesundheitsversorgung beizutragen. Um normalen Nutzern eine Anwendung, die die Daten des Projektes nutzt, darzustellen, wurde unter anderem auch ein einfaches Multiple-Choice-Quiz auf Basis eines öffentlich verfügbaren Templates programmiert, was die Ontologie hinter SNIK nutzt, um Nutzern einfache, generierte Fragen zu stellen. 
+
+
 \todo{
 \begin{itemize}
 \item In welcher Welt/Domäne oder welchem Arbeitsbereich/-gebiet bewegen wir uns im Rahmen der Seminararbeit/der ausgewählten Papers?
@@ -98,6 +115,7 @@ Aus den Papers bzw. dem Antrag des Forschungsprojektes entnehmen.
 }
 
 \subsection{Problematik}
+Da die Nutzer möglichst mit logischen, aber nicht zu einfachen Fragen herausgefordert werden sollten, um mithilfe des Multiple-Choice-Quiz ihren Wissensstand zu verbessern, sollte das Quizprogramm bestimmte Vorgaben erfüllen und diese auch in der Qualtität der Fragen widerspiegeln. 
 \todo{
 \begin{itemize}
 \item Worin bestehen die Probleme?
@@ -174,7 +192,7 @@ Beachten Sie, dass die Darstellung für den durchschnittlichen Vorlesungs­höre
 \section{\acs{WWW}}
 Das \ac{WWW} bildet ein verknüpftes Kommunikationsmodell zwischen allen Ressourcen und Nutzern des Internets, die das \ac{HTTP} nutzen.
 Es wurde vom Direktor der \ac{W3C} Tim Berners-Lee 1991 entwickelt und ermöglicht den Zugriff auf sowie den Datenaustausch mit \acs{HTML}-Dokumenten.
-Es definiert also das, was die Allgemeinheit als \enquote{das Web} bezeichnen würde.\todo{nicht im Konjunktiv schreiben}
+Es definiert also das, was die Allgemeinheit als \enquote{das Web} bezeichnet.
 
 \section{Semantic Web}
 Das Semantic Web (oder auch: semantisches Netz) stellt eine Methode dar, um maschinenlesbares Wissen über das \ac{WWW} in Form von HTML-Dokumenten zu verbreiten.
@@ -218,7 +236,9 @@ Google					&produziert				&Prozessoren\\
 \section{\acs{SPARQL}}
 \ac{SPARQL} ist ein Standard für die Abfrage von in \ac{RDF} spezialisierten Informationen sowie für die Darstellung der zugehörigen Resultate, siehe \cref{img:semanticwebstack1}.
 Es basiert auf einfachen \ac{RDF}-Anfragen in Form von Graphmustern, also einer Menge von Tripeln, enthält jedoch auch erweiterte Funktionen für die Konstruktion komplexerer Anfragemuster, die Verwendung zusätzlich hinzufügbarer Filterbedingungen und für die Formatierung der schlussendlichen Ausgabe.
-Man könnte also \ac{SPARQL} als eine faktische Abfragesprache des semantischen Webs bezeichnen.
+
+
+Man kann also \ac{SPARQL} als eine faktische Abfragesprache des semantischen Webs bezeichnen.
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{images/swebstackde.pdf}
@@ -254,7 +274,6 @@ Dabei konzentriert sich das SNIK-Projekt hauptsächlich auf die Daten der medizi
 \caption{Das semantische Modell von SNIK.}
 \label{img:semanticwebstack2}
 \end{figure}
-\todo{hier auf die lehre eingehen, denn dafür brauchen wir ja das quiz. unterstützung von lehrenden und lernenden durch tools, welche die SNIK Ontologie benutzen}
 
 \section{Krankenhausinformationssysteme}
 \paragraph{Informationssystem}
@@ -273,6 +292,42 @@ Sie stellen die Grundlage oder das Ergebnis eines Verarbeitungsschrittes dar.
 \chapter{Lösungsansatz/Lösungsansätze \todo{(2--4 Seiten)}}
 \todo{Kapitel 3 ist Vorschlag gedacht, der nicht wörtlich übernommen werden muss.
 Der Lösungsansatz ist eine kurze Beschreibung der Arbeitshypothese sowie des Vorgehens zur Lösung der in der Einleitung beschriebenen Probleme.}
+
+%Beispiel-Query:
+\begin{comment}
+\begin{lstlisting}
+SELECT SAMPLE(replace(str(?def),str(?cl),"X","i") as ?def)
+SAMPLE(str(?cl) as ?cl) 
+SAMPLE(str(?a1l) as ?a1l)
+SAMPLE(str(?a2l) as ?a2l)
+SAMPLE(str(?a3l) as ?a3l)
+{
+ ?class a owl:Class.
+ ?class rdfs:label ?cl.
+ FILTER(LANGMATCHES(LANG(?cl),"en"))
+
+ ?class skos:definition ?def.
+ FILTER(STRLEN(?def)>10&&STRLEN(?def)<600).
+ FILTER(LANGMATCHES(LANG(?def),"en"))
+
+ ?class (!meta:subTopClass){1,2} ?a1,?a2,?a3.
+
+ owl:Class ^a ?a1,?a2,?a3.
+ FILTER(?class!=?a1&&?class!=?a2&&?class!=?a3
+ &&?a1<?a2&&?a2<?a3)
+
+?a1 rdfs:label ?a1l.
+ FILTER(LANGMATCHES(LANG(?a1l),"en"))
+
+?a2 rdfs:label ?a2l.
+ FILTER(LANGMATCHES(LANG(?a2l),"en"))
+
+?a3 rdfs:label ?a3l.
+ FILTER(LANGMATCHES(LANG(?a3l),"en"))
+ 
+} GROUP BY ?class limit 1000
+\end{lstlisting}
+\end{comment}
 
 \section{Ergebnis/Lösungsansatz Paper n}
 \section{Vergleich mit Projekt}
