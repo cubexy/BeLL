@@ -28,7 +28,10 @@
 \daurl{it4it}{http://www.snik.eu/ontology/it4it/}
 \daurl{meta}{http://www.snik.eu/ontology/meta/}
 \author{Max Niclas Wächtler}
-\newcommand\todo[1]{\textcolor{teal}{#1}}%show comments for students, comment out for finished work or remove the todo statements and their content
+\newcommand\idea[1]{\textcolor{red}{#1}}
+
+\newcommand\todo[1]{\textcolor{teal}{#1}}
+%show comments for students, comment out for finished work or remove the todo statements and their content
 %\newcommand\todo[1]{}%hide comments for students, uncomment for the finished work 
 %remove "Kapitel X" headers *****
 
@@ -88,7 +91,7 @@ Zusammenfassung hier schreiben
 \acro{WWW}{World Wide Web}
 \acro{W3C}{World Wide Web Consortium}
 \acro{HTTP}{Hypertext Transfer Protocol}
-\acro{MIG}{\textit{Management von Informationssystemen im Gesundheitswesen}}
+\acro{MIG}{Management von Informationssystemen im Gesundheitswesen}
 \end{acronym}
 
 \chapter{Einleitung}
@@ -167,9 +170,9 @@ Bsp.: Gelänge es, Daten aus der Krankenversorgung vollständig zu anonymisieren
 
 \section{Zielsetzung}
 Das Ziel meiner besonderen Lernleistung ist es, ein Konzept für ein Multiple-Choice-Quizprogramm zu entwickeln, welches mit der SNIK-Ontologie arbeitet und auf Basis von verschiedenen Regeln und Qualitäten nutzerfreundliche Fragen generiert. 
-
-Ziel Z1:...
-Zeil Z2: 
+\\Ziel Z1:  Konzept für SPARQL-Queries für verschiedene Beziehungstypen 
+\\Zeil Z2:  Regeln und Umsetzungen für die Generierung von Fragen und deren Antworten
+\idea{Muss das näher beschrieben werden?}
 \todo{
 Beschreiben Sie kurz die Zielsetzung ihrer Seminararbeit.
 Beachten Sie dazu die Beschreibung des Betreuers zu Ihrem Seminarthema.\\
@@ -188,14 +191,15 @@ Was ist Ihre konkrete Aufgabenstellung im Rahmen der Seminararbeit? Das könnte 
 Literaturrecherche nach weiteren vergleichbaren Papers.
 \end{itemize}
 }
+
 \todo{
 Beschreiben Sie Ihre Vorgehensweise in einzelnen Schritten und stellen Sie die Reihenfolge der Abarbeitung dar.
 Auf diese Punkte sollten Sie in der Diskussion wieder eingehen.
 }
 \todo{
 \begin{enumerate}
-\item Schritt 1 
-\item Schritt 2
+\item Schritt 
+\item Schritt 
 \end{enumerate}
 }
 \todo{
@@ -208,9 +212,13 @@ Sinnvoller ist diese Aussage: \enquote{Wenn Sie das Problem haben, dass Ihnen de
 Es ist also bei der Problembeschreibung erforderlich, sich in die Lage dessen zu versetzen, den man mit der angedachten Lösung beglücken möchte.
 Sein Problem ist zu ermitteln und so zu formulieren, er/sie das Problem wiedererkennt und dadurch geneigt ist, sich für die Lösung des Problems zu interessieren.
 } 
-Aufgabe A1 zu Ziel Z1:
+\\Aufgabe A1 zu Ziel Z1: Konzepte für die Abfragen von den drei verschiedenenen Beziehungstypen
+\\Aufgabe A2 zu Ziel Z1: Konzepte zur Generierung der falschen Antworten  (\enquote{close matches})
+\\Aufgabe A3 zu Ziel Z2: Regeln für Fragetitel \idea{Länge, Formatierung, abhängig vom Typ}
+\\Aufgabe A4 zum Ziel Z2: Formatierung von Titel und Fragen \idea{Verhindern von Dopplungen, Absätze für Lesbarkeit}
+\\Aufgabe A5 zum Ziel Z2: Generelle Regeln für das Multiple-Choice-Quiz \idea{keine doppelten Fragen, Statistiken für die Auswertung auf Basis von gesammelten Daten}
 
-%\todo{(2--3 Seiten)}
+\todo{(2--3 Seiten)}
 \chapter{Grundlagen}
 \todo{
 Erklären Sie alle fachlichen Grundlagen, die notwendig sind, um der Bearbeitung Ihres Seminar­themas folgen zu können.
