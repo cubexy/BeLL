@@ -30,7 +30,7 @@
 \author{Max Niclas Wächtler}
 \newcommand\idea[1]{\textcolor{red}{#1}}
 
-\newcommand\todo[1]{\textcolor{teal}{#1}}
+\newcommand\todo[1]{TODO: \textcolor{teal}{#1}}
 %show comments for students, comment out for finished work or remove the todo statements and their content
 %\newcommand\todo[1]{}%hide comments for students, uncomment for the finished work 
 %remove "Kapitel X" headers *****
@@ -79,6 +79,7 @@ Zusammenfassung hier schreiben
 
 
 \section*{Begriffs- und Abkürzungsverzeichnis}
+\todo{SNIK korrigieren}
 \begin{acronym} [SPARQL]
 \acro{SPARQL}{SPARQL Protocol and RDF Query Language}
 \acro{W3C}{World Wide Web Consortium}
@@ -95,26 +96,32 @@ Zusammenfassung hier schreiben
 \end{acronym}
 
 \chapter{Einleitung}
-\section{Gegenstand und Motivation \todo{(aus Sicht der Autoren der Paper)}}
+\section{Gegenstand und Motivation}
 \subsection{Gegenstand}
-
+\todo{lange Sätze aufteilen}
 Das \ac{SNIK} ist ein abgeschlossenes Projekt, welches Begriffe des Informationsmanagements in dem Teilgebiet der  medizinischen Informatik sowie deren Beziehungen untereinander beschreibt.
 Es ist in der Lage, diese Menge an Informationen in einer Ontologie darzustellen und diese sowohl maschinen- als auch menschenlesbar auszugeben.
- Dabei nutzt es ein dem Semantic Web Stack ähnliches Modell (\cref{img:semanticwebstack2}), welches Anwendungen wie dem \ac{SNIK} Graph ermöglicht, Informationen abzufragen und diese Endnutzern in aufbereiteter Form zur Verfügung zu stellen. \\
- \begin{figure}
+Dabei nutzt es ein dem Semantic Web Stack ähnliches Modell (\cref{img:semanticwebstack2}), welches Anwendungen wie dem \ac{SNIK} Graph ermöglicht, Informationen abzufragen und diese Endnutzern in aufbereiteter Form zur Verfügung zu stellen.
+\begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{images/swebstackde_snik.pdf}
 \caption{Das semantische Modell von SNIK.}
 \label{img:semanticwebstack2}
 \end{figure}
-Das Projekt konzentriert sich dabei hauptsächlich auf die Daten der medizinischen Lehre, um diese für Krankenhausinformationssysteme zur Verfügung zu stellen und die Arbeit für medizinisches Personal zu erleichtern, speziell hat der durch Prof. Dr. Alfred Winter geleitete Teilbereich \ac{MIG} die Zielsetzung, durch Entwicklung von Methoden und Werkzeugen für das Informationsmanagement zu einer besseren Gesundheitsversorgung beizutragen. Um normalen Nutzern eine Anwendung, die die Daten des Projektes nutzt, darzustellen, wurde unter anderem auch ein einfaches Multiple-Choice-Quiz auf Basis eines öffentlich verfügbaren Templates programmiert. Diese nutzt die Ontologie hinter SNIK, um Anwendern einfache, automatisch generierte Fragen zu stellen. Diese Fragen werden mithilfe der gerichteten Verbindungen zwischen einzelnen Objekten erzeugt, wobei es in der SNIK-Ontologie drei Haupttypen von Verbindungen gibt:
-%ToDo bessere Formatierung finden 
+Das Projekt konzentriert sich dabei hauptsächlich auf die Daten der medizinischen Lehre, um diese für Krankenhausinformationssysteme zur Verfügung zu stellen und die Arbeit für medizinisches Personal zu erleichtern, speziell hat der durch Prof. Dr. Alfred Winter geleitete Teilbereich \ac{MIG} die Zielsetzung, durch Entwicklung von Methoden und Werkzeugen für das Informationsmanagement zu einer besseren Gesundheitsversorgung beizutragen.
+Um normalen Nutzern eine Anwendung, die die Daten des Projektes nutzt, darzustellen, wurde unter anderem auch ein einfaches Multiple-Choice-Quiz auf Basis eines öffentlich verfügbaren Templates programmiert.
+Diese nutzt die Ontologie hinter SNIK, um Anwendern einfache, automatisch generierte Fragen zu stellen.
+Diese Fragen werden mithilfe der gerichteten Verbindungen zwischen einzelnen Objekten erzeugt, wobei es in der SNIK-Ontologie drei Haupttypen von Verbindungen gibt:
+\todo{bessere Formatierung finden}
+\todo{generell schachtelsätze in mehrere kleine sätze aufteilen}
+\todo{anderes wort für normal, identifizieren, was diese auszeichnet}
 \begin{itemize}
     \item 1. Objekt A definiert Objekt B (A defines B),
     \item 2. Objekt A beinhaltet Objekt B (A contains B) und
     \item 3. Objekt A unterstützt Objekt B (A supports B).
 \end{itemize}
-Dadurch werden für jeden Verbindungstyp unterschiedliche Fragen generiert. Für Definitionen generiert sich der Fragetitel hierbei zum Beispiel nach dem folgenden Muster:
+Dadurch werden für jeden Verbindungstyp unterschiedliche Fragen generiert.
+Für Definitionen generiert sich der Fragetitel hierbei zum Beispiel nach dem folgenden Muster:
 \newline \enquote{What is defined by A?}\newline
 %TODO: mehr auf Antwortmöglichkeiten eingehen ( -> wie werden die generiert? )
 
@@ -128,15 +135,31 @@ Aus den Papers bzw. dem Antrag des Forschungsprojektes entnehmen.
 %meiner Meinung nach ist das erledigt (TP) 
 
 \subsection{Problematik}
-Die Nutzer sollen möglichst mit logischen, aber nicht zu einfachen Fragen herausgefordert werden. Um mithilfe des Multiple-Choice-Quiz ihren Wissensstand zu verbessern, sollte das Quizprogramm bestimmte Vorgaben erfüllen und diese auch in der Qualität der Fragen widerspiegeln. Dies stellt sich jedoch als relativ schwer heraus, da sich die Implementierung von natürlichsprachlicher Grammatik als umständlich herausstellt. Dadurch ergeben sich einige Probleme:
+\todo{generell im gesamten text: jeden satz auf eine zeile}
+Die Nutzer sollen möglichst mit logischen, aber nicht zu einfachen Fragen herausgefordert werden.
+Um mithilfe des Multiple-Choice-Quiz ihren Wissensstand zu verbessern, sollte das Quizprogramm bestimmte Vorgaben erfüllen und diese auch in der Qualität der Fragen widerspiegeln.
+Dies stellt sich jedoch als relativ schwer heraus, da sich die Implementierung von natürlichsprachlicher Grammatik als umständlich herausstellt.
+Dadurch ergeben sich einige Probleme:
 \begin{itemize}
     \item die grammatikalische Korrektheit
     \item das Einhalten eines bestimmten Levels der Übersichtlichkeit
     \item das Erhalten einer gewissen Komplexität und Qualität.
 \end{itemize}
-Für den Anwender soll die Frage gut lesbar und in seiner Grammatik verständlich sein. Da die Quizfragen in einem bestimmten Zeitfenster bearbeitet werden müssen, ist es wichtig, dass sie schnell vom Nutzer verstanden werden können. Da der Hauptzweck die Selbstüberprüfung ist, würden dadurch gegenüber dem User die Ergebnisse verfälscht werden, was zu einer falschen Selbsteinschätzung führt.\\
-Daran schließt auch der zweite Punkt an, die Übersichtlichkeit. Die Fragen sollten vom Nutzer schnell durchgelesen sein, damit er den metaphorischen \enquote{Faden} nicht verliert und Fragen nicht erneut lesen muss. Um dies zu garantieren, sollte die Anzahl der Zeichen im Fragetitel eine bestimmte Zahl nicht übersteigen. Dies kann zum Beispiel bei langen Definitionen (Fragetyp 1) ein Problem sein. \\
-Während diese ersten beiden Probleme angegangen werden, muss allerdings auch die dritte und wichtigste Bedingung in der Frage und deren Antworten zutreffen: die Qualität. Diese ist im bereits existenten Quiz an vielen Stellen nicht oder nur teilweise vorhanden, was sich in verschiedenen Aspekten widerspiegelt. Darunter fallen zum Beispiel die Erwähnung der richtigen Antwort im Fragetitel bei z.B. Definitionen oder in einfacheren Punken wie z.B. dem Doppeln von Fragen. Dadurch wird der Nutzer nicht genug herausgefordert, was dazu führt, dass er die Fragen nicht mithilfe seines Fachwissens, sondern einfach durch logisches Denken beantworten kann. 
+\todo{komplexität und qualität: genauer definieren}
+\todo{Sätze nicht mit doppelbackslash abschließen. latex kümmert sich selbst um den blocksatz.}
+Für den Anwender soll die Frage gut lesbar und in seiner Grammatik verständlich sein.
+Da die Quizfragen in einem bestimmten Zeitfenster bearbeitet werden müssen, ist es wichtig, dass sie schnell vom Nutzer verstanden werden können.
+\todo{generell: konjunktiven lieber weglassen. Beispiel: \enquote{Â} -> \enquote{Â}}
+Da der Hauptzweck die Selbstüberprüfung ist, würden dadurch gegenüber dem User die Ergebnisse verfälscht werden, was zu einer falschen Selbsteinschätzung führt.
+Daran schließt auch der zweite Punkt an, die Übersichtlichkeit.
+\todo{dass die Fragen schnell durchlesbar sein sollen, steht oben schon}
+Die Fragen sollten vom Nutzer schnell durchgelesen sein, damit er den metaphorischen \enquote{Faden} nicht verliert und Fragen nicht erneut lesen muss.
+Um dies zu garantieren, sollte die Anzahl der Zeichen im Fragetitel eine bestimmte Zahl nicht übersteigen.
+Dies kann zum Beispiel bei langen Definitionen (Fragetyp 1) ein Problem sein.
+Während diese ersten beiden Probleme angegangen werden, muss allerdings auch die dritte und wichtigste Bedingung in der Frage und deren Antworten zutreffen: die Qualität.
+Diese ist im bereits existenten Quiz an vielen Stellen nicht oder nur teilweise vorhanden, was sich in verschiedenen Aspekten widerspiegelt.
+Darunter fallen zum Beispiel die Erwähnung der richtigen Antwort im Fragetitel bei z.B. Definitionen oder in einfacheren Punken wie z.B. dem Doppeln von Fragen.
+Dadurch wird der Nutzer nicht genug herausgefordert, was dazu führt, dass er die Fragen nicht mithilfe seines Fachwissens, sondern einfach durch logisches Denken beantworten kann. 
 
 \todo{
 \begin{itemize}
@@ -153,7 +176,9 @@ Bsp.: Daten aus der Krankenversorgung stehen aus rechtlichen und technischen Gr�
 %erfüllt soweit, evtl noch bissl Formulierung (TP)
 \subsection{Motivation}
 %snik.eu -> https://www.snik.eu/Hintergrund (Hintergrund des Projektes)
-Das SNIK-Projekt hatte sich als Ziel gesetzt, ein theoretisch und empirisch begründetes, sowie erprobtes Semantisches Netz des Informationsmanagements im Krankenhaus (SNIK), das die Konzepte des Informationsmanagements beschreibt und verbindet, zu kreieren. Um Medizinstudenten und anderen Mitarbeitern aus dem medizinischen Umfeld eine beispielhafte Nutzungsmöglichkeit für diese Ontologie zu bieten und ihnen einen einfachen Zugriff neben dem SNIK-Graph auf das Themengebiet zu ermöglichen, kann ein Multiple-Choice-Quiz einen einfachen Einblick auf die Einsatzmöglichkeiten von einer Ontologie aus Krankenhaussystemen bereitstellen und Interessenten aus nichtinformatischen Teilgebieten eine Vorstellung ermöglichen.
+\todo{lieber Präsenz als andere Zeitformen. \enquote{Â}}
+Das SNIK-Projekt hatte sich als Ziel gesetzt, ein theoretisch und empirisch begründetes, sowie erprobtes Semantisches Netz des Informationsmanagements im Krankenhaus (SNIK), das die Konzepte des Informationsmanagements beschreibt und verbindet, zu kreieren.
+Um Medizinstudenten und anderen Mitarbeitern aus dem medizinischen Umfeld eine beispielhafte Nutzungsmöglichkeit für diese Ontologie zu bieten und ihnen einen einfachen Zugriff neben dem SNIK-Graph auf das Themengebiet zu ermöglichen, kann ein Multiple-Choice-Quiz einen einfachen Einblick auf die Einsatzmöglichkeiten von einer Ontologie aus Krankenhaussystemen bereitstellen und Interessenten aus nichtinformatischen Teilgebieten eine Vorstellung ermöglichen.
 
 \todo{
 \begin{itemize}
@@ -264,7 +289,7 @@ Google					&produziert				&Prozessoren\\
 \bottomrule
 \end{tabularx}
 \end{centering}
-\caption{Beispiel für RDF-Tripel.}
+\caption{Beispiel für RDF-Tripel.\todo{prozessoren ist eher klasse als instanz}}
 \label{tab:rdfexample}
 \end{table}
 
@@ -368,9 +393,9 @@ SAMPLE(str(?a3l) as ?a3l)
 \section{Ergebnis/Lösungsansatz Paper n}
 \section{Vergleich mit Projekt}
 
-\chapter{Ergebnis \todo{der Seminararbeit, 1--2 Seiten, ihre Ergebnisse}}
+\chapter{Ergebnis}
 \todo{
-Im Ergebniskapitel soll beschrieben werden, inwiefern Sie Ihre in 1.2/1.3 aufgestellten Ziele bzw. Aufgaben im Rahmen der Seminararbeit erreicht wurden oder auch weshalb sie (teilweise) nicht erreicht werden konnten.
+Im Ergebniskapitel soll beschrieben werden, inwiefern Sie Ihre in 1.2/1.3 aufgestellten Ziele bzw. Aufgaben erreicht habe oder auch weshalb sie (teilweise) nicht erreicht werden konnten.
 So soll es möglich sein, dass ein Leser von der Arbeit lediglich die Einleitung und die Zusammenfassung liest und doch die Ergebnisse der Arbeit erfassen kann.
 Dieses Kapitel kann auch in mehrere Unterkapitel aufgeteilt werden, wenn das sinnvoll ist!
 }
