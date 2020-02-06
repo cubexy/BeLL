@@ -59,7 +59,7 @@ Institut für Medizinische Informatik, Statistik und Epidemiologie (IMISE)
 \vspace*{4cm}
 
 \begin{tabularx}{\textwidth}{Xr}
-Leipzig, <Monat> <Jahr>		&vorgelegt von:\\
+Leipzig, Dezember 2020		&vorgelegt von:\\
 \\
 				&Max Niclas Wächtler\\
 				&geb. am: 17.05.2003\\
@@ -73,14 +73,14 @@ Leipzig, <Monat> <Jahr>		&vorgelegt von:\\
 \end{titlepage}
 \newpage
 \begin{abstract}
-Zusammenfassung hier schreiben
+%Kurzreferat von Januar
+Krankenhausinformationssysteme sind Informationssysteme, die sich in medizinischen Umgebungen mit der Verarbeitung von Daten, Informationen und Wissen beschäftigen. Informationssysteme bestehen aus Hardware, Software als auch Anwendern. Kompetenz in der Nutzung von Krankenhausinformationssystemen ist wichtig, um in Krankenhäusern beispielsweise die Zusammenarbeit mit Patienten effektiv und zeitsparend zu gestalten. Jedoch müssen Anwender diese Kompetenz erst einmal durch Quellen wie Lehrbücher erwerben, welche jedoch verschiedene Sichten auf das Themengebiet aufweisen und keinen schnellen Überblick über bestimmte Themen bieten können. Um dieses Problem anzugehen, habe ich mir als Ziel dieser besonderen Lernleistung gesetzt, ein Programm zu entwickeln, welches diese Informationen aus einer Ontologie, also eine Menge von Begrifflichkeiten mit Beziehungen untereinander, über eine Schnittstelle entnimmt, diese nutzerfreundlich in Form von zufällig generierten Fragen aufarbeitet und dem Nutzer ausgibt. ¬¬Diese sollen eine grammatikalisch korrekte Form aufweisen und nebst der richtigen Antwort auch falsche Antworten enthalten, die trotzdem logisch wirken sollen, anstatt ein Zufallsverfahren zur Auswahl zu nutzen.  
 \end{abstract}
 \tableofcontents
 \newpage
 
 
 \section*{Begriffs- und Abkürzungsverzeichnis}
-\todo{SNIK korrigieren}
 \begin{acronym} [SPARQL]
 \acro{SPARQL}{SPARQL Protocol and RDF Query Language}
 \acro{W3C}{World Wide Web Consortium}
@@ -89,7 +89,7 @@ Zusammenfassung hier schreiben
 \acro{HTML}{Hypertext Markup Language}
 \acro{XML}{Extensible Markup Language}
 \acro{URIs}{Universal Resource Identifier}
-\acro{SNIK}{semantische Netz des Informationsmanagements im Krankenhaus}
+\acro{SNIK}{Semantisches Netz des Informationsmanagements im Krankenhaus}
 \acro{WWW}{World Wide Web}
 \acro{W3C}{World Wide Web Consortium}
 \acro{HTTP}{Hypertext Transfer Protocol}
@@ -100,7 +100,7 @@ Zusammenfassung hier schreiben
 \section{Gegenstand und Motivation}
 \subsection{Gegenstand}
 Das \ac{SNIK} ist ein abgeschlossenes Projekt, welches Begriffe des Informationsmanagements in dem Teilgebiet der  medizinischen Informatik sowie deren Beziehungen untereinander beschreibt.
-Es ist in der Lage, diese Menge an Informationen in einer Ontologie darzustellen und diese sowohl maschinen- als auch menschenlesbar auszugeben.
+Es ist in der Lage, dieses Wissen in einer Ontologie darzustellen und diese sowohl maschinen- als auch menschenlesbar auszugeben.
 Dabei nutzt es ein dem Semantic Web Stack ähnliches Modell (\cref{img:semanticwebstack2}), welches Anwendungen wie dem \ac{SNIK} Graph ermöglicht, Informationen abzufragen und diese Endnutzern in aufbereiteter Form zur Verfügung zu stellen.
 \begin{figure}
 \centering
@@ -108,11 +108,11 @@ Dabei nutzt es ein dem Semantic Web Stack ähnliches Modell (\cref{img:semanticw
 \caption{Das semantische Modell von SNIK.}
 \label{img:semanticwebstack2}
 \end{figure}
-Das Projekt konzentriert sich dabei hauptsächlich auf die Daten der medizinischen Lehre, um diese für Krankenhausinformationssysteme zur Verfügung zu stellen und die Arbeit für medizinisches Personal zu erleichtern, speziell hat der durch Prof. Dr. Alfred Winter geleitete Teilbereich \ac{MIG} die Zielsetzung, durch Entwicklung von Methoden und Werkzeugen für das Informationsmanagement zu einer besseren Gesundheitsversorgung beizutragen.
+Das Projekt konzentriert sich hauptsächlich auf Wissen der medizinischen Lehre. Dieses wird für Krankenhausinformationssysteme zur Verfügung gestellt, um die Arbeit für medizinisches Personal zu erleichtern. Speziell hat der durch Prof. Dr. Alfred Winter geleitete Teilbereich \ac{MIG} die Zielsetzung, durch Entwicklung von Methoden und Werkzeugen für das Informationsmanagement zu einer besseren Gesundheitsversorgung beizutragen.
 
 Um normalen Nutzern eine Anwendung, die die Daten des Projektes nutzt, darzustellen, wurde unter anderem auch ein einfaches Multiple-Choice-Quiz auf Basis eines öffentlich verfügbaren Templates programmiert.
 Diese nutzt die Ontologie hinter SNIK, um Anwendern einfache, automatisch generierte Fragen zu stellen.
-Diese Fragen werden mithilfe der gerichteten Verbindungen zwischen einzelnen Objekten erzeugt, wobei es in der SNIK-Ontologie drei Haupttypen von Verbindungen gibt:
+Diese Fragen werden mithilfe der typisierten, gerichteten Verbindungen zwischen einzelnen Objekten erzeugt, wobei das Quiz aus der SNIK-Ontologie drei Haupttypen von Verbindungen nutzt:
 \todo{bessere Formatierung finden}
 \todo{generell schachtelsätze in mehrere kleine sätze aufteilen}
 \todo{anderes wort für normal, identifizieren, was diese auszeichnet}
@@ -139,42 +139,40 @@ Aus den Papers bzw. dem Antrag des Forschungsprojektes entnehmen.
 \todo{generell im gesamten text: jeden satz auf eine zeile}
 Die Nutzer sollen möglichst mit logischen, aber nicht zu einfachen Fragen herausgefordert werden.
 Um mithilfe des Multiple-Choice-Quiz ihren Wissensstand zu verbessern, sollte das Quizprogramm bestimmte Vorgaben erfüllen und diese auch in der Qualität der Fragen widerspiegeln.
-Dies stellt sich jedoch als relativ schwer heraus, da sich die Implementierung von natürlichsprachlicher Grammatik als umständlich herausstellt.
+Das stellt sich als relativ schwer heraus, da die Implementierung von natürlichsprachlicher Grammatik sich seit jeher als ein Problem in der Informatik herausstellt.
 \todo{komplexität und qualität: genauer definieren}
 \todo{Sätze nicht mit doppelbackslash abschließen. latex kümmert sich selbst um den blocksatz.}
 \paragraph{Korrektheit}
 Für den Anwender soll die Frage gut lesbar und in seiner Grammatik verständlich sein.
-Da die Quizfragen in einem bestimmten Zeitfenster bearbeitet werden müssen, ist es wichtig, dass sie schnell vom Nutzer verstanden werden können.
-\todo{generell: konjunktiven lieber weglassen. Beispiel: \enquote{Â} -> \enquote{Â}}
-Da der Hauptzweck die Selbstüberprüfung ist, würden dadurch gegenüber dem User die Ergebnisse verfälscht werden, was zu einer falschen Selbsteinschätzung führt.
+Da die Quizfragen in einem bestimmten Zeitfenster bearbeitet werden sollen, ist es wichtig, dass sie schnell vom Nutzer verstanden werden.
+Da der Hauptzweck die Selbstüberprüfung ist, werden dadurch fehlende Korrektheit gegenüber dem User die Ergebnisse verfälscht , was zu einer falschen Selbsteinschätzung führt.
 \paragraph{Übersichtlichkeit}
-Daran schließt auch der zweite Punkt an, die Übersichtlichkeit.
-\todo{dass die Fragen schnell durchlesbar sein sollen, steht oben schon}
-Die Fragen sollten vom Nutzer schnell durchgelesen sein, damit er den metaphorischen \enquote{Faden} nicht verliert und Fragen nicht erneut lesen muss.
-Um dies zu garantieren, sollte die Anzahl der Zeichen im Fragetitel eine bestimmte Zahl nicht übersteigen.
+Eine Frage muss für den Nutzer übersichtlich gestaltet sein.
+Sie soll schnell durchgelesen sein, damit er den metaphorischen \enquote{Faden} nicht verliert und Fragen nicht erneut lesen muss.
+Um dies zu garantieren, muss die Anzahl der Zeichen im Fragetitel eine bestimmte Zahl nicht übersteigen.
 Dies kann zum Beispiel bei langen Definitionen (Fragetyp 1) ein Problem sein.
 \paragraph{Qualität}
-Während diese ersten beiden Probleme angegangen werden, muss allerdings auch die dritte und wichtigste Bedingung in der Frage und deren Antworten zutreffen: die Qualität.
-Diese ist im bereits existenten Quiz an vielen Stellen nicht oder nur teilweise vorhanden, was sich in verschiedenen Aspekten widerspiegelt.
+Neben den anderen beiden Bedingungen muss bei Fragen auch die Qualität und das Niveau der Frage sowie des Quiz allgemein hoch gehalten werden.
+Doch das ist im bereits existenten Quiz an vielen Stellen nur teilweise vorhanden, was sich in verschiedenen Aspekten widerspiegelt.
 Darunter fallen zum Beispiel die Erwähnung der richtigen Antwort im Fragetitel bei z.B. Definitionen oder in einfacheren Punken wie z.B. dem Doppeln von Fragen.
 Dadurch wird der Nutzer nicht genug herausgefordert, was dazu führt, dass er die Fragen nicht mithilfe seines Fachwissens, sondern einfach durch logisches Denken beantworten kann. 
-\todo{komplexität}
-\todo{
+\paragraph{Irgendein Wort, welches beschreibt, dass etwas nicht andauernd gleich sein soll, mir fällt es sicher noch ein}
+Das Quiz sollte für den Nutzer möglichst einen großen Teil der Möglichkeiten der SNIK-Ontologie anschaulich machen.
+Da jedoch das existierende Quiz nur zwei der 18 Typen von Verbindungen zwischen Objekten nutzt, die in der SNIK-Ontologie vorkommen, variieren die Fragetypen nur wenig, was auf Dauer für Nutzer langweilig oder anstrengend wird. Außerdem wird 
+\\\\\todo{
 \begin{itemize}
 \item Worin bestehen die Probleme?
 \item Warum ist die geschilderte vorliegende Situation problematisch?
 \item Für wen ist sie problematisch?
 \end{itemize}
 Aus den Papers bzw. dem Antrag des Forschungsprojektes entnehmen.\\
-}
-\todo{
+}\todo{
 Hier ist auf die generelle Problemlage einzugehen, die dem Aufsatz im Wissenschaftsfeld zu Grunde liegt.\\
 Bsp.: Daten aus der Krankenversorgung stehen aus rechtlichen und technischen Gründen nicht für die Forschung zur Verfügung, sodass klinische Forscher eigene Datenerhebungen planen müssen.
 }
 %erfüllt soweit, evtl noch bissl Formulierung (TP)
 \subsection{Motivation}
-%snik.eu -> https://www.snik.eu/Hintergrund (Hintergrund des Projektes)
-\todo{lieber Präsenz als andere Zeitformen. \enquote{Â}}
+%snik.eu nehmen
 Das SNIK-Projekt hatte sich als Ziel gesetzt, ein theoretisch und empirisch begründetes, sowie erprobtes Semantisches Netz des Informationsmanagements im Krankenhaus (SNIK), das die Konzepte des Informationsmanagements beschreibt und verbindet, zu kreieren.
 Um Medizinstudenten und anderen Mitarbeitern aus dem medizinischen Umfeld eine beispielhafte Nutzungsmöglichkeit für diese Ontologie zu bieten und ihnen einen einfachen Zugriff neben dem SNIK-Graph auf das Themengebiet zu ermöglichen, kann ein Multiple-Choice-Quiz einen einfachen Einblick auf die Einsatzmöglichkeiten von einer Ontologie aus Krankenhaussystemen bereitstellen und Interessenten aus nichtinformatischen Teilgebieten eine Vorstellung ermöglichen.
 
@@ -195,8 +193,7 @@ Bsp.: Gelänge es, Daten aus der Krankenversorgung vollständig zu anonymisieren
 Das Ziel meiner besonderen Lernleistung ist es, ein Konzept für ein Multiple-Choice-Quizprogramm zu entwickeln, welches mit der SNIK-Ontologie arbeitet und auf Basis von verschiedenen Regeln und Qualitäten nutzerfreundliche Fragen generiert. 
 \\Ziel Z1:  Konzept für SPARQL-Queries für verschiedene Beziehungstypen 
 \\Zeil Z2:  Regeln und Umsetzungen für die Generierung von Fragen und deren Antworten
-\idea{Muss das näher beschrieben werden?}
-\todo{
+\\\todo{
 Beschreiben Sie kurz die Zielsetzung ihrer Seminararbeit.
 Beachten Sie dazu die Beschreibung des Betreuers zu Ihrem Seminarthema.\\
 Beispiel:\\
