@@ -34,6 +34,7 @@
 %show comments for students, comment out for finished work or remove the todo statements and their content
 %\newcommand\todo[1]{}%hide comments for students, uncomment for the finished work 
 %remove "Kapitel X" headers *****
+\setlength{\parindent}{0em}
 
 \begin{document}
 \allowdisplaybreaks%Mathe darf auch umbrechen
@@ -98,7 +99,6 @@ Zusammenfassung hier schreiben
 \chapter{Einleitung}
 \section{Gegenstand und Motivation}
 \subsection{Gegenstand}
-\todo{lange Sätze aufteilen}
 Das \ac{SNIK} ist ein abgeschlossenes Projekt, welches Begriffe des Informationsmanagements in dem Teilgebiet der  medizinischen Informatik sowie deren Beziehungen untereinander beschreibt.
 Es ist in der Lage, diese Menge an Informationen in einer Ontologie darzustellen und diese sowohl maschinen- als auch menschenlesbar auszugeben.
 Dabei nutzt es ein dem Semantic Web Stack ähnliches Modell (\cref{img:semanticwebstack2}), welches Anwendungen wie dem \ac{SNIK} Graph ermöglicht, Informationen abzufragen und diese Endnutzern in aufbereiteter Form zur Verfügung zu stellen.
@@ -109,6 +109,7 @@ Dabei nutzt es ein dem Semantic Web Stack ähnliches Modell (\cref{img:semanticw
 \label{img:semanticwebstack2}
 \end{figure}
 Das Projekt konzentriert sich dabei hauptsächlich auf die Daten der medizinischen Lehre, um diese für Krankenhausinformationssysteme zur Verfügung zu stellen und die Arbeit für medizinisches Personal zu erleichtern, speziell hat der durch Prof. Dr. Alfred Winter geleitete Teilbereich \ac{MIG} die Zielsetzung, durch Entwicklung von Methoden und Werkzeugen für das Informationsmanagement zu einer besseren Gesundheitsversorgung beizutragen.
+
 Um normalen Nutzern eine Anwendung, die die Daten des Projektes nutzt, darzustellen, wurde unter anderem auch ein einfaches Multiple-Choice-Quiz auf Basis eines öffentlich verfügbaren Templates programmiert.
 Diese nutzt die Ontologie hinter SNIK, um Anwendern einfache, automatisch generierte Fragen zu stellen.
 Diese Fragen werden mithilfe der gerichteten Verbindungen zwischen einzelnen Objekten erzeugt, wobei es in der SNIK-Ontologie drei Haupttypen von Verbindungen gibt:
@@ -139,28 +140,25 @@ Aus den Papers bzw. dem Antrag des Forschungsprojektes entnehmen.
 Die Nutzer sollen möglichst mit logischen, aber nicht zu einfachen Fragen herausgefordert werden.
 Um mithilfe des Multiple-Choice-Quiz ihren Wissensstand zu verbessern, sollte das Quizprogramm bestimmte Vorgaben erfüllen und diese auch in der Qualität der Fragen widerspiegeln.
 Dies stellt sich jedoch als relativ schwer heraus, da sich die Implementierung von natürlichsprachlicher Grammatik als umständlich herausstellt.
-Dadurch ergeben sich einige Probleme:
-\begin{itemize}
-    \item die grammatikalische Korrektheit
-    \item das Einhalten eines bestimmten Levels der Übersichtlichkeit
-    \item das Erhalten einer gewissen Komplexität und Qualität.
-\end{itemize}
 \todo{komplexität und qualität: genauer definieren}
 \todo{Sätze nicht mit doppelbackslash abschließen. latex kümmert sich selbst um den blocksatz.}
+\paragraph{Korrektheit}
 Für den Anwender soll die Frage gut lesbar und in seiner Grammatik verständlich sein.
 Da die Quizfragen in einem bestimmten Zeitfenster bearbeitet werden müssen, ist es wichtig, dass sie schnell vom Nutzer verstanden werden können.
 \todo{generell: konjunktiven lieber weglassen. Beispiel: \enquote{Â} -> \enquote{Â}}
 Da der Hauptzweck die Selbstüberprüfung ist, würden dadurch gegenüber dem User die Ergebnisse verfälscht werden, was zu einer falschen Selbsteinschätzung führt.
+\paragraph{Übersichtlichkeit}
 Daran schließt auch der zweite Punkt an, die Übersichtlichkeit.
 \todo{dass die Fragen schnell durchlesbar sein sollen, steht oben schon}
 Die Fragen sollten vom Nutzer schnell durchgelesen sein, damit er den metaphorischen \enquote{Faden} nicht verliert und Fragen nicht erneut lesen muss.
 Um dies zu garantieren, sollte die Anzahl der Zeichen im Fragetitel eine bestimmte Zahl nicht übersteigen.
 Dies kann zum Beispiel bei langen Definitionen (Fragetyp 1) ein Problem sein.
+\paragraph{Qualität}
 Während diese ersten beiden Probleme angegangen werden, muss allerdings auch die dritte und wichtigste Bedingung in der Frage und deren Antworten zutreffen: die Qualität.
 Diese ist im bereits existenten Quiz an vielen Stellen nicht oder nur teilweise vorhanden, was sich in verschiedenen Aspekten widerspiegelt.
 Darunter fallen zum Beispiel die Erwähnung der richtigen Antwort im Fragetitel bei z.B. Definitionen oder in einfacheren Punken wie z.B. dem Doppeln von Fragen.
 Dadurch wird der Nutzer nicht genug herausgefordert, was dazu führt, dass er die Fragen nicht mithilfe seines Fachwissens, sondern einfach durch logisches Denken beantworten kann. 
-
+\todo{komplexität}
 \todo{
 \begin{itemize}
 \item Worin bestehen die Probleme?
