@@ -245,27 +245,28 @@ Sein Problem ist zu ermitteln und so zu formulieren, er/sie das Problem wiederer
 
 \todo{(2--3 Seiten)}
 \chapter{Grundlagen}
-\todo{
-Erklären Sie alle fachlichen Grundlagen, die notwendig sind, um der Bearbeitung Ihres Seminar­themas folgen zu können.
-Beachten Sie, dass die Darstellung für den durchschnittlichen Vorlesungs­hörer verständlich ist.
-}
 
-\section{\acs{WWW}}
+\section{Semantic Web}
+\label{sec:semanticweb}
+Das Semantic Web (oder auch: semantisches Netz) stellt eine Methode dar, um maschinenlesbares Wissen über das \ac{WWW} in Form von HTML-Dokumenten zu verbreiten.
+Anders als bei der klassischen Website aber wird hier nicht nur primär Wert auf die Lesbarkeit durch einen Menschen, sondern auch auf die Maschinenlesbarkeit Wert gelegt, indem die Seite nebst dem normalen HTML-Code auch Informationen, die durch Computer gelesen werden können, hinterlegt. Diese sind durch Technologien des semantischen Webs ( \acs{RDF}, \acs{SPARQL}, ... ) einles- und verarbeitbar.
+
+\subsection{\acs{WWW}}
+\label{sec:www}
 Das \ac{WWW} bildet ein verknüpftes Kommunikationsmodell zwischen allen Ressourcen und Nutzern des Internets, die das \ac{HTTP} nutzen.
 Es wurde vom Direktor der \ac{W3C} Tim Berners-Lee 1991 entwickelt und ermöglicht den Zugriff auf sowie den Datenaustausch mit \acs{HTML}-Dokumenten.
 Es definiert also das, was die Allgemeinheit als \enquote{das Web} bezeichnet.
 
-\section{Semantic Web}
-Das Semantic Web (oder auch: semantisches Netz) stellt eine Methode dar, um maschinenlesbares Wissen über das \ac{WWW} in Form von HTML-Dokumenten zu verbreiten.
-Anders als bei der klassischen Website aber wird hier nicht nur primär Wert auf die Lesbarkeit durch einen Menschen, sondern auch auf die Maschinenlesbarkeit Wert gelegt, indem die Seite nebst dem normalen HTML-Code auch Informationen, die durch Computer gelesen werden können, hinterlegt. Diese sind durch Technologien des semantischen Webs ( \acs{RDF}, \acs{SPARQL}, ... ) einles- und verarbeitbar.
 
-\section{Linked Data}
+\subsection{Linked Data}
+\label{sec:linkeddata}
 Der Begriff \enquote{Linked Data} bezieht sich auf eine Reihe bewährter Methoden zum Veröffentlichen und Verbinden strukturierter Daten im Web.
 Es verknüpft Dateien aus dem semantischen Web untereinander, sodass sie durch semantische Abfragen benutzbar werden.
 Linked Data basiert auf standardisierten Modellen für den Datenaustausch im Web, besipielsweise \acs{HTML}, um auch wie beim semantischen Prinzip maschinenlesbare Daten zu generieren.
 Zielsetzung von Linked Data ist es, das Internet zu einer globalen, computerverbarbeitbaren Datenbank weiterzuentwickeln und so den Zugriff für technische Endgeräte weiter zu vereinfachen.
 
-\section{\acs{RDF}}
+\subsection{\acs{RDF}}
+\label{sec:rdf}
 \ac{RDF} ist ein weiteres Standardmodell für den Datenaustausch im Web, welches in den 90er Jahren des letzten Jahrtausends seine Anfänge findet.
 Im Gegensatz zu \ac{HTML} und \ac{XML} ist es in der Lage, enthaltene Informationen zu kombinieren und weiter zu verarbeiten, anstatt diese nur korrekt anzuzeigen.
 Daher ist RDF auch oft als grundlegendes Repräsentationsformat für die Entwicklung im Semantic Web angesehen.
@@ -294,7 +295,7 @@ Google					&produziert				&Prozessoren\\
 \end{table}
 
 
-\section{\acs{SPARQL}}
+\subsection{\acs{SPARQL}}
 \ac{SPARQL} ist ein Standard für die Abfrage von in \ac{RDF} spezialisierten Informationen sowie für die Darstellung der zugehörigen Resultate, siehe \cref{img:semanticwebstack1}.
 Es basiert auf einfachen \ac{RDF}-Anfragen in Form von Graphmustern, also einer Menge von Tripeln, enthält jedoch auch erweiterte Funktionen für die Konstruktion komplexerer Anfragemuster, die Verwendung zusätzlich hinzufügbarer Filterbedingungen und für die Formatierung der schlussendlichen Ausgabe.
 
@@ -307,7 +308,8 @@ Man kann also \ac{SPARQL} als eine faktische Abfragesprache des semantischen Web
 \label{img:semanticwebstack1}
 
 \end{figure}
-\section {Ontologien}
+\subsection {Ontologien}
+\label{sec:ontologien}
 \setlength\epigraphwidth{.9\textwidth}
 \setlength\epigraphrule{0pt}
 
@@ -320,39 +322,28 @@ Ontologien erfreuen sich seit der Idee des semantischen Webs einem stets wachsen
 Dabei beschreibt die Idee des Semantic Web eine Erweiterung des vorhandenen Netzes, um Daten zwischen Rechnern einfacher austausch- und verwertbar zu machen und sie somit besser zu explizieren, anstatt sie unkonstruiert stehen zu lassen.
 Zum Sinne dieser Realisierung dienen Standards zur Veröffentlichung und Nutzung maschinenlesbarer Daten -- insbesondere \ac{RDF}.
 
-\section{Künstliche Intelligenz}
+\subsection{Künstliche Intelligenz}
 \ac{KI} ist ein Teilgebiet der Informatik, welches sich mit der Automatisierung intelligenten Verhaltens befasst.
 Es spiegelt eine Möglichkeit wieder, bestimmte Entscheidungsstrukturen des Menschen nachzubilden und es somit Computern zu ermöglichen, komplexe Probleme selbstständig zu bearbeiten und zu lösen.
 Um diese Informationen weiter zu nutzen, können Methoden des Semantic Web genutzt werden, um sie als Tripel einfach maschinenlesbar darzustellen und für andere Computer verfügbar zu machen.
-\section{\acs{SNIK}-Projekt}
-Das \ac{SNIK} ist ein vollendetes Projekt, welches Begriffe des Informationsmanagements sowie deren Beziehungen untereinander beschreibt.
-Es ist in der Lage, diese Menge an Informationen in einer Ontologie darzustellen und diese sowie maschinen- als auch menschenlesbar auszugeben.
- Dabei nutzt es ein dem Semantic Web Stack ähniches Modell(\cref{img:semanticwebstack2}), welches Anwendungen wie dem \ac{SNIK} Graph oder einem Multiple-Choice-Quiz ermöglicht, Informationen abzufragen und diese Endnutzern in aufbereiteter Form zur Verfügung zu stellen.
-Dabei konzentriert sich das SNIK-Projekt hauptsächlich auf die Daten der medizinischen Lehre, um diese für Krankenhausinformationssysteme zur Verfügung zu stellen und die Arbeit für medizinisches Personal zu erleichtern.
-\begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{images/swebstackde_snik.pdf}
-\caption{Das semantische Modell von SNIK.}
-\label{img:semanticwebstack2}
-\end{figure}
 
-\section{Krankenhausinformationssysteme}
-\paragraph{Informationssystem}
+\section{Informationssysteme}
 Ein Informationssystem ist ein System, welches durch die Bildung logischer Zusammenhänge eine Deckung der Informationsnachfrage zur Aufgabe hat.
 Es produziert, beschafft, verteilt und verarbeitet Daten durch eine Zusammenarbeit zwischen Mensch und Technik durch Aufgaben.
-\paragraph{Krankenhausinformationssystem}
+
+\subsection{Krankenhausinformationssystem}
 Krankenhausinformationssysteme beschreiben die Gesamtheit aller Informationssysteme zur Produktion, Beschaffung, Verteilung und Verarbeitung von medizinischen und administrativen Daten im Krankenhaus.
 Dazu gehören verschiedene Formen der Datenbereitstellung sowie auch konventionelle Methoden der papierbasierten Dokumentation und der sprachlichen Kommunikation.
 Das grundsätzliche Ziel eines Krankenhausinformationssystems ist, die Kommunikation zwischen Mitarbeitern zu verbessern und den Ablauf in Krankenhäusern zu steuern, indem Mitarbeitern gezielt Zugriff auf für ihn relevantes Wissen aus der ihm zugeteilten Benutzerrolle gegeben wird, zum Beispiel über den gerade zu behandelnden Patienten.
+\subsection{Grundbegriffe}
+\paragraph{Information}
+\todo{Information definieren}
 \paragraph{Wissen}
 Wissen ist die Kenntnis über den in einem Fachgebiet zu gegebener Zeit gegebenen Konsens, vor allem bezogen auf eine gültige Terminologie, erlaubte Interpretationen, bestehender Zusammenhänge und Gesetzmäßigkeiten sowie empfehlenswerter Methoden und Handlungen.
 Wissen ist also auch Information, aber in dem Fall nicht auf einzelne Objekte, sondern eine Menge von Objekten und deren Beziehungen untereinander bezogen, vgl. \citet{his}.
 \paragraph{Daten}
 Daten sind Gebilde aus Zeichen oder kontinuierliche Funktionen, die durch bekannte oder unterstellte Beziehungen Informationen darstellen können.
 Sie stellen die Grundlage oder das Ergebnis eines Verarbeitungsschrittes dar. 
-\chapter{Lösungsansatz/Lösungsansätze \todo{(2--4 Seiten)}}
-\todo{Kapitel 3 ist Vorschlag gedacht, der nicht wörtlich übernommen werden muss.
-Der Lösungsansatz ist eine kurze Beschreibung der Arbeitshypothese sowie des Vorgehens zur Lösung der in der Einleitung beschriebenen Probleme.}
 
 %Beispiel-Query:
 \begin{comment}
@@ -389,6 +380,22 @@ SAMPLE(str(?a3l) as ?a3l)
 } GROUP BY ?class limit 1000
 \end{lstlisting}
 \end{comment}
+
+\section{\acs{SNIK}-Projekt}
+Das \ac{SNIK} ist ein vollendetes Projekt, welches Begriffe des Informationsmanagements sowie deren Beziehungen untereinander beschreibt.
+Es ist in der Lage, diese Menge an Informationen in einer Ontologie darzustellen und diese sowie maschinen- als auch menschenlesbar auszugeben.
+ Dabei nutzt es ein dem Semantic Web Stack ähniches Modell(\cref{img:semanticwebstack2}), welches Anwendungen wie dem \ac{SNIK} Graph oder einem Multiple-Choice-Quiz ermöglicht, Informationen abzufragen und diese Endnutzern in aufbereiteter Form zur Verfügung zu stellen.
+Dabei konzentriert sich das SNIK-Projekt hauptsächlich auf die Daten der medizinischen Lehre, um diese für Krankenhausinformationssysteme zur Verfügung zu stellen und die Arbeit für medizinisches Personal zu erleichtern.
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{images/swebstackde_snik.pdf}
+\caption{Das semantische Modell von SNIK.}
+\label{img:semanticwebstack2}
+\end{figure}
+
+\chapter{Lösungsansatz/Lösungsansätze \todo{(2--4 Seiten)}}
+\todo{Kapitel 3 ist Vorschlag gedacht, der nicht wörtlich übernommen werden muss.
+Der Lösungsansatz ist eine kurze Beschreibung der Arbeitshypothese sowie des Vorgehens zur Lösung der in der Einleitung beschriebenen Probleme.}
 
 \section{Ergebnis/Lösungsansatz Paper n}
 \section{Vergleich mit Projekt}
