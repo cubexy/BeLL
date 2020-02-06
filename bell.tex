@@ -112,9 +112,9 @@ Dabei nutzt es ein dem Semantic Web Stack ähnliches Modell (\cref{img:semanticw
 \end{figure}
 Das Projekt konzentriert sich hauptsächlich auf Wissen der medizinischen Lehre. Dieses wird für Krankenhausinformationssysteme zur Verfügung gestellt, um die Arbeit für medizinisches Personal zu erleichtern. Speziell hat der durch Prof. Dr. Alfred Winter geleitete Teilbereich \ac{MIG} die Zielsetzung, durch Entwicklung von Methoden und Werkzeugen für das Informationsmanagement zu einer besseren Gesundheitsversorgung beizutragen.
 
-Um normalen Nutzern eine Anwendung, die die Daten des Projektes nutzt, darzustellen, wurde unter anderem auch ein einfaches Multiple-Choice-Quiz auf Basis eines öffentlich verfügbaren Templates programmiert.
+Um nicht mit Ontologien versierten Nutzern eine Anwendung, die die Daten des Projektes nutzt, darzustellen, wurde unter anderem auch ein einfaches Multiple-Choice-Quiz auf Basis eines öffentlich verfügbaren Templates programmiert.
 Diese nutzt die Ontologie hinter SNIK, um Anwendern einfache, automatisch generierte Fragen zu stellen.
-Diese Fragen werden mithilfe der typisierten, gerichteten Verbindungen zwischen einzelnen Objekten erzeugt, wobei das Quiz aus der SNIK-Ontologie drei Haupttypen von Verbindungen nutzt:
+Diese Fragen werden mithilfe der typisierten, gerichteten Verbindungen zwischen einzelnen Begriffen erzeugt, wobei das Quiz aus der SNIK-Ontologie drei Haupttypen von Verbindungen nutzt:
 \todo{bessere Formatierung finden}
 \todo{generell schachtelsätze in mehrere kleine sätze aufteilen}
 \todo{anderes wort für normal, identifizieren, was diese auszeichnet}
@@ -160,7 +160,7 @@ Darunter fallen zum Beispiel die Erwähnung der richtigen Antwort im Fragetitel 
 Dadurch wird der Nutzer nicht genug herausgefordert, was dazu führt, dass er die Fragen nicht mithilfe seines Fachwissens, sondern einfach durch logisches Denken beantworten kann. 
 \paragraph{Irgendein Wort, welches beschreibt, dass etwas nicht andauernd gleich sein soll, mir fällt es sicher noch ein}
 Das Quiz sollte für den Nutzer möglichst einen großen Teil der Möglichkeiten der SNIK-Ontologie anschaulich machen.
-Da jedoch das existierende Quiz nur zwei der 18 Typen von Verbindungen zwischen Objekten nutzt, die in der SNIK-Ontologie vorkommen, variieren die Fragetypen nur wenig, was auf Dauer für Nutzer langweilig oder anstrengend wird. Außerdem wird 
+Da jedoch das existierende Quiz nur zwei der 18 Typen von Verbindungen zwischen Objekten nutzt, die in der SNIK-Ontologie vorkommen, variieren die Fragetypen nur wenig, was auf Dauer für Nutzer langweilig oder anstrengend wird. Außerdem wird dadurch ein großer Teil des verfügbaren Wissens nicht abgefragt, 
 \\\\\todo{
 \begin{itemize}
 \item Worin bestehen die Probleme?
@@ -175,7 +175,7 @@ Bsp.: Daten aus der Krankenversorgung stehen aus rechtlichen und technischen Gr�
 %erfüllt soweit, evtl noch bissl Formulierung (TP)
 \subsection{Motivation}
 %snik.eu nehmen
-Das SNIK-Projekt hatte sich als Ziel gesetzt, ein theoretisch und empirisch begründetes, sowie erprobtes Semantisches Netz des Informationsmanagements im Krankenhaus (SNIK), das die Konzepte des Informationsmanagements beschreibt und verbindet, zu kreieren.
+Das Ziel des SNIK-Projektes ist es, ein theoretisch und empirisch begründetes, sowie erprobtes Semantisches Netz des Informationsmanagements im Krankenhaus (SNIK), das die Konzepte des Informationsmanagements beschreibt und verbindet, zu kreieren.
 Um Medizinstudenten und anderen Mitarbeitern aus dem medizinischen Umfeld eine beispielhafte Nutzungsmöglichkeit für diese Ontologie zu bieten und ihnen einen einfachen Zugriff neben dem SNIK-Graph auf das Themengebiet zu ermöglichen, kann ein Multiple-Choice-Quiz einen einfachen Einblick auf die Einsatzmöglichkeiten von einer Ontologie aus Krankenhaussystemen bereitstellen und Interessenten aus nichtinformatischen Teilgebieten eine Vorstellung ermöglichen.
 
 \todo{
@@ -234,11 +234,11 @@ Sinnvoller ist diese Aussage: \enquote{Wenn Sie das Problem haben, dass Ihnen de
 Es ist also bei der Problembeschreibung erforderlich, sich in die Lage dessen zu versetzen, den man mit der angedachten Lösung beglücken möchte.
 Sein Problem ist zu ermitteln und so zu formulieren, er/sie das Problem wiedererkennt und dadurch geneigt ist, sich für die Lösung des Problems zu interessieren.
 } 
-\\Aufgabe A1 zu Ziel Z1: Konzepte für die Abfragen von den drei verschiedenenen Beziehungstypen
-\\Aufgabe A2 zu Ziel Z1: Konzepte zur Generierung der falschen Antworten  (\enquote{close matches})
-\\Aufgabe A3 zu Ziel Z2: Regeln für Fragetitel \idea{Länge, Formatierung, abhängig vom Typ}
-\\Aufgabe A4 zum Ziel Z2: Formatierung von Titel und Fragen \idea{Verhindern von Dopplungen, Absätze für Lesbarkeit}
-\\Aufgabe A5 zum Ziel Z2: Generelle Regeln für das Multiple-Choice-Quiz \idea{keine doppelten Fragen, Statistiken für die Auswertung auf Basis von gesammelten Daten}
+\\Aufgabe A1.1 zu Ziel Z1: Konzepte für die Abfragen von den drei verschiedenenen Beziehungstypen
+\\Aufgabe A1.2 zu Ziel Z1: Konzepte zur Generierung der falschen Antworten  (\enquote{close matches})
+\\Aufgabe A2.1 zu Ziel Z2: Regeln für Fragetitel \idea{Länge, Formatierung, abhängig vom Typ}
+\\Aufgabe A2.2 zum Ziel Z2: Formatierung von Titel und Fragen \idea{Verhindern von Dopplungen, Absätze für Lesbarkeit}
+\\Aufgabe A2.3 zum Ziel Z2: Generelle Regeln für das Multiple-Choice-Quiz \idea{keine doppelten Fragen, Statistiken für die Auswertung auf Basis von gesammelten Daten}
 
 \todo{(2--3 Seiten)}
 \chapter{Grundlagen}
@@ -381,7 +381,7 @@ SAMPLE(str(?a3l) as ?a3l)
 \section{\acs{SNIK}-Projekt}
 Das \ac{SNIK} ist ein vollendetes Projekt, welches Begriffe des Informationsmanagements sowie deren Beziehungen untereinander beschreibt.
 Es ist in der Lage, diese Menge an Informationen in einer Ontologie darzustellen und diese sowie maschinen- als auch menschenlesbar auszugeben.
- Dabei nutzt es ein dem Semantic Web Stack ähniches Modell(\cref{img:semanticwebstack2}), welches Anwendungen wie dem \ac{SNIK} Graph oder einem Multiple-Choice-Quiz ermöglicht, Informationen abzufragen und diese Endnutzern in aufbereiteter Form zur Verfügung zu stellen.
+ Dabei nutzt es ein dem Semantic Web Stack ähnliches Modell(\cref{img:semanticwebstack2}), welches Anwendungen wie dem \ac{SNIK} Graph oder einem Multiple-Choice-Quiz ermöglicht, Informationen abzufragen und diese Endnutzern in aufbereiteter Form zur Verfügung zu stellen.
 Dabei konzentriert sich das SNIK-Projekt hauptsächlich auf die Daten der medizinischen Lehre, um diese für Krankenhausinformationssysteme zur Verfügung zu stellen und die Arbeit für medizinisches Personal zu erleichtern.
 \begin{figure}
 \centering
@@ -393,35 +393,6 @@ Dabei konzentriert sich das SNIK-Projekt hauptsächlich auf die Daten der medizi
 \chapter{Lösungsansatz/Lösungsansätze \todo{(2--4 Seiten)}}
 \todo{Kapitel 3 ist Vorschlag gedacht, der nicht wörtlich übernommen werden muss.
 Der Lösungsansatz ist eine kurze Beschreibung der Arbeitshypothese sowie des Vorgehens zur Lösung der in der Einleitung beschriebenen Probleme.}
-
-\begin{comment}
-\begin{table}[]
-\begin{tabular}{llll}
-\toprule
-p                                                           & label                 & comment                                                                                                     & count \\ \midrule
-meta:chapter                    & chapter               & "The subject is a class that is described in a book chapter."@en                                            & 3241  \\
-meta:uses                       & uses                  & "The function requires data about the entity type."@en                                                      & 1836  \\
-meta:updates                    & updates               & "The subject is a function that updates an entity type."@en                                                 & 1122  \\
-meta:isAssociatedWith           & is associated with    & "The most generic relation of SNIK that should only be used if no more specific relation is applicable."@en & 804   \\
-meta:entityTypeComponent        & entity type component & "The subject is an entity type that has another entity type as component (part)."@en                        & 631   \\
-meta:functionComponent          & function component    & "The subject is a function that has another function as component (part)."@en                               & 479   \\
-meta:supports                   & supports              & "A function that an application component supports."@en                                                     & 298   \\
-meta:isResponsibleForFunction   & is responsible for    & "is responsible for a function"@en                                                                          & 167   \\
-meta:subChapterOf               & subchapter of         & "The subject is a subchapter of a chapter."@en                                                              & 166   \\
-meta:isInvolvedIn               & is involved in        &                                                                                                             & 134   \\
-meta:isBasedOn                  & is based on           &                                                                                                             & 106   \\
-meta:increases                  & increases             & "The subject is a function that increases a measurable entity type."@en                                     & 78    \\
-meta:isResponsibleForEntityType & is responsible for    & "is responsible for an entity type"@en                                                                      & 66    \\
-meta:roleComponent              & role component        & "The subject is a role that has another role as component (part)."@en                                       & 42    \\
-meta:approvesEntityType         & approves              & "The role approves the entity type or can potentially approve it."@en                                       & 41    \\
-meta:master                     & master                & "The object is an application component which is responsible for the entity type subject."@en               & 24    \\
-meta:decreases                  & decreases             & "The subject is a function that decreases a measurable entity type."@en                                     & 17    \\
-meta:communicatesWith           & communicates with     & "The subject is an application component that communicates with another application component."@en          & 12    \\
-meta:approvesFunction           & approves              & "The role approves the Function or can potentially approve it."@en                                          & 1     \\
-meta:isResponsibleForRole       & is responsible for    & "is responsible for a role"@en                                                                              & 1     \\ \bottomrule
-\end{tabular}
-\end{table}
-\end{comment}
 
 \section{Ergebnis/Lösungsansatz Paper n}
 \section{Vergleich mit Projekt}
