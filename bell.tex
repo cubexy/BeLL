@@ -115,9 +115,6 @@ Das Projekt konzentriert sich hauptsächlich auf Wissen der medizinischen Lehre.
 Um nicht mit Ontologien versierten Nutzern eine Anwendung, die die Daten des Projektes nutzt, darzustellen, wurde unter anderem auch ein einfaches Multiple-Choice-Quiz auf Basis eines öffentlich verfügbaren Templates programmiert.
 Diese nutzt die Ontologie hinter SNIK, um Anwendern einfache, automatisch generierte Fragen zu stellen.
 Diese Fragen werden mithilfe der typisierten, gerichteten Verbindungen zwischen einzelnen Begriffen erzeugt, wobei das Quiz aus der SNIK-Ontologie drei Haupttypen von Verbindungen nutzt:
-\todo{bessere Formatierung finden}
-\todo{generell schachtelsätze in mehrere kleine sätze aufteilen}
-\todo{anderes wort für normal, identifizieren, was diese auszeichnet}
 \begin{itemize}
     \item 1. Objekt A definiert Objekt B (A defines B),
     \item 2. Objekt A beinhaltet Objekt B (A contains B) und
@@ -126,7 +123,8 @@ Diese Fragen werden mithilfe der typisierten, gerichteten Verbindungen zwischen 
 Dadurch werden für jeden Verbindungstyp unterschiedliche Fragen generiert.
 Für Definitionen generiert sich der Fragetitel hierbei zum Beispiel nach dem folgenden Muster:
 \newline \enquote{What is defined by A?}\newline
-%TODO: mehr auf Antwortmöglichkeiten eingehen ( -> wie werden die generiert? )
+Unabhängig vom Fragetyp werden jeder Frage noch verschiedene Antworten zugeteilt.
+Dazu zählt einmal die richtige Antwort, neben der aber auch drei andere, falsche Antworten durch einfache SPARQL-Queries generiert werden. 
 
 \todo{
 \begin{itemize}
@@ -135,7 +133,6 @@ Für Definitionen generiert sich der Fragetitel hierbei zum Beispiel nach dem fo
 \end{itemize}
 Aus den Papers bzw. dem Antrag des Forschungsprojektes entnehmen.
 }
-%meiner Meinung nach ist das erledigt (TP) 
 
 \subsection{Problematik}
 \todo{generell im gesamten text: jeden satz auf eine zeile}
@@ -158,7 +155,7 @@ Neben den anderen beiden Bedingungen muss bei Fragen auch die Qualität und das 
 Doch das ist im bereits existenten Quiz an vielen Stellen nur teilweise vorhanden, was sich in verschiedenen Aspekten widerspiegelt.
 Darunter fallen zum Beispiel die Erwähnung der richtigen Antwort im Fragetitel bei z.B. Definitionen oder in einfacheren Punken wie z.B. dem Doppeln von Fragen.
 Dadurch wird der Nutzer nicht genug herausgefordert, was dazu führt, dass er die Fragen nicht mithilfe seines Fachwissens, sondern einfach durch logisches Denken beantworten kann. 
-\paragraph{Irgendein Wort, welches beschreibt, dass etwas nicht andauernd gleich sein soll, mir fällt es sicher noch ein}
+\paragraph{Heterogenität}
 Das Quiz sollte für den Nutzer möglichst einen großen Teil der Möglichkeiten der SNIK-Ontologie anschaulich machen.
 Da jedoch das existierende Quiz nur zwei der 18 Typen von Verbindungen zwischen Objekten nutzt, die in der SNIK-Ontologie vorkommen, variieren die Fragetypen nur wenig, was auf Dauer für Nutzer langweilig oder anstrengend wird. Außerdem wird dadurch ein großer Teil des verfügbaren Wissens nicht abgefragt, 
 \\\\\todo{
@@ -192,16 +189,12 @@ Bsp.: Gelänge es, Daten aus der Krankenversorgung vollständig zu anonymisieren
 }
 
 \section{Zielsetzung}
-Das Ziel meiner besonderen Lernleistung ist es, ein Konzept für ein Multiple-Choice-Quizprogramm zu entwickeln, welches mit der SNIK-Ontologie arbeitet und auf Basis von verschiedenen Regeln und Qualitäten nutzerfreundliche Fragen generiert. 
-\\Ziel Z1:  Konzept für SPARQL-Queries für verschiedene Beziehungstypen 
-\\Zeil Z2:  Regeln und Umsetzungen für die Generierung von Fragen und deren Antworten
-\\\todo{
-Beschreiben Sie kurz die Zielsetzung ihrer Seminararbeit.
-Beachten Sie dazu die Beschreibung des Betreuers zu Ihrem Seminarthema.\\
-Beispiel:\\
-Es soll herausgearbeitet werden, ob einer der in den Papers vorgestellten Lösungsansätze im aktuellen Forschungsprojekt angewendet werden kann: „Untersuchung der Eignung des Anonymisierungskonzept der statistischen Landesämter für medizinische Daten unter besonderer Betrachtung der Risiken des Zusatzwissens behandelnder Ärzte.“
-Es soll eine Übersicht erarbeitet werden, die es ermöglicht, in einem konkreten Anwendungsfall den dort geeigneten Lösungsansatz auszuwählen.
-}
+Das Ziel meiner besonderen Lernleistung ist es, automatisch Multiple-Choice-Quizfragen auf Basis der SNIK-Ontologie zu generieren. 
+Dazu wird ein existierender Prototyp analysiert und hinsichtlich der oben genannten Qualitätsmaße optimiert.
+\begin{itemize}
+\item Ziel Z1:  Analysieren des vorhandenen Prototyps
+\item Ziel Z2:  Optimieren des vorhandenen Prototyps
+\end{itemize}
 
 \section{Vorgehensweise}
 \todo{
@@ -234,11 +227,13 @@ Sinnvoller ist diese Aussage: \enquote{Wenn Sie das Problem haben, dass Ihnen de
 Es ist also bei der Problembeschreibung erforderlich, sich in die Lage dessen zu versetzen, den man mit der angedachten Lösung beglücken möchte.
 Sein Problem ist zu ermitteln und so zu formulieren, er/sie das Problem wiedererkennt und dadurch geneigt ist, sich für die Lösung des Problems zu interessieren.
 } 
-\\Aufgabe A1.1 zu Ziel Z1: Konzepte für die Abfragen von den drei verschiedenenen Beziehungstypen
-\\Aufgabe A1.2 zu Ziel Z1: Konzepte zur Generierung der falschen Antworten  (\enquote{close matches})
-\\Aufgabe A2.1 zu Ziel Z2: Regeln für Fragetitel \idea{Länge, Formatierung, abhängig vom Typ}
-\\Aufgabe A2.2 zum Ziel Z2: Formatierung von Titel und Fragen \idea{Verhindern von Dopplungen, Absätze für Lesbarkeit}
-\\Aufgabe A2.3 zum Ziel Z2: Generelle Regeln für das Multiple-Choice-Quiz \idea{keine doppelten Fragen, Statistiken für die Auswertung auf Basis von gesammelten Daten}
+\begin{itemize}
+    \item Aufgabe A1.1 zu Ziel Z1: Analyse der Strategien zur Generierung der Stämme
+    \item Aufgabe A1.2 zu Ziel Z1: Analyse der Strategien zur Generierung von Distraktoren 
+    \item Aufgabe A2.1 zu Ziel Z2: Entwickeln neuer Strategien zur Generierung der Stämme
+    \item Aufgabe A2.2 zum Ziel Z2: Entwickeln neuer Strategien zur Generierung von Distraktoren
+    \item Aufgabe A2.3 zum Ziel Z2: Aufstellen von Regeln zur Nutzerfreundlichkeit der Fragen
+\end{itemize}
 
 \todo{(2--3 Seiten)}
 \chapter{Grundlagen}
@@ -283,11 +278,11 @@ Hat man eine Menge von Tripeln, bilden diese ein semantisches Netz, was tabellar
 \midrule
 New York				&liegt in				&Amerika\\
 Adobe				    &verkauft				&Software\\
-Google					&produziert				&Prozessoren\\
+Google					&generiert				&Werbeeinnahmen\\
 \bottomrule
 \end{tabularx}
 \end{centering}
-\caption{Beispiel für RDF-Tripel.\todo{prozessoren ist eher klasse als instanz}}
+\caption{Beispiel für RDF-Tripel.}
 \label{tab:rdfexample}
 \end{table}
 
@@ -334,7 +329,7 @@ Dazu gehören verschiedene Formen der Datenbereitstellung sowie auch konventione
 Das grundsätzliche Ziel eines Krankenhausinformationssystems ist, die Kommunikation zwischen Mitarbeitern zu verbessern und den Ablauf in Krankenhäusern zu steuern, indem Mitarbeitern gezielt Zugriff auf für ihn relevantes Wissen aus der ihm zugeteilten Benutzerrolle gegeben wird, zum Beispiel über den gerade zu behandelnden Patienten.
 \subsection{Grundbegriffe}
 \paragraph{Information}
-\todo{Information definieren}
+Information ist die Kenntnis über bestimmte Sachverhalte oder Vorgänge, im engeren Sinne über einzelne, konkrete, benennbare Objekte der realen und der virtuellen Welt. 
 \paragraph{Wissen}
 Wissen ist die Kenntnis über den in einem Fachgebiet zu gegebener Zeit gegebenen Konsens, vor allem bezogen auf eine gültige Terminologie, erlaubte Interpretationen, bestehender Zusammenhänge und Gesetzmäßigkeiten sowie empfehlenswerter Methoden und Handlungen.
 Wissen ist also auch Information, aber in dem Fall nicht auf einzelne Objekte, sondern eine Menge von Objekten und deren Beziehungen untereinander bezogen, vgl. \citet{his}.
@@ -381,7 +376,7 @@ SAMPLE(str(?a3l) as ?a3l)
 \section{\acs{SNIK}-Projekt}
 Das \ac{SNIK} ist ein vollendetes Projekt, welches Begriffe des Informationsmanagements sowie deren Beziehungen untereinander beschreibt.
 Es ist in der Lage, diese Menge an Informationen in einer Ontologie darzustellen und diese sowie maschinen- als auch menschenlesbar auszugeben.
- Dabei nutzt es ein dem Semantic Web Stack ähnliches Modell(\cref{img:semanticwebstack2}), welches Anwendungen wie dem \ac{SNIK} Graph oder einem Multiple-Choice-Quiz ermöglicht, Informationen abzufragen und diese Endnutzern in aufbereiteter Form zur Verfügung zu stellen.
+ Dabei nutzt es ein dem Semantic Web Stack ähniches Modell(\cref{img:semanticwebstack2}), welches Anwendungen wie dem \ac{SNIK} Graph oder einem Multiple-Choice-Quiz ermöglicht, Informationen abzufragen und diese Endnutzern in aufbereiteter Form zur Verfügung zu stellen.
 Dabei konzentriert sich das SNIK-Projekt hauptsächlich auf die Daten der medizinischen Lehre, um diese für Krankenhausinformationssysteme zur Verfügung zu stellen und die Arbeit für medizinisches Personal zu erleichtern.
 \begin{figure}
 \centering
@@ -389,6 +384,28 @@ Dabei konzentriert sich das SNIK-Projekt hauptsächlich auf die Daten der medizi
 \caption{Das semantische Modell von SNIK.}
 \label{img:semanticwebstack2}
 \end{figure}
+
+\section{Multiple-Choice-Quiz}
+%Definition Multiple-Choice-Quiz aus DBpedia Clover Quiz, übersetzt aus dem Englischen, mit vgl
+%\enquote{A multiple choice question consists of a stem (the question), a key (the correct answer) and distractors (a set of incorrect, yet plausible, answers).}\\
+Ein Multiple-Choice-Quiz ist eine Ansammlung an Fragen, die allesamt aus einem Stamm (der Frage), einem Schlüssel (der richtigen Antwort) und mehreren Distraktoren (eine Menge von inkorrekten, aber plausibel klingenden Antwortmöglichkeiten), vgl. \todo{Quelle mit citet zitieren}
+\\Ein Beispiel für eine solche Frage wäre hier aufgeführt:
+\\\textit{Q: In einer Hand halte ich ein rotes, ein grünes und ein blaues Blatt Papier. Ich lege nun das rote und das blaue Blatt aus meiner Hand. Welche Farbe hat das Blatt, welches sich immer noch in meiner Hand befindet?}
+\label{tab:quizexample}
+\begin{itemize}
+    \item Rot
+    \item Grün
+    \item Blau
+\end{itemize}
+Hierbei ist die Antwort \enquote{Grün} der Schlüssel. \enquote{Rot} und \enquote{Blau} sind \textit{Distraktoren}, die von dem Schlüssel ablenken sollen.
+\\Der Sinn bei einem Multiple-Choice-Quiz besteht darin, den Befragten für richtige Antworten mit Punkten zu belohnen. Antwortet er falsch, bleibt seine Punktzahl entweder gleich oder Punkte werden abgezogen. Die Anzahl der vergebenen Punkte kann dabei von unterschiedlichen Faktoren abhängig gemacht werden, beispielsweise an der Zeit, die zum Lösen der Frage benötigt wurde.
+\subsection{Distraktoren}
+Distraktoren beschreiben im Kontext eines Quiz falsche Antwortmöglichkeiten, die den Befragten von der richtigen Antwort ablenken sollen.
+Durch sie soll vermieden werden, dass falschen Antworten durch Logik einfach von der richtigen Antwort unterschieden werden können. Der Sinn von Distraktoren ist es also, für den Befragten plausibel zu erscheinen.
+Daraus resultierend kann eine schlechte Auswahl von Distraktoren Fragen um einiges einfacher gestalten. Nehmen wir dazu einmal als Beispiel unsere Frage im \cref{tab:quizexample}:
+die Distraktoren klingen plausibel, da sie im Stamm der Frage erwähnt werden. Würde man hier allerdings andere Farben zur Auswahl stellen, die nicht im Kontext der Frage stehen und somit direkt ausgeschlossen werden können, zum Beispiel \enquote{Gelb}, könnte der Befragte diese logisch ausschließen. 
+
+
 
 \chapter{Lösungsansatz/Lösungsansätze \todo{(2--4 Seiten)}}
 \todo{Kapitel 3 ist Vorschlag gedacht, der nicht wörtlich übernommen werden muss.
