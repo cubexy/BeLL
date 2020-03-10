@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="sid-38422fae-e03e-43a3-bef4-bd33b32041b2" targetNamespace="http://bpmn.io/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="6.3.1">
+  <process id="Process_1" isExecutable="false">
+    <startEvent id="Event_1yv1ufq">
+      <outgoing>Flow_1pgagtl</outgoing>
+    </startEvent>
+    <task id="Activity_1hmjwnm" name="Strategie erstellen">
+      <incoming>Flow_1pgagtl</incoming>
+      <outgoing>Flow_1hx1015</outgoing>
+    </task>
+    <sequenceFlow id="Flow_1pgagtl" sourceRef="Event_1yv1ufq" targetRef="Activity_1hmjwnm" />
+    <task id="Activity_0c9vr4k" name="SPARQL Query erstellen">
+      <incoming>Flow_1hx1015</incoming>
+      <outgoing>Flow_1s7rpr1</outgoing>
+    </task>
+    <sequenceFlow id="Flow_1hx1015" sourceRef="Activity_1hmjwnm" targetRef="Activity_0c9vr4k" />
+    <task id="Activity_0i40q4u" name="SPARQL Query ausführen">
+      <incoming>Flow_1s7rpr1</incoming>
+      <outgoing>Flow_0idlaf9</outgoing>
+      <dataOutputAssociation id="DataOutputAssociation_060pwo3">
+        <targetRef>Flow_00n6ehk</targetRef>
+      </dataOutputAssociation>
+    </task>
+    <sequenceFlow id="Flow_1s7rpr1" sourceRef="Activity_0c9vr4k" targetRef="Activity_0i40q4u" />
+    <dataStoreReference id="Flow_00n6ehk" name="SPARQL-Endpunkt" />
+    <sequenceFlow id="Flow_0idlaf9" sourceRef="Activity_0i40q4u" targetRef="Event_0sd1upr" />
+    <intermediateCatchEvent id="Event_0sd1upr" name="Ergebnismenge">
+      <incoming>Flow_0idlaf9</incoming>
+      <outgoing>Flow_032lacz</outgoing>
+      <messageEventDefinition id="MessageEventDefinition_1xfvhuc" />
+    </intermediateCatchEvent>
+    <task id="Activity_1yn68xb" name="Fragen-generierung">
+      <incoming>Flow_032lacz</incoming>
+      <outgoing>Flow_0rltui0</outgoing>
+    </task>
+    <sequenceFlow id="Flow_032lacz" sourceRef="Event_0sd1upr" targetRef="Activity_1yn68xb" />
+    <endEvent id="Event_0zellaz">
+      <incoming>Flow_0rltui0</incoming>
+    </endEvent>
+    <sequenceFlow id="Flow_0rltui0" sourceRef="Activity_1yn68xb" targetRef="Event_0zellaz" />
+  </process>
+  <bpmndi:BPMNDiagram id="BpmnDiagram_1">
+    <bpmndi:BPMNPlane id="BpmnPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="Event_1yv1ufq_di" bpmnElement="Event_1yv1ufq">
+        <omgdc:Bounds x="152" y="232" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1hmjwnm_di" bpmnElement="Activity_1hmjwnm">
+        <omgdc:Bounds x="240" y="210" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1pgagtl_di" bpmnElement="Flow_1pgagtl">
+        <omgdi:waypoint x="188" y="250" />
+        <omgdi:waypoint x="240" y="250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_0c9vr4k_di" bpmnElement="Activity_0c9vr4k">
+        <omgdc:Bounds x="400" y="210" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1hx1015_di" bpmnElement="Flow_1hx1015">
+        <omgdi:waypoint x="340" y="250" />
+        <omgdi:waypoint x="400" y="250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_0i40q4u_di" bpmnElement="Activity_0i40q4u">
+        <omgdc:Bounds x="560" y="210" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1s7rpr1_di" bpmnElement="Flow_1s7rpr1">
+        <omgdi:waypoint x="500" y="250" />
+        <omgdi:waypoint x="560" y="250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Flow_00n6ehk_di" bpmnElement="Flow_00n6ehk">
+        <omgdc:Bounds x="585" y="115" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="586" y="77.5" width="48" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_060pwo3_di" bpmnElement="DataOutputAssociation_060pwo3">
+        <omgdi:waypoint x="610" y="210" />
+        <omgdi:waypoint x="610" y="165" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0idlaf9_di" bpmnElement="Flow_0idlaf9">
+        <omgdi:waypoint x="660" y="250" />
+        <omgdi:waypoint x="722" y="250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1lhcuxn_di" bpmnElement="Event_0sd1upr">
+        <omgdc:Bounds x="722" y="232" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="701" y="275" width="78" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1yn68xb_di" bpmnElement="Activity_1yn68xb">
+        <omgdc:Bounds x="820" y="210" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_032lacz_di" bpmnElement="Flow_032lacz">
+        <omgdi:waypoint x="758" y="250" />
+        <omgdi:waypoint x="820" y="250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0zellaz_di" bpmnElement="Event_0zellaz">
+        <omgdc:Bounds x="982" y="232" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0rltui0_di" bpmnElement="Flow_0rltui0">
+        <omgdi:waypoint x="920" y="250" />
+        <omgdi:waypoint x="982" y="250" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
