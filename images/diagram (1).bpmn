@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="sid-38422fae-e03e-43a3-bef4-bd33b32041b2" targetNamespace="http://bpmn.io/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="6.3.1">
+  <process id="Process_1" isExecutable="false">
+    <startEvent id="Event_0k049ty">
+      <outgoing>Flow_0aaw1tg</outgoing>
+    </startEvent>
+    <task id="Activity_0sxupho" name="Auswahl einer zufälligen Teilmenge aus der Ergebnis-menge">
+      <incoming>Flow_0aaw1tg</incoming>
+      <outgoing>Flow_0ylmyz5</outgoing>
+    </task>
+    <sequenceFlow id="Flow_0aaw1tg" sourceRef="Event_0k049ty" targetRef="Activity_0sxupho" />
+    <task id="Activity_0z0k6gt" name="Anzeige für den Benutzer">
+      <incoming>Flow_0ylmyz5</incoming>
+      <outgoing>Flow_196ph3u</outgoing>
+    </task>
+    <sequenceFlow id="Flow_0ylmyz5" sourceRef="Activity_0sxupho" targetRef="Activity_0z0k6gt" />
+    <task id="Activity_1myoh75" name="Timer der Frage läuft ab">
+      <incoming>Flow_196ph3u</incoming>
+      <outgoing>Flow_152zx7b</outgoing>
+    </task>
+    <sequenceFlow id="Flow_196ph3u" sourceRef="Activity_0z0k6gt" targetRef="Activity_1myoh75" />
+    <task id="Activity_13aarh4" name="Verteilen von Punkten basierend auf der Antwortzeit">
+      <incoming>Flow_152zx7b</incoming>
+      <outgoing>Flow_04dcklt</outgoing>
+    </task>
+    <sequenceFlow id="Flow_152zx7b" sourceRef="Activity_1myoh75" targetRef="Activity_13aarh4" />
+    <endEvent id="Event_0rz4h5w">
+      <incoming>Flow_04dcklt</incoming>
+    </endEvent>
+    <sequenceFlow id="Flow_04dcklt" sourceRef="Activity_13aarh4" targetRef="Event_0rz4h5w" />
+  </process>
+  <bpmndi:BPMNDiagram id="BpmnDiagram_1">
+    <bpmndi:BPMNPlane id="BpmnPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="Event_0k049ty_di" bpmnElement="Event_0k049ty">
+        <omgdc:Bounds x="152" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0sxupho_di" bpmnElement="Activity_0sxupho">
+        <omgdc:Bounds x="240" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0aaw1tg_di" bpmnElement="Flow_0aaw1tg">
+        <omgdi:waypoint x="188" y="120" />
+        <omgdi:waypoint x="240" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_0z0k6gt_di" bpmnElement="Activity_0z0k6gt">
+        <omgdc:Bounds x="400" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0ylmyz5_di" bpmnElement="Flow_0ylmyz5">
+        <omgdi:waypoint x="340" y="120" />
+        <omgdi:waypoint x="400" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_1myoh75_di" bpmnElement="Activity_1myoh75">
+        <omgdc:Bounds x="560" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_196ph3u_di" bpmnElement="Flow_196ph3u">
+        <omgdi:waypoint x="500" y="120" />
+        <omgdi:waypoint x="560" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_13aarh4_di" bpmnElement="Activity_13aarh4">
+        <omgdc:Bounds x="720" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_152zx7b_di" bpmnElement="Flow_152zx7b">
+        <omgdi:waypoint x="660" y="120" />
+        <omgdi:waypoint x="720" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0rz4h5w_di" bpmnElement="Event_0rz4h5w">
+        <omgdc:Bounds x="882" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_04dcklt_di" bpmnElement="Flow_04dcklt">
+        <omgdi:waypoint x="820" y="120" />
+        <omgdi:waypoint x="882" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
