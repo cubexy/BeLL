@@ -99,8 +99,11 @@ Jedoch müssen Anwender diese Kompetenz erst einmal durch Quellen wie Lehrbüche
 \end{acronym}
 
 \chapter{Einleitung}
+\label{ch:Einleitung}
 \section{Gegenstand und Motivation}
+\label{sec:gegenstand}
 \subsection{Gegenstand}
+\label{sub:Gegenstand}
 Das \ac{SNIK} ist ein abgeschlossenes Projekt, welches Begriffe des Informationsmanagements in dem Teilgebiet der  medizinischen Informatik sowie deren Beziehungen untereinander beschreibt.
 Es ist in der Lage, dieses Wissen in einer Ontologie darzustellen und diese sowohl maschinen- als auch menschenlesbar auszugeben.
 Dabei nutzt es ein dem Semantic Web Stack ähnliches Modell (\cref{img:semanticwebstack2}), welches Anwendungen wie dem \ac{SNIK} Graph ermöglicht, Informationen abzufragen und diese Endnutzern in aufbereiteter Form zur Verfügung zu stellen.
@@ -135,13 +138,13 @@ Aus den Papers bzw. dem Antrag des Forschungsprojektes entnehmen.
 }
 
 \subsection{Problematik}
+\label{sub:Problematik}
 \todo{generell im gesamten text: jeden satz auf eine zeile}
 Die Nutzer sollen möglichst mit logischen, aber nicht zu einfachen Fragen herausgefordert werden.
 Um mithilfe des Multiple-Choice-Quiz ihren Wissensstand zu verbessern, sollte das Quizprogramm bestimmte Vorgaben erfüllen und diese auch in der Qualität der Fragen widerspiegeln.
 Das stellt sich als relativ schwer heraus, da die Implementierung von natürlichsprachlicher Grammatik sich seit jeher als ein Problem in der Informatik herausstellt.
-\todo{komplexität und qualität: genauer definieren}
-\todo{Sätze nicht mit doppelbackslash abschließen. latex kümmert sich selbst um den blocksatz.}
 \paragraph{Korrektheit}
+\label{para:Korrektheit}
 Für den Anwender soll die Frage gut lesbar und in seiner Grammatik verständlich sein.
 Da die Quizfragen in einem bestimmten Zeitfenster bearbeitet werden sollen, ist es wichtig, dass sie schnell vom Nutzer verstanden werden.
 Da der Hauptzweck die Selbstüberprüfung ist, werden dadurch fehlende Korrektheit gegenüber dem User die Ergebnisse verfälscht , was zu einer falschen Selbsteinschätzung führt.
@@ -171,6 +174,7 @@ Bsp.: Daten aus der Krankenversorgung stehen aus rechtlichen und technischen Gr�
 }
 %erfüllt soweit, evtl noch bissl Formulierung (TP)
 \subsection{Motivation}
+\label{sub:Motivation}
 %snik.eu nehmen
 Das Ziel des SNIK-Projektes ist es, ein theoretisch und empirisch begründetes, sowie erprobtes Semantisches Netz des Informationsmanagements im Krankenhaus (SNIK), das die Konzepte des Informationsmanagements beschreibt und verbindet, zu kreieren.
 Um Medizinstudenten und anderen Mitarbeitern aus dem medizinischen Umfeld eine beispielhafte Nutzungsmöglichkeit für diese Ontologie zu bieten und ihnen einen einfachen Zugriff neben dem SNIK-Graph auf das Themengebiet zu ermöglichen, kann ein Multiple-Choice-Quiz einen einfachen Einblick auf die Einsatzmöglichkeiten von einer Ontologie aus Krankenhaussystemen bereitstellen und Interessenten aus nichtinformatischen Teilgebieten eine Vorstellung ermöglichen.
@@ -189,6 +193,7 @@ Bsp.: Gelänge es, Daten aus der Krankenversorgung vollständig zu anonymisieren
 }
 
 \section{Zielsetzung}
+\label{sec:Ziele}
 Das Ziel meiner besonderen Lernleistung ist es, automatisch Multiple-Choice-Quizfragen auf Basis der SNIK-Ontologie zu generieren. 
 Dazu wird ein existierender Prototyp analysiert und hinsichtlich der oben genannten Qualitätsmaße optimiert.
 \begin{itemize}
@@ -197,6 +202,7 @@ Dazu wird ein existierender Prototyp analysiert und hinsichtlich der oben genann
 \end{itemize}
 
 \section{Vorgehensweise}
+\label{sec:Vorgehen}
 \todo{
 Stellen Sie Ihre Methode bzw. Herangehensweise dar.
 Was ist Ihre konkrete Aufgabenstellung im Rahmen der Seminararbeit? Das könnte z.B. sein:
@@ -237,6 +243,7 @@ Sein Problem ist zu ermitteln und so zu formulieren, er/sie das Problem wiederer
 
 \todo{(2--3 Seiten)}
 \chapter{Grundlagen}
+\label{ch:Grundlagen}
 
 \section{Semantic Web}
 \label{sec:semanticweb}
@@ -244,21 +251,21 @@ Das Semantic Web (oder auch: semantisches Netz) stellt eine Methode dar, um masc
 Anders als bei der klassischen Website aber wird hier nicht nur primär Wert auf die Lesbarkeit durch einen Menschen, sondern auch auf die Maschinenlesbarkeit Wert gelegt, indem die Seite nebst dem normalen HTML-Code auch Informationen, die durch Computer gelesen werden können, hinterlegt. Diese sind durch Technologien des semantischen Webs ( \acs{RDF}, \acs{SPARQL}, ... ) einles- und verarbeitbar.
 
 \subsection{\acs{WWW}}
-\label{sec:www}
+\label{sub:www}
 Das \ac{WWW} bildet ein verknüpftes Kommunikationsmodell zwischen allen Ressourcen und Nutzern des Internets, die das \ac{HTTP} nutzen.
 Es wurde vom Direktor der \ac{W3C} Tim Berners-Lee 1991 entwickelt und ermöglicht den Zugriff auf sowie den Datenaustausch mit \acs{HTML}-Dokumenten.
 Es definiert also das, was die Allgemeinheit als \enquote{das Web} bezeichnet.
 
 
 \subsection{Linked Data}
-\label{sec:linkeddata}
+\label{sub:linkeddata}
 Der Begriff \enquote{Linked Data} bezieht sich auf eine Reihe bewährter Methoden zum Veröffentlichen und Verbinden strukturierter Daten im Web.
 Es verknüpft Dateien aus dem semantischen Web untereinander, sodass sie durch semantische Abfragen benutzbar werden.
 Linked Data basiert auf standardisierten Modellen für den Datenaustausch im Web, besipielsweise \acs{HTML}, um auch wie beim semantischen Prinzip maschinenlesbare Daten zu generieren.
 Zielsetzung von Linked Data ist es, das Internet zu einer globalen, computerverbarbeitbaren Datenbank weiterzuentwickeln und so den Zugriff für technische Endgeräte weiter zu vereinfachen.
 
 \subsection{\acs{RDF}}
-\label{sec:rdf}
+\label{sub:rdf}
 \ac{RDF} ist ein weiteres Standardmodell für den Datenaustausch im Web, welches in den 90er Jahren des letzten Jahrtausends seine Anfänge findet.
 Im Gegensatz zu \ac{HTML} und \ac{XML} ist es in der Lage, enthaltene Informationen zu kombinieren und weiter zu verarbeiten, anstatt diese nur korrekt anzuzeigen.
 Daher ist RDF auch oft als grundlegendes Repräsentationsformat für die Entwicklung im Semantic Web angesehen.
@@ -288,6 +295,7 @@ Google					&generiert				&Werbeeinnahmen\\
 
 
 \subsection{\acs{SPARQL}}
+\label{sub:sparql}
 \ac{SPARQL} ist ein Standard für die Abfrage von in \ac{RDF} spezialisierten Informationen sowie für die Darstellung der zugehörigen Resultate, siehe \cref{img:semanticwebstack1}.
 Es basiert auf einfachen \ac{RDF}-Anfragen in Form von Graphmustern, also einer Menge von Tripeln, enthält jedoch auch erweiterte Funktionen für die Konstruktion komplexerer Anfragemuster, die Verwendung zusätzlich hinzufügbarer Filterbedingungen und für die Formatierung der schlussendlichen Ausgabe.
 
@@ -298,10 +306,10 @@ Man kann also \ac{SPARQL} als eine faktische Abfragesprache des semantischen Web
 \includegraphics[width=0.7\textwidth]{images/swebstackde.pdf}
 \caption{Der Semantic Web Stack.}
 \label{img:semanticwebstack1}
-
 \end{figure}
+
 \subsection {Ontologien}
-\label{sec:ontologien}
+\label{sub:ontologien}
 \setlength\epigraphwidth{.9\textwidth}
 \setlength\epigraphrule{0pt}
 
@@ -315,25 +323,34 @@ Dabei beschreibt die Idee des Semantic Web eine Erweiterung des vorhandenen Netz
 Zum Sinne dieser Realisierung dienen Standards zur Veröffentlichung und Nutzung maschinenlesbarer Daten -- insbesondere \ac{RDF}.
 
 \subsection{Künstliche Intelligenz}
+\label{sub:ki}
+
 \ac{KI} ist ein Teilgebiet der Informatik, welches sich mit der Automatisierung intelligenten Verhaltens befasst.
 Es spiegelt eine Möglichkeit wieder, bestimmte Entscheidungsstrukturen des Menschen nachzubilden und es somit Computern zu ermöglichen, komplexe Probleme selbstständig zu bearbeiten und zu lösen.
 Um diese Informationen weiter zu nutzen, können Methoden des Semantic Web genutzt werden, um sie als Tripel einfach maschinenlesbar darzustellen und für andere Computer verfügbar zu machen.
 
 \section{Informationssysteme}
+\label{sec:informationssysteme}
+
 Ein Informationssystem ist ein System, welches durch die Bildung logischer Zusammenhänge eine Deckung der Informationsnachfrage zur Aufgabe hat.
 Es produziert, beschafft, verteilt und verarbeitet Daten durch eine Zusammenarbeit zwischen Mensch und Technik durch Aufgaben.
 
 \subsection{Krankenhausinformationssystem}
+\label{sub:kis}
 Krankenhausinformationssysteme beschreiben die Gesamtheit aller Informationssysteme zur Produktion, Beschaffung, Verteilung und Verarbeitung von medizinischen und administrativen Daten im Krankenhaus.
 Dazu gehören verschiedene Formen der Datenbereitstellung sowie auch konventionelle Methoden der papierbasierten Dokumentation und der sprachlichen Kommunikation.
 Das grundsätzliche Ziel eines Krankenhausinformationssystems ist, die Kommunikation zwischen Mitarbeitern zu verbessern und den Ablauf in Krankenhäusern zu steuern, indem Mitarbeitern gezielt Zugriff auf für ihn relevantes Wissen aus der ihm zugeteilten Benutzerrolle gegeben wird, zum Beispiel über den gerade zu behandelnden Patienten.
 \subsection{Grundbegriffe}
+\label{sub:begriffe}
 \paragraph{Information}
+\label{parag:information}
 Information ist die Kenntnis über bestimmte Sachverhalte oder Vorgänge, im engeren Sinne über einzelne, konkrete, benennbare Objekte der realen und der virtuellen Welt. 
 \paragraph{Wissen}
+\label{parag:wissen}
 Wissen ist die Kenntnis über den in einem Fachgebiet zu gegebener Zeit gegebenen Konsens, vor allem bezogen auf eine gültige Terminologie, erlaubte Interpretationen, bestehender Zusammenhänge und Gesetzmäßigkeiten sowie empfehlenswerter Methoden und Handlungen.
 Wissen ist also auch Information, aber in dem Fall nicht auf einzelne Objekte, sondern eine Menge von Objekten und deren Beziehungen untereinander bezogen, vgl. \citet{his}.
 \paragraph{Daten}
+\label{parag:daten}
 Daten sind Gebilde aus Zeichen oder kontinuierliche Funktionen, die durch bekannte oder unterstellte Beziehungen Informationen darstellen können.
 Sie stellen die Grundlage oder das Ergebnis eines Verarbeitungsschrittes dar. 
 
@@ -374,6 +391,7 @@ SAMPLE(str(?a3l) as ?a3l)
 \end{comment}
 
 \section{\acs{SNIK}-Projekt}
+\label{sek:snik}
 Das \ac{SNIK} ist ein vollendetes Projekt, welches Begriffe des Informationsmanagements sowie deren Beziehungen untereinander beschreibt.
 Es ist in der Lage, diese Menge an Informationen in einer Ontologie darzustellen und diese sowie maschinen- als auch menschenlesbar auszugeben.
  Dabei nutzt es ein dem Semantic Web Stack ähniches Modell(\cref{img:semanticwebstack2}), welches Anwendungen wie dem \ac{SNIK} Graph oder einem Multiple-Choice-Quiz ermöglicht, Informationen abzufragen und diese Endnutzern in aufbereiteter Form zur Verfügung zu stellen.
@@ -386,6 +404,7 @@ Dabei konzentriert sich das SNIK-Projekt hauptsächlich auf die Daten der medizi
 \end{figure}
 
 \section{Multiple-Choice-Quiz}
+\label{sec:quiz}
 %Definition Multiple-Choice-Quiz aus DBpedia Clover Quiz, übersetzt aus dem Englischen, mit vgl
 %\enquote{A multiple choice question consists of a stem (the question), a key (the correct answer) and distractors (a set of incorrect, yet plausible, answers).}\\
 Ein Multiple-Choice-Quiz ist eine Ansammlung an Fragen, die allesamt aus einem Stamm (der Frage), einem Schlüssel (der richtigen Antwort) und mehreren Distraktoren (eine Menge von inkorrekten, aber plausibel klingenden Antwortmöglichkeiten), vgl. \todo{Quelle mit citet zitieren}
@@ -400,6 +419,7 @@ Ein Multiple-Choice-Quiz ist eine Ansammlung an Fragen, die allesamt aus einem S
 Hierbei ist die Antwort \enquote{Grün} der Schlüssel. \enquote{Rot} und \enquote{Blau} sind \textit{Distraktoren}, die von dem Schlüssel ablenken sollen.
 \\Der Sinn bei einem Multiple-Choice-Quiz besteht darin, den Befragten für richtige Antworten mit Punkten zu belohnen. Antwortet er falsch, bleibt seine Punktzahl entweder gleich oder Punkte werden abgezogen. Die Anzahl der vergebenen Punkte kann dabei von unterschiedlichen Faktoren abhängig gemacht werden, beispielsweise an der Zeit, die zum Lösen der Frage benötigt wurde.
 \subsection{Distraktoren}
+\label{sub:distraktoren}
 Distraktoren beschreiben im Kontext eines Quiz falsche Antwortmöglichkeiten, die den Befragten von der richtigen Antwort ablenken sollen.
 Durch sie soll vermieden werden, dass falschen Antworten durch Logik einfach von der richtigen Antwort unterschieden werden können. Der Sinn von Distraktoren ist es also, für den Befragten plausibel zu erscheinen.
 Daraus resultierend kann eine schlechte Auswahl von Distraktoren Fragen um einiges einfacher gestalten. Nehmen wir dazu einmal als Beispiel unsere Frage im \cref{tab:quizexample}:
@@ -407,12 +427,22 @@ die Distraktoren klingen plausibel, da sie im Stamm der Frage erwähnt werden. W
 
 
 
-\chapter{Lösungsansatz/Lösungsansätze \todo{(2--4 Seiten)}}
-\todo{Kapitel 3 ist Vorschlag gedacht, der nicht wörtlich übernommen werden muss.
-Der Lösungsansatz ist eine kurze Beschreibung der Arbeitshypothese sowie des Vorgehens zur Lösung der in der Einleitung beschriebenen Probleme.}
+\chapter{Lösungsansatz}
+\label{ch:Lösungsansatz}
+\todo{Der Lösungsansatz ist eine kurze Beschreibung der Arbeitshypothese sowie des Vorgehens zur Lösung der in der Einleitung beschriebenen Probleme.}
 
-\section{Ergebnis/Lösungsansatz Paper n}
-\section{Vergleich mit Projekt}
+Um den bestehenden Prototyp zu verstehen und diesen zu erweitern bzw. zu verbessern, müssen wir dazu die Methodik zur Generierung der Fragen analysieren.
+Diese Generierung hat die Zielsetzung, menschenlesbare Quizfragen zu erzeugen.
+Dazu wird als erstes im existierenden Prototyp eine Abfrage an die Ontologie gesendet, um die nötigen Daten für die Generierung der Frage zu erhalten.
+Solche Abfragen werden in der SNIK-Ontologie durch SPARQL-Queries (\cref{sub:sparql}) gehandhabt. Gesendete Queries werden von einem Endpunkt auf dem SNIK-Server angenommen, welcher diese dann als Abfrage an die Ontologie weiterleitet. Schlussendlich werden die Rückgabewerte durch den Endpunkt wieder an das Programm weitergegeben.
+Die erhaltenen Daten werden nun von dem Programm spezifisch für den Verbindungstyp verarbeitet, wie in \cref{sub:Gegenstand} schon erkärt wurde.
+
+\chapter{Ausführung der Lösung}
+\todo{Die Ausführung der Lösung dient zur Erarbeitung von Konzepten zu den jeweiligen Ansätzen aus dem vorherigen Kapitel.}
+
+\section{Unterkapitel n}
+
+\subsection{Unterunterkapitel n}
 
 \chapter{Ergebnis}
 \todo{
@@ -447,4 +477,3 @@ Alternativ: X von Y lässt sich auf Basis von Z ermitteln~\citep{his}.
 \bibliography{bell}
 
 \end{document}
-
