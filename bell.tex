@@ -139,7 +139,7 @@ Aus den Papers bzw. dem Antrag des Forschungsprojektes entnehmen.
 
 \subsection{Problematik}
 \label{sub:Problematik}
-\todo{generell im gesamten text: jeden satz auf eine zeile}
+\todo{generell im gesamten text: jeden satz auf eine zeile. also nicht im PDF sondern im \LaTeX-Dokument, damit version control besser funktioniert.}
 Die Nutzer sollen möglichst mit logischen, aber nicht zu einfachen Fragen herausgefordert werden.
 Um mithilfe des Multiple-Choice-Quiz ihren Wissensstand zu verbessern, sollte das Quizprogramm bestimmte Vorgaben erfüllen und diese auch in der Qualität der Fragen widerspiegeln.
 Das stellt sich als relativ schwer heraus, da die Implementierung von natürlichsprachlicher Grammatik sich seit jeher als ein Problem in der Informatik herausstellt.
@@ -232,9 +232,9 @@ Das ist ähnlich, wie wenn es in der Werbung hieße \enquote{Wenn Sie das Proble
 Sinnvoller ist diese Aussage: \enquote{Wenn Sie das Problem haben, dass Ihnen der Kopf weh tut, dann kaufen Sie doch Aspirin.}
 Es ist also bei der Problembeschreibung erforderlich, sich in die Lage dessen zu versetzen, den man mit der angedachten Lösung beglücken möchte.
 Sein Problem ist zu ermitteln und so zu formulieren, er/sie das Problem wiedererkennt und dadurch geneigt ist, sich für die Lösung des Problems zu interessieren.
-} 
+}
 \begin{itemize}
-    \item Aufgabe A1.1 zu Ziel Z1: Analyse der Strategien zur Generierung der Stämme
+    \item Aufgabe A1.1 zu Ziel Z1: Analyse der Strategien zur Generierung der Stämme\todo{Die Aufgaben sind sehr gut identifiziert. Damit können jetzt Kapitel 3 und 4 in Angriff genommen werden.}
     \item Aufgabe A1.2 zu Ziel Z1: Analyse der Strategien zur Generierung von Distraktoren 
     \item Aufgabe A2.1 zu Ziel Z2: Entwickeln neuer Strategien zur Generierung der Stämme
     \item Aufgabe A2.2 zum Ziel Z2: Entwickeln neuer Strategien zur Generierung von Distraktoren
@@ -253,7 +253,7 @@ Anders als bei der klassischen Website aber wird hier nicht nur primär Wert auf
 \subsection{\acs{WWW}}
 \label{sub:www}
 Das \ac{WWW} bildet ein verknüpftes Kommunikationsmodell zwischen allen Ressourcen und Nutzern des Internets, die das \ac{HTTP} nutzen.
-Es wurde vom Direktor der \ac{W3C} Tim Berners-Lee 1991 entwickelt und ermöglicht den Zugriff auf sowie den Datenaustausch mit \acs{HTML}-Dokumenten.
+Es wurde vom Direktor der \ac{W3C}\todo{des Consortiums, oder? Und Komma.} Tim Berners-Lee 1991 entwickelt und ermöglicht den Zugriff auf sowie den Datenaustausch mit \acs{HTML}-Dokumenten.
 Es definiert also das, was die Allgemeinheit als \enquote{das Web} bezeichnet.
 
 
@@ -435,18 +435,18 @@ Um den bestehenden Prototyp zu verstehen und diesen zu erweitern bzw. zu verbess
 Diese Generierung hat die Zielsetzung, menschenlesbare Quizfragen zu erzeugen.
 Dazu wird als erstes im existierenden Prototyp eine Abfrage an die Ontologie gesendet, um die nötigen Daten für die Generierung der Frage zu erhalten.
 Solche Abfragen werden in der SNIK-Ontologie durch SPARQL-Queries (\cref{sub:sparql}) gehandhabt. Gesendete Queries werden von einem Endpunkt auf dem SNIK-Server angenommen, welcher diese dann als Abfrage an die Ontologie weiterleitet. Schlussendlich werden die Rückgabewerte durch den Endpunkt wieder an das Programm weitergegeben.
-Die erhaltenen Daten werden nun von dem Programm spezifisch für den Verbindungstyp verarbeitet, wie in \cref{sub:Gegenstand} schon erkärt wurde.
+Die erhaltenen Daten werden nun von dem Programm spezifisch für den Verbindungstyp verarbeitet, wie in \cref{sub:Gegenstand} schon erkärt wurde.\todo{erklärt}
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{images/sparql-gen.pdf}
-\caption{Die SPARQL-Abfrage im Ablauf.}
+\caption{Die SPARQL-Abfrage im Ablauf.\todo{Sieht gut aus! Bild kann aber ruhig über die ganze Breite gehen. Die SPARQL-Abfrage ist außerdem nur ein Teil des Ablaufes.}}
 \label{img:semanticwebstack1}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{images/ausg-frage.pdf}
-\caption{Ausgabe der Fragen an den Nutzer.}
+\caption{Ausgabe der Fragen an den Nutzer.\todo{auch hier würde ich die komplette textbreite ausnutzen, also width=\textbackslash textwidth}}
 \label{img:semanticwebstack1}
 \end{figure}
 
