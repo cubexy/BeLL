@@ -1,0 +1,19 @@
+SELECT DISTINCT str(?AnswDefinition) as ?Definition str(?correctAnsw) as ?Answer
+WHERE {
+   # ?class is a class
+ ?class a owl:Class.
+   # ?class has a label
+ ?class rdfs:label ?correctAnsw.
+   # ?AnswDefinition is the definition of ?class
+ ?class skos:definition ?AnswDefinition.
+   # ?AnswDefinition is not longer than 300 characters
+
+ FILTER (STRLEN(?AnswDefinition)<300 && STRLEN(?AnswDefinition)>50).
+   # ?AnswDefinition has to have its first letter capital
+ FILTER (UCASE(SUBSTR(?AnswDefinition, 1, 1))=true)
+   # ?correctAnsw is in German
+ FILTER(LANGMATCHES(LANG(?correctAnsw),"de"))
+   # Randomize selection
+ FILTER ( 1 >  <bif:rnd> (10, ?correctAnsw) )
+   # Output 10 samples
+}LIMIT 10
