@@ -1,32 +1,50 @@
-SELECT DISTINCT ?a1 str(?AnswDefinition) as ?Definition str(?correctAnsw) as ?Answer
+SELECT
+?class ?corrAns ?cDef ?d1 ?d2 ?d3
+{
+?class rdfs:label ?corrAns.
+FILTER(LANGMATCHES(LANG(?corrAns),"en"))
+# Subquery because the inner FILTER didnt work out, it filtered wrongly
+{
+SELECT
+?class
+SAMPLE(str(?AnswDefinition)) as ?cDef
+SAMPLE(str(?dist1l)) as ?d1
+SAMPLE(str(?dist2l)) as ?d2
+SAMPLE(str(?dist3l)) as ?d3
+# Select a SAMPLE (unique for every class) of answers to avoid repetition and similar questions
 WHERE {
    # ?class is a class
  ?class a owl:Class.
-   # ?class has a label
- ?class rdfs:label ?correctAnsw.
-   # ?AnswDefinition is the definition of ?class
+   # Let ?cAns be the label (string/text equivalent) of ?class.
+ ?class rdfs:label ?cAns.
+ # FILTER(LANGMATCHES(LANG(?cAns),"en")) - NOT WORKING
+  # Let ?AnswDefinition be the definition of ?class.
  ?class skos:definition ?AnswDefinition.
-   # ?AnswDefinition is not longer than 300 characters
+ # Filter for english definitions only.
+ FILTER(LANGMATCHES(LANG(?AnswDefinition),"en"))
 
- ?class (!meta:subTopClass){1,2} ?a1,?a2,?a3.
- owl:Class ^a ?a1,?a2,?a3.
+ # Let distractors ?distX be neither from a chapter or a subTopClass of ?class.
+ ?class (!(meta:subTopClass|meta:chapter)){1,2} ?dist1,?dist2,?dist3.
+ # Let ?distX be a class.
+ owl:Class ^a ?dist1,?dist2,?dist3.
+ # Filter to avoid similarity between the classes.
+ FILTER(?class!=?dist1&&?class!=?dist2&&?class!=?dist3&&?dist1<?dist2&&?dist2<?dist3)
 
+ # Write labels for ?distX, make sure they are in English
+ ?dist1 rdfs:label ?dist1l.
+ FILTER(LANGMATCHES(LANG(?dist1l),"en"))
 
- ?a1 rdfs:label ?a1l.
- FILTER(LANGMATCHES(LANG(?a1l),"en"))
+ ?dist2 rdfs:label ?dist2l.
+ FILTER(LANGMATCHES(LANG(?dist2l),"en"))
 
- ?a2 rdfs:label ?a2l.
- FILTER(LANGMATCHES(LANG(?a2l),"en"))
+ ?dist3 rdfs:label ?dist3l.
+ FILTER(LANGMATCHES(LANG(?dist3l),"en"))
 
- ?a3 rdfs:label ?a3l.
- FILTER(LANGMATCHES(LANG(?a3l),"en"))
-
- FILTER (STRLEN(?AnswDefinition)<300 && STRLEN(?AnswDefinition)>50).
-   # ?AnswDefinition has to have its first letter capital
- FILTER (UCASE(SUBSTR(?AnswDefinition, 1, 1))=true)
-   # ?correctAnsw is in German
- FILTER(LANGMATCHES(LANG(?correctAnsw),"de"))
+ # Filter the strings to make readability better
+ FILTER (STRLEN(?AnswDefinition)<225 && STRLEN(?AnswDefinition)>50).
    # Randomize selection
- FILTER ( 1 >  <bif:rnd> (10, ?class, ?a1) )
-   # Output 10 samples
-}GROUP BY ?class LIMIT 10
+ FILTER ( 1 >  <bif:rnd> (10, ?class) )
+ FILTER (UCASE(SUBSTR(str(?AnswDefinition), 1, 1)))
+}ORDER BY RAND() LIMIT 100
+}
+}GROUP BY ?class ORDER BY RAND()
