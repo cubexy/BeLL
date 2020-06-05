@@ -1,6 +1,7 @@
 \documentclass[headsepline,titlepage,ngerman,twoside,12pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage[ngerman]{babel}
 \usepackage[a4paper,top=4cm,bottom=3cm,left=4cm,right=3cm]{geometry}
 \usepackage[pdftex]{graphicx}
@@ -32,7 +33,7 @@
 
 %\newcommand\todo[1]{TODO: \textcolor{teal}{#1}}
 %show comments for students, comment out for finished work or remove the todo statements and their content
-\newcommand\todo[1]{}%hide comments for students, uncomment for the finished work
+\newcommand\todo[1]{}%hide comments for students, uncomment for the finished work 
 %remove "Kapitel X" headers *****
 \setlength{\parindent}{0em}
 
@@ -76,7 +77,7 @@ Leipzig, Dezember 2020		&vorgelegt von:\\
 %Kurzreferat von Januar
 Krankenhausinformationssysteme sind Informationssysteme, die sich in medizinischen Umgebungen mit der Verarbeitung von Daten, Informationen und Wissen beschäftigen.
 Informationssysteme bestehen aus Hardware, Software als auch Anwendern. Kompetenz in der Nutzung von Krankenhausinformationssystemen ist wichtig, um in Krankenhäusern beispielsweise die Zusammenarbeit mit Patienten effektiv und zeitsparend zu gestalten.
-Jedoch müssen Anwender diese Kompetenz erst einmal durch Quellen wie Lehrbücher erwerben, welche jedoch verschiedene Sichten auf das Themengebiet aufweisen und keinen schnellen Überblick über bestimmte Themen bieten können. Um dieses Problem anzugehen, habe ich mir als Ziel dieser besonderen Lernleistung gesetzt, ein Programm zu entwickeln, welches diese Informationen aus einer Ontologie, also eine Menge von Begrifflichkeiten mit Beziehungen untereinander, über eine Schnittstelle entnimmt, diese nutzerfreundlich in Form von zufällig generierten Fragen aufarbeitet und dem Nutzer ausgibt. Diese sollen eine grammatikalisch korrekte Form aufweisen und nebst der richtigen Antwort auch falsche Antworten enthalten, die trotzdem logisch wirken sollen, anstatt ein Zufallsverfahren zur Auswahl zu nutzen.
+Jedoch müssen Anwender diese Kompetenz erst einmal durch Quellen wie Lehrbücher erwerben, welche jedoch verschiedene Sichten auf das Themengebiet aufweisen und keinen schnellen Überblick über bestimmte Themen bieten können. Um dieses Problem anzugehen, habe ich mir als Ziel dieser besonderen Lernleistung gesetzt, ein Programm zu entwickeln, welches diese Informationen aus einer Ontologie, also eine Menge von Begrifflichkeiten mit Beziehungen untereinander, über eine Schnittstelle entnimmt, diese nutzerfreundlich in Form von zufällig generierten Fragen aufarbeitet und dem Nutzer ausgibt. Diese sollen eine grammatikalisch korrekte Form aufweisen und nebst der richtigen Antwort auch falsche Antworten enthalten, die trotzdem logisch wirken sollen, anstatt ein Zufallsverfahren zur Auswahl zu nutzen.  
 \end{abstract}
 \tableofcontents
 \newpage
@@ -127,7 +128,7 @@ Dadurch werden für jeden Verbindungstyp unterschiedliche Fragen generiert.
 Für Definitionen generiert sich der Fragetitel hierbei zum Beispiel nach dem folgenden Muster:
 \newline \enquote{What is defined by A?}\newline
 Unabhängig vom Fragetyp werden jeder Frage noch verschiedene Antworten zugeteilt.
-Dazu zählt einmal die richtige Antwort, neben der aber auch drei andere, falsche Antworten durch einfache SPARQL-Queries generiert werden.
+Dazu zählt einmal die richtige Antwort, neben der aber auch drei andere, falsche Antworten durch einfache SPARQL-Queries generiert werden. 
 
 \todo{
 \begin{itemize}
@@ -157,10 +158,10 @@ Dies kann zum Beispiel bei langen Definitionen (Fragetyp 1) ein Problem sein.
 Neben den anderen beiden Bedingungen muss bei Fragen auch die Qualität und das Niveau der Frage sowie des Quiz allgemein hoch gehalten werden.
 Doch das ist im bereits existenten Quiz an vielen Stellen nur teilweise vorhanden, was sich in verschiedenen Aspekten widerspiegelt.
 Darunter fallen zum Beispiel die Erwähnung der richtigen Antwort im Fragetitel bei z.B. Definitionen oder in einfacheren Punken wie z.B. dem Doppeln von Fragen.
-Dadurch wird der Nutzer nicht genug herausgefordert, was dazu führt, dass er die Fragen nicht mithilfe seines Fachwissens, sondern einfach durch logisches Denken beantworten kann.
+Dadurch wird der Nutzer nicht genug herausgefordert, was dazu führt, dass er die Fragen nicht mithilfe seines Fachwissens, sondern einfach durch logisches Denken beantworten kann. 
 \paragraph{Heterogenität}
 Das Quiz sollte für den Nutzer möglichst einen großen Teil der Möglichkeiten der SNIK-Ontologie anschaulich machen.
-Da jedoch das existierende Quiz nur zwei der 18 Typen von Verbindungen zwischen Objekten nutzt, die in der SNIK-Ontologie vorkommen, variieren die Fragetypen nur wenig, was auf Dauer für Nutzer langweilig oder anstrengend wird. Außerdem wird dadurch ein großer Teil des verfügbaren Wissens nicht abgefragt,
+Da jedoch das existierende Quiz nur zwei der 18 Typen von Verbindungen zwischen Objekten nutzt, die in der SNIK-Ontologie vorkommen, variieren die Fragetypen nur wenig, was auf Dauer für Nutzer langweilig oder anstrengend wird. Außerdem wird dadurch ein großer Teil des verfügbaren Wissens nicht abgefragt, 
 \\\\\todo{
 \begin{itemize}
 \item Worin bestehen die Probleme?
@@ -194,7 +195,7 @@ Bsp.: Gelänge es, Daten aus der Krankenversorgung vollständig zu anonymisieren
 
 \section{Zielsetzung}
 \label{sec:Ziele}
-Das Ziel meiner besonderen Lernleistung ist es, automatisch Multiple-Choice-Quizfragen auf Basis der SNIK-Ontologie zu generieren.
+Das Ziel meiner besonderen Lernleistung ist es, automatisch Multiple-Choice-Quizfragen auf Basis der SNIK-Ontologie zu generieren. 
 Dazu wird ein existierender Prototyp analysiert und hinsichtlich der oben genannten Qualitätsmaße optimiert.
 \begin{itemize}
 \item Ziel Z1:  Analysieren des vorhandenen Prototyps
@@ -219,8 +220,8 @@ Auf diese Punkte sollten Sie in der Diskussion wieder eingehen.
 }
 \todo{
 \begin{enumerate}
-\item Schritt
-\item Schritt
+\item Schritt 
+\item Schritt 
 \end{enumerate}
 }
 \todo{
@@ -232,10 +233,10 @@ Das ist ähnlich, wie wenn es in der Werbung hieße \enquote{Wenn Sie das Proble
 Sinnvoller ist diese Aussage: \enquote{Wenn Sie das Problem haben, dass Ihnen der Kopf weh tut, dann kaufen Sie doch Aspirin.}
 Es ist also bei der Problembeschreibung erforderlich, sich in die Lage dessen zu versetzen, den man mit der angedachten Lösung beglücken möchte.
 Sein Problem ist zu ermitteln und so zu formulieren, er/sie das Problem wiedererkennt und dadurch geneigt ist, sich für die Lösung des Problems zu interessieren.
-}
+} 
 \begin{itemize}
     \item Aufgabe A1.1 zu Ziel Z1: Analyse der Strategien zur Generierung der Stämme
-    \item Aufgabe A1.2 zu Ziel Z1: Analyse der Strategien zur Generierung von Distraktoren
+    \item Aufgabe A1.2 zu Ziel Z1: Analyse der Strategien zur Generierung von Distraktoren 
     \item Aufgabe A2.1 zu Ziel Z2: Entwickeln neuer Strategien zur Generierung der Stämme
     \item Aufgabe A2.2 zum Ziel Z2: Entwickeln neuer Strategien zur Generierung von Distraktoren
     \item Aufgabe A2.3 zum Ziel Z2: Aufstellen von Regeln zur Nutzerfreundlichkeit der Fragen
@@ -344,7 +345,7 @@ Das grundsätzliche Ziel eines Krankenhausinformationssystems ist, die Kommunika
 \label{sub:begriffe}
 \paragraph{Information}
 \label{parag:information}
-Information ist die Kenntnis über bestimmte Sachverhalte oder Vorgänge, im engeren Sinne über einzelne, konkrete, benennbare Objekte der realen und der virtuellen Welt.
+Information ist die Kenntnis über bestimmte Sachverhalte oder Vorgänge, im engeren Sinne über einzelne, konkrete, benennbare Objekte der realen und der virtuellen Welt. 
 \paragraph{Wissen}
 \label{parag:wissen}
 Wissen ist die Kenntnis über den in einem Fachgebiet zu gegebener Zeit gegebenen Konsens, vor allem bezogen auf eine gültige Terminologie, erlaubte Interpretationen, bestehender Zusammenhänge und Gesetzmäßigkeiten sowie empfehlenswerter Methoden und Handlungen.
@@ -352,13 +353,13 @@ Wissen ist also auch Information, aber in dem Fall nicht auf einzelne Objekte, s
 \paragraph{Daten}
 \label{parag:daten}
 Daten sind Gebilde aus Zeichen oder kontinuierliche Funktionen, die durch bekannte oder unterstellte Beziehungen Informationen darstellen können.
-Sie stellen die Grundlage oder das Ergebnis eines Verarbeitungsschrittes dar.
+Sie stellen die Grundlage oder das Ergebnis eines Verarbeitungsschrittes dar. 
 
 %Beispiel-Query:
 \begin{comment}
 \begin{lstlisting}
 SELECT SAMPLE(replace(str(?def),str(?cl),"X","i") as ?def)
-SAMPLE(str(?cl) as ?cl)
+SAMPLE(str(?cl) as ?cl) 
 SAMPLE(str(?a1l) as ?a1l)
 SAMPLE(str(?a2l) as ?a2l)
 SAMPLE(str(?a3l) as ?a3l)
@@ -385,7 +386,7 @@ SAMPLE(str(?a3l) as ?a3l)
 
 ?a3 rdfs:label ?a3l.
  FILTER(LANGMATCHES(LANG(?a3l),"en"))
-
+ 
 } GROUP BY ?class limit 1000
 \end{lstlisting}
 \end{comment}
@@ -407,7 +408,7 @@ Dabei konzentriert sich das SNIK-Projekt hauptsächlich auf die Daten der medizi
 \label{sub:js}
 %\cite{fard2013jsnose}
 JavaScript ist eine leistungsstarke und flexible Skriptsprache, die von Entwicklern zunehmend zur Erstellung interaktiver Webanwendungen eingesetzt wird.
-Die Sprache ist dynamisch, schwach typisiert und verfügt über eine Vielzahl an für Webanwendungen essentiellen Funktionen.
+Die Sprache ist dynamisch, schwach typisiert und verfügt über eine Vielzahl an für Webanwendungen essentiellen Funktionen. 
 Sie lässt sich außerdem hervorragend mit anderen Websprachen wie CSS und HTML implementieren und besitzt die Fähigkeit, mit diesen zu interagieren.\\
 JavaScript wird bei der Quiz-Webanwendung des SNIK-Projekts genutzt, um Fragen und Antworten anzuzeigen und diese dem Nutzer interaktiv zum Beantworten bereitzustellen.
 
@@ -431,7 +432,7 @@ Hierbei ist die Antwort \enquote{Grün} der Schlüssel. \enquote{Rot} und \enquo
 Distraktoren beschreiben im Kontext eines Quiz falsche Antwortmöglichkeiten, die den Befragten von der richtigen Antwort ablenken sollen.
 Durch sie soll vermieden werden, dass falschen Antworten durch Logik einfach von der richtigen Antwort unterschieden werden können. Der Sinn von Distraktoren ist es also, für den Befragten plausibel zu erscheinen.
 Daraus resultierend kann eine schlechte Auswahl von Distraktoren Fragen um einiges einfacher gestalten. Nehmen wir dazu einmal als Beispiel unsere Frage im \cref{tab:quizexample}:
-die Distraktoren klingen plausibel, da sie im Stamm der Frage erwähnt werden. Würde man hier allerdings andere Farben zur Auswahl stellen, die nicht im Kontext der Frage stehen und somit direkt ausgeschlossen werden können, zum Beispiel \enquote{Gelb}, könnte der Befragte diese logisch ausschließen.
+die Distraktoren klingen plausibel, da sie im Stamm der Frage erwähnt werden. Würde man hier allerdings andere Farben zur Auswahl stellen, die nicht im Kontext der Frage stehen und somit direkt ausgeschlossen werden können, zum Beispiel \enquote{Gelb}, könnte der Befragte diese logisch ausschließen. 
 
 
 
@@ -448,16 +449,21 @@ Diese sind im JavaScript-Code, welcher durch den Browser angezeigt wird, fest im
 \begin{lstlisting}
 question: s.default.createElement("span", null, "Frage"),
 answers: [
-   s.default.createElement("span", null, "RichtigeAntwort"),
-   s.default.createElement("span", null, "FalscheAntwort"),
-   s.default.createElement("span", null, "FalscheAntwort"),
-   s.default.createElement("span", null, "FalscheAntwort")
+   s.default.createElement("span", null, "Antwort"),
+   s.default.createElement("span", null, "Distraktor_1"),
+   s.default.createElement("span", null, "Distraktor_2"),
+   s.default.createElement("span", null, "Distraktor_3")
 ],
 correct: 0
 \end{lstlisting}
-Für die Frage und die jeweiligen Antworten werden bei dem Quellcodeausschnitt jeweils eigene Elemente erstellt. Die Frage steht hierbei im Überelement question, während die Antwortmöglichkeiten im Überelement answers stehen.
+Für die Frage und die jeweiligen Antworten werden bei dem Quellcodeausschnitt jeweils eigene Elemente erstellt. Die Frage steht hierbei im Überelement question, während die Antwortmöglichkeiten im Überelement answers stehen. 
 
-<! hier kommt dazu: Erklärung der SPARQL-Queries, Entwicklung des Konzeptes neuer Queries !>
+Um den Inhalt dieser Fragen zu erhalten, muss eine Abfrage an den SPARQL-Endpunkt gesendet werden, der auf die Ontologie zugreift und mithilfe der Abfrage bestimmte Informationen an das Programm ausgibt. Hierbei gibt es drei vorhandene Typen von Abfragen.
+
+\section{DEFINITION-Query}
+\label{sec:DEFINITION}
+
+
 
 Um nun diesen vorhandenen Prototypen zu verbessern, müssen verschiedene Dinge erreicht werden: es müssen neue SPARQL-Queries entworfen werden, welche den eben genannten neuen Konzepten zur Fragenbildung folgen, und es muss ein Interpreter entworfen werden, der die Ergebnisse dieser SPARQL-Queries in den existierenden JavaScript-Code des Quiz einfügt. Damit kann der vorhandene Code zum Anzeigen weiterhin verwendet werden. Weiterhin sollte dieser Interpreter auch in der Lage sein, diese Query-Ergebnisse in QuizMaster-Dateien umzuwandeln, sodass die Fragen auch in einer Windows-Desktopapplikation angezeigt und beantwortet werden können.
 
