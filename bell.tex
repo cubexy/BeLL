@@ -77,7 +77,7 @@ Leipzig, Dezember 2020		&vorgelegt von:\\
 %Kurzreferat von Januar
 Krankenhausinformationssysteme sind Informationssysteme, die sich in medizinischen Umgebungen mit der Verarbeitung von Daten, Informationen und Wissen beschäftigen.
 Informationssysteme bestehen aus Hardware, Software als auch Anwendern. Kompetenz in der Nutzung von Krankenhausinformationssystemen ist wichtig, um in Krankenhäusern beispielsweise die Zusammenarbeit mit Patienten effektiv und zeitsparend zu gestalten.
-Jedoch müssen Anwender diese Kompetenz erst einmal durch Quellen wie Lehrbücher erwerben, welche jedoch verschiedene Sichten auf das Themengebiet aufweisen und keinen schnellen Überblick über bestimmte Themen bieten können. Um dieses Problem anzugehen, habe ich mir als Ziel dieser besonderen Lernleistung gesetzt, ein Programm zu entwickeln, welches diese Informationen aus einer Ontologie, also eine Menge von Begrifflichkeiten mit Beziehungen untereinander, über eine Schnittstelle entnimmt, diese nutzerfreundlich in Form von zufällig generierten Fragen aufarbeitet und dem Nutzer ausgibt. Diese sollen eine grammatikalisch korrekte Form aufweisen und nebst der richtigen Antwort auch falsche Antworten enthalten, die trotzdem logisch wirken sollen, anstatt ein Zufallsverfahren zur Auswahl zu nutzen.  
+Jedoch müssen Anwender diese Kompetenz erst einmal durch Quellen wie Lehrbücher erwerben, welche jedoch verschiedene Sichten auf das Themengebiet aufweisen und keinen schnellen Überblick über bestimmte Themen bieten können. Um dieses Problem anzugehen, habe ich mir als Ziel dieser besonderen Lernleistung gesetzt, ein Programm zu entwickeln, welches diese Informationen aus einer Ontologie, also eine Menge von Begrifflichkeiten mit Beziehungen untereinander, über eine Schnittstelle entnimmt, diese nutzerfreundlich in Form von zufällig generierten Fragen aufarbeitet und dem Nutzer ausgibt. Diese sollen eine grammatikalisch korrekte Form aufweisen und nebst der richtigen Antwort auch falsche Antworten enthalten, die trotzdem logisch wirken sollen, anstatt ein Zufallsverfahren zur Auswahl zu nutzen. 
 \end{abstract}
 \tableofcontents
 \newpage
@@ -105,7 +105,7 @@ Jedoch müssen Anwender diese Kompetenz erst einmal durch Quellen wie Lehrbüche
 \label{sec:gegenstand}
 \subsection{Gegenstand}
 \label{sub:Gegenstand}
-Das \ac{SNIK} ist ein abgeschlossenes Projekt, welches Begriffe des Informationsmanagements in dem Teilgebiet der  medizinischen Informatik sowie deren Beziehungen untereinander beschreibt.
+Das \ac{SNIK} ist ein abgeschlossenes Projekt, welches Begriffe des Informationsmanagements in dem Teilgebiet der medizinischen Informatik sowie deren Beziehungen untereinander beschreibt.
 Es ist in der Lage, dieses Wissen in einer Ontologie darzustellen und diese sowohl maschinen- als auch menschenlesbar auszugeben.
 Dabei nutzt es ein dem Semantic Web Stack ähnliches Modell (\cref{img:semanticwebstack2}), welches Anwendungen wie dem \ac{SNIK} Graph ermöglicht, Informationen abzufragen und diese Endnutzern in aufbereiteter Form zur Verfügung zu stellen.
 \begin{figure}
@@ -198,8 +198,8 @@ Bsp.: Gelänge es, Daten aus der Krankenversorgung vollständig zu anonymisieren
 Das Ziel meiner besonderen Lernleistung ist es, automatisch Multiple-Choice-Quizfragen auf Basis der SNIK-Ontologie zu generieren. 
 Dazu wird ein existierender Prototyp analysiert und hinsichtlich der oben genannten Qualitätsmaße optimiert.
 \begin{itemize}
-\item Ziel Z1:  Analysieren des vorhandenen Prototyps
-\item Ziel Z2:  Optimieren des vorhandenen Prototyps
+\item Ziel Z1: Analysieren des vorhandenen Prototyps
+\item Ziel Z2: Optimieren des vorhandenen Prototyps
 \end{itemize}
 
 \section{Vorgehensweise}
@@ -235,8 +235,7 @@ Es ist also bei der Problembeschreibung erforderlich, sich in die Lage dessen zu
 Sein Problem ist zu ermitteln und so zu formulieren, er/sie das Problem wiedererkennt und dadurch geneigt ist, sich für die Lösung des Problems zu interessieren.
 } 
 \begin{itemize}
-    \item Aufgabe A1.1 zu Ziel Z1: Analyse der Strategien zur Generierung der Stämme
-    \item Aufgabe A1.2 zu Ziel Z1: Analyse der Strategien zur Generierung von Distraktoren 
+    \item Aufgabe A1.1 zu Ziel Z1: Analyse der Strategien zur Generierung der Stämme und Distraktoren
     \item Aufgabe A2.1 zu Ziel Z2: Entwickeln neuer Strategien zur Generierung der Stämme
     \item Aufgabe A2.2 zum Ziel Z2: Entwickeln neuer Strategien zur Generierung von Distraktoren
     \item Aufgabe A2.3 zum Ziel Z2: Aufstellen von Regeln zur Nutzerfreundlichkeit der Fragen
@@ -285,7 +284,7 @@ Hat man eine Menge von Tripeln, bilden diese ein semantisches Netz, was tabellar
 \textrm{Subjekt}			&\textrm{Prädikat}			&\textrm{Objekt}\\
 \midrule
 New York				&liegt in				&Amerika\\
-Adobe				    &verkauft				&Software\\
+Adobe				  &verkauft				&Software\\
 Google					&generiert				&Werbeeinnahmen\\
 \bottomrule
 \end{tabularx}
@@ -421,9 +420,9 @@ Ein Multiple-Choice-Quiz ist eine Ansammlung an Fragen, die allesamt aus einem S
 \\\textit{Q: In einer Hand halte ich ein rotes, ein grünes und ein blaues Blatt Papier. Ich lege nun das rote und das blaue Blatt aus meiner Hand. Welche Farbe hat das Blatt, welches sich immer noch in meiner Hand befindet?}
 \label{tab:quizexample}
 \begin{itemize}
-    \item Rot
-    \item Grün
-    \item Blau
+  \item Rot
+  \item Grün
+  \item Blau
 \end{itemize}
 Hierbei ist die Antwort \enquote{Grün} der Schlüssel. \enquote{Rot} und \enquote{Blau} sind \textit{Distraktoren}, die von dem Schlüssel ablenken sollen.
 \\Der Sinn bei einem Multiple-Choice-Quiz besteht darin, den Befragten für richtige Antworten mit Punkten zu belohnen. Antwortet er falsch, bleibt seine Punktzahl entweder gleich oder Punkte werden abgezogen. Die Anzahl der vergebenen Punkte kann dabei von unterschiedlichen Faktoren abhängig gemacht werden, beispielsweise an der Zeit, die zum Lösen der Frage benötigt wurde.
@@ -439,30 +438,32 @@ die Distraktoren klingen plausibel, da sie im Stamm der Frage erwähnt werden. W
 \chapter{Lösungsansatz}
 \label{ch:Lösungsansatz}
 \todo{Der Lösungsansatz ist eine kurze Beschreibung der Arbeitshypothese sowie des Vorgehens zur Lösung der in der Einleitung beschriebenen Probleme.}
+Dieses Kapitel soll dazu dienen, den Lösungsweg der genannten Probleme genauer zu beschreiben.
+Eine Erläuterung der Ausführung dieser erfolgt im nächsten Kapitel. 
 
+\section{Lösungsansatz zu Aufgabe A1.1}
 Um den bestehenden Prototyp zu verstehen und diesen zu erweitern bzw. zu verbessern, müssen wir dazu die Methodik zur Generierung der Fragen analysieren.
 Diese Generierung hat die Zielsetzung, menschenlesbare Quizfragen zu erzeugen.
 Dazu wird als Erstes im existierenden Prototyp eine Abfrage an die Ontologie gesendet, um die nötigen Daten für die Generierung der Frage zu erhalten.
 Solche Abfragen werden in der SNIK-Ontologie durch SPARQL-Queries (\cref{sub:sparql}) gehandhabt. Gesendete Queries werden von einem Endpunkt auf dem SNIK-Server angenommen, welcher diese dann als Abfrage an die Ontologie weiterleitet und diese umsetzt. Diese Rückgabewerte werden dann in dem Quiz genutzt und mithilfe von einfachem JavaScript-Code im Browser des Benutzers in einfacher Wortform angezeigt. Um Ressourcen zu schonen, wird jedoch nicht bei jedem Aufruf des Quizzes eine einzelne Frage generiert - das Quiz greift auf eine große Liste aus vorher generierten Fragen zu.
-Diese sind im JavaScript-Code, welcher durch den Browser angezeigt wird, fest implementiert, wie in diesem Beispiel deutlich wird:
-%Die erhaltenen Daten werden nun von dem Programm spezifisch für den Verbindungstyp verarbeitet, wie in \cref{sub:Gegenstand} schon erkärt wurde.
+Diese sind im JavaScript-Code, welcher durch den Browser angezeigt wird, fest implementiert.\\
+\begin{comment}wie in diesem Beispiel deutlich wird:
 \begin{lstlisting}
 question: s.default.createElement("span", null, "Frage"),
 answers: [
-   s.default.createElement("span", null, "Antwort"),
-   s.default.createElement("span", null, "Distraktor_1"),
-   s.default.createElement("span", null, "Distraktor_2"),
-   s.default.createElement("span", null, "Distraktor_3")
+  s.default.createElement("span", null, "Antwort"),
+  s.default.createElement("span", null, "Distraktor_1"),
+  s.default.createElement("span", null, "Distraktor_2"),
+  s.default.createElement("span", null, "Distraktor_3")
 ],
 correct: 0
 \end{lstlisting}
 Für die Frage und die jeweiligen Antworten werden bei dem Quellcodeausschnitt jeweils eigene Elemente erstellt. Die Frage steht hierbei im Überelement question, während die Antwortmöglichkeiten im Überelement answers stehen. 
+\end{comment}
+Um den Inhalt dieser Fragen zu erhalten, muss eine Abfrage an den SPARQL-Endpunkt gesendet werden, der auf die Ontologie zugreift und mithilfe der Abfrage bestimmte Informationen an das Programm ausgibt.
+Die erhaltenen Daten werden nun von dem Programm spezifisch für den Verbindungstyp verarbeitet, wie in \cref{sub:Gegenstand} schon erkärt wurde. Bei der spezifischen Verarbeitung gibt es eine wichtige Unterscheidung: die Methodik der Generierung des Stammes und die Methodik der Generierung der Distraktoren. Während ersteres für jeden Fragetyp unterschiedlich ist, werden Distraktoren stets gleich generiert. Hierzu müssen also im nächsten Abschnitt die Generierung der verschiedenen Fragen und Antworten analysiert werden.
 
-Um den Inhalt dieser Fragen zu erhalten, muss eine Abfrage an den SPARQL-Endpunkt gesendet werden, der auf die Ontologie zugreift und mithilfe der Abfrage bestimmte Informationen an das Programm ausgibt. Hierbei gibt es drei vorhandene Typen von Abfragen.
-
-\section{DEFINITION-Query}
-\label{sec:DEFINITION}
-
+\section{Lösungsansatz zu Aufgabe A2.1}
 
 
 Um nun diesen vorhandenen Prototypen zu verbessern, müssen verschiedene Dinge erreicht werden: es müssen neue SPARQL-Queries entworfen werden, welche den eben genannten neuen Konzepten zur Fragenbildung folgen, und es muss ein Interpreter entworfen werden, der die Ergebnisse dieser SPARQL-Queries in den existierenden JavaScript-Code des Quiz einfügt. Damit kann der vorhandene Code zum Anzeigen weiterhin verwendet werden. Weiterhin sollte dieser Interpreter auch in der Lage sein, diese Query-Ergebnisse in QuizMaster-Dateien umzuwandeln, sodass die Fragen auch in einer Windows-Desktopapplikation angezeigt und beantwortet werden können.
