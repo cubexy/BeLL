@@ -469,10 +469,11 @@ Hierzu müssen in \cref{sub:Problematik} beschriebene Probleme gelöst werden.
 Weiterhin sollen weitere Typen von Abfragen entwickelt werden, die auf den drei bestehenden Verbindungstypen basieren und neue Typen nutzen.
 Die SNIK-Ontologie bietet eine Vielzahl von Verbindungstypen, welches sich das Quiz zunutze machen kann.
 \section{Lösungsansatz zu Aufgabe A2.2}
-Auch wird in dem aktuellen Prototypen wird immer dieselbe Query genutzt, um Distraktoren zu generieren.
-Um die Entwicklung bestimmter neuer Fragetypen zu ermöglichen, müssen neue Abfragen generiert werden, die auf die richtige Antwort von Fragen angepasst sind. 
+In dem aktuellen Prototyp wird immer dieselbe Query genutzt, um Distraktoren zu generieren.
+Um die Entwicklung bestimmter neuer Fragetypen zu ermöglichen, müssen jedoch neue Abfragen generiert werden, die auf die richtige Antwort von Fragen angepasst sind. Das ist beispielsweise bei Fragen notwendig, wo die Definition zu einem Wort gefragt ist oder bei einer Frage, die eine Antwort in Zahlen- oder Prozentform erfordert. 
+
 \section{Lösungsansatz zu Aufgabe A2.3}
-Um nun diesen vorhandenen Prototypen zu verbessern, müssen verschiedene Dinge erreicht werden: es müssen neue SPARQL-Queries entworfen werden, welche den eben genannten neuen Konzepten zur Fragenbildung folgen, und es muss ein Interpreter entworfen werden, der die Ergebnisse dieser SPARQL-Queries in den existierenden JavaScript-Code des Quiz einfügt. Damit kann der vorhandene Code zum Anzeigen weiterhin verwendet werden. Weiterhin sollte dieser Interpreter auch in der Lage sein, diese Query-Ergebnisse in QuizMaster-Dateien umzuwandeln, sodass die Fragen auch in einer Windows-Desktopapplikation angezeigt und beantwortet werden können.
+Um nun diesen vorhandenen Prototypen im Sinne der Nutzerfreundlichkeit zu verbessern, müssen die neuen SPARQL-Queries, welche den eben genannten neuen Konzepten zur Fragenbildung folgen, mit Regeln belegt werden. Diese sollten Aspekte wie beispielsweise die maximale Anzahl an Zeichen für eine Frage regulieren, um sie so verständlich wie nur möglich zu gestalten. Außerdem muss ein Interpreter entworfen werden, der die Ergebnisse dieser SPARQL-Queries in den existierenden JavaScript-Code des Quiz einfügt. Damit kann der vorhandene Code zum Anzeigen weiterhin verwendet werden. Weiterhin sollte dieser Interpreter auch in der Lage sein, diese Query-Ergebnisse in QuizMaster-Dateien umzuwandeln, sodass die Fragen auch in einer Windows-Desktopapplikation angezeigt und beantwortet werden können.
 
 \begin{figure}
 \centering
