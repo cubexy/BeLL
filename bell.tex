@@ -464,7 +464,7 @@ Für die Frage und die jeweiligen Antworten werden bei dem Quellcodeausschnitt j
 Um den Inhalt dieser Fragen zu erhalten, muss eine Abfrage an den SPARQL-Endpunkt gesendet werden, der auf die Ontologie zugreift und mithilfe der Abfrage bestimmte Informationen an das Programm ausgibt.
 Die erhaltenen Daten werden nun von dem Programm spezifisch für den Verbindungstyp verarbeitet, wie in \cref{sub:Gegenstand} schon erkärt wurde. Bei der spezifischen Verarbeitung gibt es eine wichtige Unterscheidung: die Methodik der Generierung des Stammes und die Methodik der Generierung der Distraktoren. Während ersteres für jeden Fragetyp unterschiedlich ist, werden Distraktoren stets gleich generiert. Hierzu müssen also im nächsten Abschnitt die Generierung der verschiedenen Fragen und Antworten analysiert werden.
 \section{Lösungsansatz zu Aufgabe A2.1}
-Um nun diesen vorhandenen Prototypen zu verbessern, müssen zuerst die SPARQL-Queries überarbeitet werden, die die generellen Fragen und die richtige Antwort generieren.
+Um nun diesen vorhandenen Prototypen zu verbessern, müssen zuerst die Strategien der Queries überarbeitet werden, die die generellen Fragen und die richtige Antwort generieren.
 Hierzu müssen in \cref{sub:Problematik} beschriebene Probleme gelöst werden.
 Weiterhin sollen weitere Typen von Abfragen entwickelt werden, die auf den drei bestehenden Verbindungstypen basieren und neue Typen nutzen.
 Die SNIK-Ontologie bietet eine Vielzahl von Verbindungstypen, welches sich das Quiz zunutze machen kann.
@@ -473,7 +473,7 @@ In dem aktuellen Prototyp wird immer dieselbe Query genutzt, um Distraktoren zu 
 Um die Entwicklung bestimmter neuer Fragetypen zu ermöglichen, müssen jedoch neue Abfragen generiert werden, die auf die richtige Antwort von Fragen angepasst sind. Das ist beispielsweise bei Fragen notwendig, wo die Definition zu einem Wort gefragt ist oder bei einer Frage, die eine Antwort in Zahlen- oder Prozentform erfordert. 
 
 \section{Lösungsansatz zu Aufgabe A2.3}
-Um nun diesen vorhandenen Prototypen im Sinne der Nutzerfreundlichkeit zu verbessern, müssen die neuen SPARQL-Queries, welche den eben genannten neuen Konzepten zur Fragenbildung folgen, mit Regeln belegt werden. Diese sollten Aspekte wie beispielsweise die maximale Anzahl an Zeichen für eine Frage regulieren, um sie so verständlich wie nur möglich zu gestalten. Außerdem muss ein Interpreter entworfen werden, der die Ergebnisse dieser SPARQL-Queries in den existierenden JavaScript-Code des Quiz einfügt. Damit kann der vorhandene Code zum Anzeigen weiterhin verwendet werden. Weiterhin sollte dieser Interpreter auch in der Lage sein, diese Query-Ergebnisse in QuizMaster-Dateien umzuwandeln, sodass die Fragen auch in einer Windows-Desktopapplikation angezeigt und beantwortet werden können.
+Um nun diesen vorhandenen Prototypen im Sinne der Nutzerfreundlichkeit zu verbessern, müssen die neuen Query-Strategien, welche den eben genannten neuen Konzepten zur Fragenbildung folgen, mit Regeln belegt werden. Diese sollten Aspekte wie beispielsweise die maximale Anzahl an Zeichen für eine Frage regulieren, um sie so verständlich wie nur möglich zu gestalten. Außerdem kann ein Interpreter entworfen werden, der die Ergebnisse dieser SPARQL-Queries in den existierenden JavaScript-Code des Quiz einfügt. Damit kann der vorhandene Code zum Anzeigen weiterhin verwendet werden. Weiterhin sollte dieser Interpreter auch in der Lage sein, diese Query-Ergebnisse in QuizMaster-Dateien umzuwandeln, sodass die Fragen auch in einer Windows-Desktopapplikation angezeigt und beantwortet werden können.
 
 \begin{figure}
 \centering
@@ -490,7 +490,7 @@ Um nun diesen vorhandenen Prototypen im Sinne der Nutzerfreundlichkeit zu verbes
 \end{figure}
 
 \chapter{Ausführung der Lösung}
-\todo{Die Ausführung der Lösung dient zur Erarbeitung von Konzepten zu den jeweiligen Ansätzen aus dem vorherigen Kapitel.}
+%\todo{Die Ausführung der Lösung dient zur Erarbeitung von Konzepten zu den jeweiligen Ansätzen aus dem vorherigen Kapitel.}
 
 \section{Unterkapitel n}
 
