@@ -1,0 +1,23 @@
+#Define variable ?c1 to be a close/far neighbour to ?c2,?c3
+#Define ?st to be the subTopClass of ?c1,?c2,?c3
+#Make sure that the values are not equal
+#Define ?c1,?c2,?c3 as Class
+#Define variable ?y as Class
+#Define variable ?p as the relationship between ?y and ?c1
+#Make sure that ?p is not a subTopClass or close/far neighbour relationship
+
+SELECT ?y ?p (SAMPLE(?c1) as ?c1) (SAMPLE(?c2) as ?c2) (SAMPLE(?c3) as ?c3)
+from <http://www.snik.eu/ontology/bb>
+from <http://www.snik.eu/ontology/derived>
+{
+ ?c1 meta:closeNeighbour|meta:farNeighbour ?c2,?c3.
+ ?st ^meta:subTopClass ?c1,?c2,?c3.
+ FILTER(?c1!=?c2).
+ filter(?c1!=?c3&&?c2!=?c3).
+
+ owl:Class ^a ?y,?c1,?c2,?c3.
+ ?c1 ?p ?y.
+
+ FILTER(?p!=meta:subTopClass&&?p!=meta:closeNeighbour&&?p!=meta:farNeighbour)
+
+} GROUP BY ?y ?p LIMIT 10

@@ -1,0 +1,31 @@
+#Define variable ?class as Class
+#Set Label (Text name) of ?class to be ?cl
+#Define variable ?def to be the definition of ?class
+#Define variables ?a1,?a2,?a3 to be subTopClasses of ?class
+#Set Label (Text name) of ?a1,?a2,?a3 to be ?a1l,?a2l,?a3l
+SELECT SAMPLE(replace(str(?def),str(?cl),"X","i") as ?def) SAMPLE(str(?cl) as ?cl) SAMPLE(str(?a1l) as ?a1l) SAMPLE(str(?a2l) as ?a2l) SAMPLE(str(?a3l) as ?a3l)
+{
+ ?class a owl:Class.
+
+ ?class rdfs:label ?cl.
+ FILTER(LANGMATCHES(LANG(?cl),"en"))
+
+ ?class skos:definition ?def.
+ FILTER(STRLEN(?def)>10&&STRLEN(?def)<600).
+ FILTER(LANGMATCHES(LANG(?def),"en"))
+
+ ?class (!meta:subTopClass){1,2} ?a1,?a2,?a3.
+
+ owl:Class ^a ?a1,?a2,?a3.
+ FILTER(?class!=?a1&&?class!=?a2&&?class!=?a3
+ &&?a1<?a2&&?a2<?a3)
+
+?a1 rdfs:label ?a1l.
+ FILTER(LANGMATCHES(LANG(?a1l),"en"))
+
+?a2 rdfs:label ?a2l.
+ FILTER(LANGMATCHES(LANG(?a2l),"en"))
+?a3 rdfs:label ?a3l.
+ FILTER(LANGMATCHES(LANG(?a3l),"en"))
+
+} GROUP BY ?class limit 1000
