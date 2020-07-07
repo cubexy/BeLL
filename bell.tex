@@ -503,6 +503,38 @@ Wie in Abschnitt 1.1.1 bereits beschrieben wurde, gibt es bei dem existierenden 
 Die drei vorhandenen Strategien generieren auf Basis dieser Queries Fragen.
 \end{itemize}
 \subsubsection{DEFINITION-Query}
+Query:
+\begin{lstlisting}
+SELECT SAMPLE(replace(str(?def),str(?cl),"X","i") as ?def)
+SAMPLE(str(?cl) as ?cl) 
+SAMPLE(str(?a1l) as ?a1l)
+SAMPLE(str(?a2l) as ?a2l)
+SAMPLE(str(?a3l) as ?a3l)
+{
+?class a owl:Class.
+
+?class rdfs:label ?cl.
+FILTER(LANGMATCHES(LANG(?cl),"en"))
+
+?class skos:definition ?def.
+FILTER(STRLEN(?def)>10&&STRLEN(?def)<600).
+FILTER(LANGMATCHES(LANG(?def),"en"))
+
+?class (!meta:subTopClass){1,2} ?a1,?a2,?a3.
+
+owl:Class ^a ?a1,?a2,?a3.FILTER(
+?class!=?a1&&?class!=?a2&&?class!=?a3&&?a1<?a2&&?a2<?a3)
+
+?a1 rdfs:label ?a1l.FILTER(LANGMATCHES(LANG(?a1l),"en"))
+?a2 rdfs:label ?a2l.FILTER(LANGMATCHES(LANG(?a2l),"en"))
+?a3 rdfs:label ?a3l.FILTER(LANGMATCHES(LANG(?a3l),"en"))
+} GROUP BY ?class limit 1000
+\end{lstlisting}
+
+Die DEFINITION-Query dient als Ausführung der gleichnamigen Strategie der Generierung für Fragen, bei denen ein Parameter gegeben ist und ein anderer durch Antwortmöglichkeiten ausgewählt werden muss. 
+Dabei ist im Speziellen hier eine Definition eines Objektes x vorgegeben, zu der dieses Objekt x gesucht wird.
+Eine mögliche Fragestellung dieses Query-Typen könnte wie folgt aussehen:
+
 
 
 \begin{figure}
