@@ -15,9 +15,11 @@
 \usepackage{comment}
 \usepackage{aurl}
 \usepackage{microtype}
+\usepackage{xcolor}
 \usepackage{natbib}
 \usepackage{hyperref}
 \usepackage{acronym}
+\usepackage{multicol}
 \usepackage{cleveref}
 \usepackage{epigraph}
 \PassOptionsToPackage{pdfborder={0 0 0}}{hyperref} %Für finale gedruckte Ausgabe, ohne hervorgehobene Links
@@ -434,7 +436,7 @@ Durch sie soll vermieden werden, dass falschen Antworten durch Logik einfach von
 Daraus resultierend kann eine schlechte Auswahl von Distraktoren Fragen um einiges einfacher gestalten. Nehmen wir dazu einmal als Beispiel unsere Frage im \cref{tab:quizexample}:
 die Distraktoren klingen plausibel, da sie im Stamm der Frage erwähnt werden. Würde man hier allerdings andere Farben zur Auswahl stellen, die nicht im Kontext der Frage stehen und somit direkt ausgeschlossen werden können, zum Beispiel \enquote{Gelb}, könnte der Befragte diese logisch ausschließen. 
 
-
+\todo{Mehr zu URIs und Classes mit Attributen erklären (Klasse A hat Attribut Definition und Label bspw.)}
 
 \chapter{Lösungsansatz}
 \label{ch:Lösungsansatz}
@@ -532,9 +534,23 @@ owl:Class ^a ?a1,?a2,?a3.FILTER(
 \end{lstlisting}
 
 Die DEFINITION-Query dient als Ausführung der gleichnamigen Strategie der Generierung für Fragen, bei denen ein Parameter gegeben ist und ein anderer durch Antwortmöglichkeiten ausgewählt werden muss. 
-Dabei ist im Speziellen hier eine Definition eines Objektes x vorgegeben, zu der dieses Objekt x gesucht wird.
-Eine mögliche Fragestellung dieses Query-Typen könnte wie folgt aussehen:
+Dabei ist im Speziellen hier eine Definition einer Klasse x vorgegeben, zu der diese Klasse x gesucht wird.
+Die Funktionsweise der Query ist hier relativ trivial: Als ersten Schritt wird der Variable ?class, also unserer Klasse, der Typus owl:class zugewiesen.
+Dadurch werden alle Attribute der Ontologie, die das Attribut owl:class besitzen, als potentielle Werte für ?class angesehen.
+Im nächsten Schritt wird einer zweiten Variable, ?cl, der Klarname der Klasse ?class in der gewünschten Sprache zugewiesen.
+Das kann man sich ungefähr so vorstellen: \todo{erklären}
+Eine mögliche Fragestellung dieses Query-Typen könnte wie folgt aussehen:\\
 
+\begin{tabular}[c]{|c|c|}
+\hline
+\multicolumn{2}{|c|}{Was wird hiervon definiert? \enquote{Ein X, gelegentlich verdeutscht auch Rollbrett genannt, ist ein Brett (Deck) mit zwei Achsen (Trucks) [...]}}\\ \hline
+Boot & Lastkraftwagen\\\hline
+\textcolor{green}{Skateboard} & Citybike\\\hline
+\end{tabular}
+\\\\\todo{Tabellen-Centering anpassen}
+
+Neben der richtigen Antwort \enquote{Skateboard} werden hier noch die drei Distraktoren \enquote{Boot}, \enquote{Lastkraftwagen} und \enquote{Citybike} als Antwortmöglichkeit vorgegeben.
+ 
 
 
 \begin{figure}
