@@ -250,7 +250,7 @@ Sein Problem ist zu ermitteln und so zu formulieren, er/sie das Problem wiederer
 \section{Semantic Web}
 \label{sec:semanticweb}
 Das Semantic Web (oder auch: semantisches Netz) stellt eine Methode dar, um maschinenlesbares Wissen über das \ac{WWW} in Form von HTML-Dokumenten zu verbreiten.
-Anders als bei der klassischen Website aber wird hier nicht nur primär Wert auf die Lesbarkeit durch einen Menschen, sondern auch auf die Maschinenlesbarkeit Wert gelegt, indem die Seite nebst dem normalen HTML-Code auch Informationen, die durch Computer gelesen werden können, hinterlegt. Diese sind durch Technologien des semantischen Webs ( \acs{RDF}, \acs{SPARQL}, ... ) einles- und verarbeitbar.
+Anders als bei der klassischen Website aber wird hier nicht nur primär Wert auf die Lesbarkeit durch einen Menschen, sondern auch auf die Maschinenlesbarkeit Wert gelegt, indem die Seite nebst dem normalen HTML-Code auch Informationen, die durch Computer gelesen werden können, hinterlegt. Diese sind durch Technologien des semantischen Webs ( \acs{RDF}, \acs{SPARQL}, ... ) einles- und verarbeitbar. 
 
 \subsection{\acs{WWW}}
 \label{sub:www}
@@ -320,6 +320,7 @@ Man kann also \ac{SPARQL} als eine faktische Abfragesprache des semantischen Web
 
 \noindent Ontologien sind (im informatischen Kontext) meist sprachlich gefasste und geordnete Darstellungen einer Menge von Begrifflichkeiten mit festen Beziehungen untereinander.
 Diese Beziehungen befassen sich stets auf einen bestimmten Gegenstandsbereich und werden dazu genutzt, Wissen in digitalisierter Form zwischen Anwendungen und Diensten auszutauschen.
+Die Besonderheit dieser Beziehung ist,
 Dabei müssen bestimmte Interferenz- und Integritätsregeln eingehalten werden, also Regeln zu Schlussfolgerungen sowie zu der Gewährleistung ihrer Gültigkeit.
 Ontologien erfreuen sich seit der Idee des semantischen Webs einem stets wachsenden Bekanntheitsgrad, was dazu führt, dass sie als Teil der Wissensrepräsentation im Teilgebiet \acs{KI} einen großen Einfluss haben.
 Dabei beschreibt die Idee des Semantic Web eine Erweiterung des vorhandenen Netzes, um Daten zwischen Rechnern einfacher austausch- und verwertbar zu machen und sie somit besser zu explizieren, anstatt sie unkonstruiert stehen zu lassen.
@@ -343,55 +344,22 @@ Es produziert, beschafft, verteilt und verarbeitet Daten durch eine Zusammenarbe
 Krankenhausinformationssysteme beschreiben die Gesamtheit aller Informationssysteme zur Produktion, Beschaffung, Verteilung und Verarbeitung von medizinischen und administrativen Daten im Krankenhaus.
 Dazu gehören verschiedene Formen der Datenbereitstellung sowie auch konventionelle Methoden der papierbasierten Dokumentation und der sprachlichen Kommunikation.
 Das grundsätzliche Ziel eines Krankenhausinformationssystems ist, die Kommunikation zwischen Mitarbeitern zu verbessern und den Ablauf in Krankenhäusern zu steuern, indem Mitarbeitern gezielt Zugriff auf für ihn relevantes Wissen aus der ihm zugeteilten Benutzerrolle gegeben wird, zum Beispiel über den gerade zu behandelnden Patienten.
+
 \subsection{Grundbegriffe}
 \label{sub:begriffe}
 \paragraph{Information}
 \label{parag:information}
 Information ist die Kenntnis über bestimmte Sachverhalte oder Vorgänge, im engeren Sinne über einzelne, konkrete, benennbare Objekte der realen und der virtuellen Welt. 
+
 \paragraph{Wissen}
 \label{parag:wissen}
 Wissen ist die Kenntnis über den in einem Fachgebiet zu gegebener Zeit gegebenen Konsens, vor allem bezogen auf eine gültige Terminologie, erlaubte Interpretationen, bestehender Zusammenhänge und Gesetzmäßigkeiten sowie empfehlenswerter Methoden und Handlungen.
 Wissen ist also auch Information, aber in dem Fall nicht auf einzelne Objekte, sondern eine Menge von Objekten und deren Beziehungen untereinander bezogen, vgl. \citet{his}.
+
 \paragraph{Daten}
 \label{parag:daten}
 Daten sind Gebilde aus Zeichen oder kontinuierliche Funktionen, die durch bekannte oder unterstellte Beziehungen Informationen darstellen können.
 Sie stellen die Grundlage oder das Ergebnis eines Verarbeitungsschrittes dar. 
-
-%Beispiel-Query:
-\begin{comment}
-\begin{lstlisting}
-SELECT SAMPLE(replace(str(?def),str(?cl),"X","i") as ?def)
-SAMPLE(str(?cl) as ?cl) 
-SAMPLE(str(?a1l) as ?a1l)
-SAMPLE(str(?a2l) as ?a2l)
-SAMPLE(str(?a3l) as ?a3l)
-{
- ?class a owl:Class.
- ?class rdfs:label ?cl.
- FILTER(LANGMATCHES(LANG(?cl),"en"))
-
- ?class skos:definition ?def.
- FILTER(STRLEN(?def)>10&&STRLEN(?def)<600).
- FILTER(LANGMATCHES(LANG(?def),"en"))
-
- ?class (!meta:subTopClass){1,2} ?a1,?a2,?a3.
-
- owl:Class ^a ?a1,?a2,?a3.
- FILTER(?class!=?a1&&?class!=?a2&&?class!=?a3
- &&?a1<?a2&&?a2<?a3)
-
-?a1 rdfs:label ?a1l.
- FILTER(LANGMATCHES(LANG(?a1l),"en"))
-
-?a2 rdfs:label ?a2l.
- FILTER(LANGMATCHES(LANG(?a2l),"en"))
-
-?a3 rdfs:label ?a3l.
- FILTER(LANGMATCHES(LANG(?a3l),"en"))
- 
-} GROUP BY ?class limit 1000
-\end{lstlisting}
-\end{comment}
 
 \section{\acs{SNIK}-Projekt}
 \label{sek:snik}
@@ -435,8 +403,6 @@ Distraktoren beschreiben im Kontext eines Quiz falsche Antwortmöglichkeiten, di
 Durch sie soll vermieden werden, dass falschen Antworten durch Logik einfach von der richtigen Antwort unterschieden werden können. Der Sinn von Distraktoren ist es also, für den Befragten plausibel zu erscheinen.
 Daraus resultierend kann eine schlechte Auswahl von Distraktoren Fragen um einiges einfacher gestalten. Nehmen wir dazu einmal als Beispiel unsere Frage im \cref{tab:quizexample}:
 die Distraktoren klingen plausibel, da sie im Stamm der Frage erwähnt werden. Würde man hier allerdings andere Farben zur Auswahl stellen, die nicht im Kontext der Frage stehen und somit direkt ausgeschlossen werden können, zum Beispiel \enquote{Gelb}, könnte der Befragte diese logisch ausschließen. 
-
-\todo{Mehr zu URIs und Classes mit Attributen erklären (Klasse A hat Attribut Definition und Label bspw.)}
 
 \chapter{Lösungsansatz}
 \label{ch:Lösungsansatz}
