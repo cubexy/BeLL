@@ -534,8 +534,7 @@ Weiterhin wird die Anzahl der Zeichen so beschränkt, dass nur Ergebnisse zwisch
 
 Im nächsten Schritt werden nun die Distraktoren generiert.
 Diese heißen im Beispiel ?a1,?a2 und ?a3 und sind ebenfalls Klassen, die jedoch nicht mit ?class (\enquote{Skateboard}) zusammenhängen dürfen.
-Dazu wird die Limitierung !subTopClass angewandt, die beschränkt, dass ?a1, ?a2 und ?a3 keine Unterklassen von ?class sein dürfen.
-Außerdem wird über FILTER verhindert, dass sich die drei Distraktoren untereinander gleichen oder mit ?class übereinstimmen.
+Nun wird die Limitierung !subTopClass{1,2} gesetzt, die beschränkt, welche Entfernung die Elemente von ?class besitzen dürfen. Diese Entfernung darf nicht über Oberelemente gemessen werden, sondern ausschließlich über Unterklassen. 
 
 Im letzten Schritt werden die drei Variablen ?a1l, ?a2l und ?a3l mit den Labels von ?a1, ?a2, ?a3 versehen.
 Nun werden die Variablen ?cl, ?a1l, ?a2l, ?a3l sowie ?def ausgegeben, wobei bei ?def noch jedes Vorkommen von ?cl durch X ersetzt wird.
@@ -546,9 +545,9 @@ Die Ausgabe der Query wäre nun:
 ?def: "Ein X, gelegentlich verdeutscht auch Rollbrett genannt,
 ist ein Brett (Deck) mit zwei Achsen (Trucks) [...]"
 ?cl:  "Skateboard"
-?a1l: "Boot"
-?a2l: "Citybike"
-?a3l: "Lastkraftwagen"
+?a1l: "Pennyboard"
+?a2l: "Rollschuhe"
+?a3l: "Rollsportgeraete"
 \end{lstlisting}
 \end{centering}
 \caption{Beispielausgabe der DEFINITION-Query in Datenform.}
@@ -564,8 +563,8 @@ Die eben generierte Fragestellung würde hier wie folgt aussehen:\\
 %\textrm{Was wird hiervon definiert? \enquote{Ein X, gelegentlich verdeutscht auch Rollbrett genannt, ist ein Brett (Deck) mit zwei Achsen (Trucks) [...]}}\\
 \multicolumn{2}{p{0.97\textwidth}}{Was wird hiervon definiert? \enquote{Ein X, gelegentlich verdeutscht auch Rollbrett genannt, ist ein Brett (Deck) mit zwei Achsen (Trucks) [...]}}\\
 \midrule
-Boot										&Lastkraftwagen\\
-\textcolor{green}{Skateboard}			&Citybike\\
+Rollschuhe										&Rollsportgeräte\\
+\textcolor{green}{Skateboard}			&Pennyboard\\
 \bottomrule
 \end{tabularx}
 \end{centering}
