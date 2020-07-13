@@ -466,10 +466,9 @@ Wie in Abschnitt 1.1.1 bereits beschrieben wurde, gibt es bei dem existierenden 
 \item die DEFINITION-Query (A defines B),
 \item die CONTAINS-Query (A contains B),
 \item und die SUPPORTS-Query (A supports B).
-
+\end{itemize}
 Die drei vorhandenen Strategien generieren auf Basis dieser Queries Fragen.
 Um die Verständlichkeit zu erhöhen, werde ich die erste Strategie umfangreicher erklären und umfangreicher auf bestimmte Operationen und Methoden eingehen.
-\end{itemize}
 \subsubsection{DEFINITION-Query}
 Query:
 \begin{lstlisting}
@@ -481,7 +480,7 @@ SAMPLE(str(?a3l) as ?a3l)
 # Gebe ?def, ?cl, ?a1l, ?a2l, ?a3l aus
 (
 ?class a owl:Class.
-# Sei ?class ein Attribut des Typus Klasse
+# Sei ?class eine Klasse
 ?class rdfs:label ?cl.
 # Sei ?cl der woertliche Bezeichner von ?class
 FILTER(LANGMATCHES(LANG(?cl),"en"))
@@ -494,26 +493,30 @@ FILTER(LANGMATCHES(LANG(?def),"en"))
 # Sei ?def in englischer Sprache und zwischen 10 und 600 Zeichen lang
 
 ?class (!meta:subTopClass){1,2} ?a1,?a2,?a3.
-# Seien ?a1, ?a2, ?a3 Attribute des Typus Klasse, die keine Unterklassen von ?class sind
+# Seien ?a1, ?a2, ?a3 in direkter oder indirekter Nachbarschaft von ?class mit Pfadlänge 1-2
+# Pfad darf hierbei nicht über die meta:subTopClass führen
 
 owl:Class ^a ?a1,?a2,?a3.FILTER(
 ?class!=?a1&&?class!=?a2&&?class!=?a3&&?a1<?a2&&?a2<?a3)
-# Seien ?a1, ?a2, ?a3 ungleich zueinander und zu ?class
+# Seien ?a1, ?a2, ?a3 Klassen
+# Seien ?a1, ?a2, ?a3 paarweise verschieden und ungleich ?class
 
 ?a1 rdfs:label ?a1l.FILTER(LANGMATCHES(LANG(?a1l),"en"))
 ?a2 rdfs:label ?a2l.FILTER(LANGMATCHES(LANG(?a2l),"en"))
 ?a3 rdfs:label ?a3l.FILTER(LANGMATCHES(LANG(?a3l),"en"))
-# Seien ?a1l, ?a2l, ?a3l die woertlichen Bezeichnungen von ?a1, ?a2, ?a3 in englischer Sprache
+# Seien ?a1l, ?a2l, ?a3l die woertlichen Bezeichnungen von
+  ?a1, ?a2, ?a3 in englischer Sprache
 ) GROUP BY ?class limit 1000
+
 \end{lstlisting}
 
 Die DEFINITION-Query dient als Ausführung der gleichnamigen Strategie der Generierung für Fragen, bei denen ein Parameter gegeben ist und ein anderer durch Antwortmöglichkeiten ausgewählt werden muss. 
 Dabei ist im Speziellen hier eine Definition einer Klasse x vorgegeben, zu der diese Klasse x gesucht wird.
-Der Variable ?class wird hier der Typus owl:class zugewiesen.
-Dadurch werden alle Attribute der Ontologie, die das Attribut owl:class besitzen, als potentielle Werte für ?class angesehen.
+Die Ergebnismenge von ?class wird nun auf Klassen beschränkt.
+Dadurch werden alle Attribute der Ontologie, die ein Element von owl:class sind, als potentielle Werte für ?class angesehen.
 Einer zweiten Variable, ?cl, wird nun der Klarname der Klasse ?class in der gewünschten Sprache zugewiesen.
 
-Hierbei ist ?class ist eine Kategorisierung, die eine Menge an Unterelementen verbindet.
+Hierbei ist ?class ist eine Kategorisierung, die eine Menge an Tripeln verbindet.
 Dabei sieht sich ?class einem Primärschlüssel in SQL ähnlich: ein Identifier, der eindeutig und einzigartig ist.
 Während die Klasse selbst neben einem Identifikationsschlüssel keine Informationen beinhaltet, finden sich diese Informationen in den Unterelementen wieder.
 Dazu können beispielsweise Informationen wie Definitionen oder Ober- bzw. Unterklassen stecken.\\
@@ -523,7 +526,7 @@ Wikidata ist eine Ontologie, die einen Großteil der Informationen der Wissenssa
 
 \enquote{Skateboard} ist hier als eigene Klasse mit dem Identifier \enquote{Q15783} gelistet. Sie besitzt unter anderem die Eigenschaft \enquote{label}, die mehrsprachig vorliegt.
 Die Eigenschaft \enquote{label} beinhaltet den Klarnamen der ?class, also \enquote{Skateboard}, in verschiedenen Sprachen. 
-Um nun die gewünschte Sprache auszuwählen, wird nun ein FILTER genutzt.
+Um nun die gewünschte Sprache auszuwählen, wird ein FILTER genutzt.
 Dieser schließt hier alle Attribute der Eigenschaft label für ?class aus, die nicht in englischer Sprache sind.
 Dieses Label wird in der Variable ?cl gespeichert.
 
