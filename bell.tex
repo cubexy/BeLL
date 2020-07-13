@@ -503,6 +503,7 @@ Wie in Abschnitt 1.1.1 bereits beschrieben wurde, gibt es bei dem existierenden 
 \item und die SUPPORTS-Query (A supports B).
 
 Die drei vorhandenen Strategien generieren auf Basis dieser Queries Fragen.
+Um die Verständlichkeit zu erhöhen, werde ich die erste Strategie umfangreicher erklären und umfangreicher auf bestimmte Operationen und Methoden eingehen.
 \end{itemize}
 \subsubsection{DEFINITION-Query}
 Query:
@@ -512,46 +513,84 @@ SAMPLE(str(?cl) as ?cl)
 SAMPLE(str(?a1l) as ?a1l)
 SAMPLE(str(?a2l) as ?a2l)
 SAMPLE(str(?a3l) as ?a3l)
+# Gebe ?def, ?cl, ?a1l, ?a2l, ?a3l aus
 (
 ?class a owl:Class.
-Sei ?class ein Attribut des Typus Klasse
+# Sei ?class ein Attribut des Typus Klasse
 ?class rdfs:label ?cl.
-Sei ?cl der woertliche Bezeichner von ?class
+# Sei ?cl der woertliche Bezeichner von ?class
 FILTER(LANGMATCHES(LANG(?cl),"en"))
+# Sei ?cl in englischer Sprache
 
 ?class skos:definition ?def.
+# Sei ?def die Definition von ?class
 FILTER(STRLEN(?def)>10&&STRLEN(?def)<600).
 FILTER(LANGMATCHES(LANG(?def),"en"))
+# Sei ?def in englischer Sprache und zwischen 10 und 600 Zeichen lang
 
 ?class (!meta:subTopClass){1,2} ?a1,?a2,?a3.
+# Seien ?a1, ?a2, ?a3 Attribute des Typus Klasse, die keine Unterklassen von ?class sind
 
 owl:Class ^a ?a1,?a2,?a3.FILTER(
 ?class!=?a1&&?class!=?a2&&?class!=?a3&&?a1<?a2&&?a2<?a3)
+# Seien ?a1, ?a2, ?a3 ungleich zueinander und zu ?class
 
 ?a1 rdfs:label ?a1l.FILTER(LANGMATCHES(LANG(?a1l),"en"))
 ?a2 rdfs:label ?a2l.FILTER(LANGMATCHES(LANG(?a2l),"en"))
 ?a3 rdfs:label ?a3l.FILTER(LANGMATCHES(LANG(?a3l),"en"))
+# Seien ?a1l, ?a2l, ?a3l die woertlichen Bezeichnungen von ?a1, ?a2, ?a3 in englischer Sprache
 ) GROUP BY ?class limit 1000
 \end{lstlisting}
 
-\
 Die DEFINITION-Query dient als Ausführung der gleichnamigen Strategie der Generierung für Fragen, bei denen ein Parameter gegeben ist und ein anderer durch Antwortmöglichkeiten ausgewählt werden muss. 
 Dabei ist im Speziellen hier eine Definition einer Klasse x vorgegeben, zu der diese Klasse x gesucht wird.
-Die Funktionsweise der Query ist hier relativ trivial: Als ersten Schritt wird der Variable ?class, also unserer Klasse, der Typus owl:class zugewiesen.
+Der Variable ?class wird hier der Typus owl:class zugewiesen.
 Dadurch werden alle Attribute der Ontologie, die das Attribut owl:class besitzen, als potentielle Werte für ?class angesehen.
-Im nächsten Schritt wird einer zweiten Variable, ?cl, der Klarname der Klasse ?class in der gewünschten Sprache zugewiesen.
+Einer zweiten Variable, ?cl, wird nun der Klarname der Klasse ?class in der gewünschten Sprache zugewiesen.
 
-Das kann man sich wie folgt vorstellen: ?class ist eine Kategorisierung, die eine Menge an Unterelementen verbindet.
+Hierbei ist ?class ist eine Kategorisierung, die eine Menge an Unterelementen verbindet.
 Dabei sieht sich ?class einem Primärschlüssel in SQL ähnlich: ein Identifier, der eindeutig und einzigartig ist.
 Während die Klasse selbst neben einem Identifikationsschlüssel keine Informationen beinhaltet, finden sich diese Informationen in den Unterelementen wieder.
-Dazu können beispielsweise Informationen wie Definitionen oder Ober- bzw. Unterklassen stecken.
+Dazu können beispielsweise Informationen wie Definitionen oder Ober- bzw. Unterklassen stecken.\\
 
-Um das Beispiel \enquote{Skateboard} verständlich zu halten, habe ich mich hier anstelle der SNIK-Ontologie auf Wikidata bezogen.
-Wikidata ist eine Ontologie, die einen Großteil der Informationen der Wissenssammlung Wikipedia zusammenfasst.
-\enquote{Skateboard} ist hier als eigene Klasse mit dem Identifier \enquote{Q15783} gelistet. Sie besitzt unter anderem die Eigenschaft \enquote{definition}, die mehrsprachig vorliegt.
-Das Unterelement besitzt also mehrere Attribute. 
+\textit{Um das Beispiel \enquote{Skateboard} verständlich zu halten, bezieht es sich anstelle der SNIK-Ontologie auf Wikidata.
+Wikidata ist eine Ontologie, die einen Großteil der Informationen der Wissenssammlung Wikipedia zusammenfasst.}\\\\
 
-Eine mögliche Fragestellung dieses Query-Typen könnte wie folgt aussehen:\\
+\enquote{Skateboard} ist hier als eigene Klasse mit dem Identifier \enquote{Q15783} gelistet. Sie besitzt unter anderem die Eigenschaft \enquote{label}, die mehrsprachig vorliegt.
+Die Eigenschaft \enquote{label} beinhaltet den Klarnamen der ?class, also \enquote{Skateboard}, in verschiedenen Sprachen. 
+Um nun die gewünschte Sprache auszuwählen, wird nun ein FILTER genutzt.
+Dieser schließt hier alle Attribute der Eigenschaft label für ?class aus, die nicht in englischer Sprache sind.
+Dieses Label wird in der Variable ?cl gespeichert.
+
+Im nächsten Schritt wird auf ein weiteres Unterelement von ?class zugegriffen: der Definition.
+Diese wird der Variable ?def zugewiesen und liegt erneut mehrsprachig vor.
+Hier wird erneut auf FILTER zugegriffen, um nur englischsprachige Elemente anzuzeigen.
+Weiterhin wird die Anzahl der Zeichen so beschränkt, dass nur Ergebnisse zwischen 10 und 600 Zeichen angezeigt werden.
+
+Im nächsten Schritt werden nun die Distraktoren generiert.
+Diese heißen im Beispiel ?a1,?a2 und ?a3 und sind ebenfalls Klassen, die jedoch nicht mit ?class (\enquote{Skateboard}) zusammenhängen dürfen.
+Dazu wird die Limitierung !subTopClass angewandt, die beschränkt, dass ?a1, ?a2 und ?a3 keine Unterklassen von ?class sein dürfen.
+Außerdem wird über FILTER verhindert, dass sich die drei Distraktoren untereinander gleichen oder mit ?class übereinstimmen.
+
+Im letzten Schritt werden die drei Variablen ?a1l, ?a2l und ?a3l mit den Labels von ?a1, ?a2, ?a3 versehen.
+Nun werden die Variablen ?cl, ?a1l, ?a2l, ?a3l sowie ?def ausgegeben, wobei bei ?def noch jedes Vorkommen von ?cl durch X ersetzt wird.
+Die Ausgabe der Query wäre nun:
+\begin{table}
+\begin{centering}
+\begin{lstlisting}
+?def: "Ein X, gelegentlich verdeutscht auch Rollbrett genannt,
+ist ein Brett (Deck) mit zwei Achsen (Trucks) [...]"
+?cl:  "Skateboard"
+?a1l: "Boot"
+?a2l: "Citybike"
+?a3l: "Lastkraftwagen"
+\end{lstlisting}
+\end{centering}
+\caption{Beispielausgabe der DEFINITION-Query in Datenform.}
+\label{tab:sparqldefinitionexampledata}
+\end{table}
+
+Die eben generierte Fragestellung würde hier wie folgt aussehen:\\
 
 \begin{table}
 \begin{centering}
@@ -565,13 +604,11 @@ Boot										&Lastkraftwagen\\
 \bottomrule
 \end{tabularx}
 \end{centering}
-\caption{Beispielausgabe der DEFINITION-Query.}
+\caption{Fragestellung der DEFINITION-Query.}
 \label{tab:sparqldefinitionexample}
 \end{table}
 
-Neben der richtigen Antwort \enquote{Skateboard} werden hier noch die drei Distraktoren \enquote{Boot}, \enquote{Lastkraftwagen} und \enquote{Citybike} als Antwortmöglichkeit vorgegeben.
- 
-
+Hierbei ist \enquote{Skateboard} die richtige Antwortmöglichkeit. 
 
 \begin{figure}
 \centering
@@ -579,7 +616,10 @@ Neben der richtigen Antwort \enquote{Skateboard} werden hier noch die drei Distr
 \caption{Fragengenerierung mithilfe der DEFINITION-Query.}
 \label{img:definition-query-prototype}
 \end{figure}
-\todo{Beschreiben des Ergebnisses der Query sowie ihrer Vorgehensweise.}
+
+
+\subsubsection{CONTAINS-Query}
+
 \chapter{Ergebnis}
 \todo{
 Im Ergebniskapitel soll beschrieben werden, inwiefern Sie Ihre in 1.2/1.3 aufgestellten Ziele bzw. Aufgaben erreicht habe oder auch weshalb sie (teilweise) nicht erreicht werden konnten.
