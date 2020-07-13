@@ -514,7 +514,6 @@ SAMPLE(str(?a2l) as ?a2l)
 SAMPLE(str(?a3l) as ?a3l)
 {
 ?class a owl:Class.
-
 ?class rdfs:label ?cl.
 FILTER(LANGMATCHES(LANG(?cl),"en"))
 
@@ -533,12 +532,23 @@ owl:Class ^a ?a1,?a2,?a3.FILTER(
 } GROUP BY ?class limit 1000
 \end{lstlisting}
 
+\iffalse
 Die DEFINITION-Query dient als Ausführung der gleichnamigen Strategie der Generierung für Fragen, bei denen ein Parameter gegeben ist und ein anderer durch Antwortmöglichkeiten ausgewählt werden muss. 
 Dabei ist im Speziellen hier eine Definition einer Klasse x vorgegeben, zu der diese Klasse x gesucht wird.
 Die Funktionsweise der Query ist hier relativ trivial: Als ersten Schritt wird der Variable ?class, also unserer Klasse, der Typus owl:class zugewiesen.
 Dadurch werden alle Attribute der Ontologie, die das Attribut owl:class besitzen, als potentielle Werte für ?class angesehen.
 Im nächsten Schritt wird einer zweiten Variable, ?cl, der Klarname der Klasse ?class in der gewünschten Sprache zugewiesen.
-Das kann man sich ungefähr so vorstellen: \todo{erklären}
+
+Das kann man sich wie folgt vorstellen: ?class ist eine Kategorisierung, die eine Menge an Unterelementen verbindet.
+Dabei sieht sich ?class einem Primärschlüssel in SQL ähnlich: ein Identifier, der eindeutig und einzigartig ist.
+Während die Klasse selbst neben einem Identifikationsschlüssel keine Informationen beinhaltet, finden sich diese Informationen in den Unterelementen wieder.
+Dazu können beispielsweise Informationen wie Definitionen oder Ober- bzw. Unterklassen stecken.
+
+Um das Beispiel \enqoute{Skateboard} verständlich zu halten, habe ich mich hier anstelle der SNIK-Ontologie auf Wikidata bezogen.
+Wikidata ist eine Ontologie, die einen Großteil der Informationen der Wissenssammlung Wikipedia zusammenfasst.
+\enquote}Skateboard} ist hier als eigene Klasse mit dem Identifier \enquote{Q15783} gelistet. Sie besitzt unter anderem die Eigenschaft \enquote{definition}, die mehrsprachig vorliegt.
+Das Unterelement besitzt also mehrere Attribute. 
+
 Eine mögliche Fragestellung dieses Query-Typen könnte wie folgt aussehen:\\
 
 \begin{tabular}[c]{|c|c|}
@@ -551,7 +561,7 @@ Boot & Lastkraftwagen\\\hline
 
 Neben der richtigen Antwort \enquote{Skateboard} werden hier noch die drei Distraktoren \enquote{Boot}, \enquote{Lastkraftwagen} und \enquote{Citybike} als Antwortmöglichkeit vorgegeben.
  
-
+\fi
 
 \begin{figure}
 \centering
