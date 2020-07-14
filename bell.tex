@@ -120,11 +120,10 @@ Das Projekt konzentriert sich hauptsächlich auf Wissen der medizinischen Lehre.
 
 Um nicht mit Ontologien versierten Nutzern eine Anwendung, die die Daten des Projektes nutzt, darzustellen, wurde unter anderem auch ein einfaches Multiple-Choice-Quiz auf Basis eines öffentlich verfügbaren Templates programmiert.
 Diese nutzt die Ontologie hinter SNIK, um Anwendern einfache, automatisch generierte Fragen zu stellen.
-Diese Fragen werden mithilfe der typisierten, gerichteten Verbindungen zwischen einzelnen Begriffen erzeugt, wobei das Quiz aus der SNIK-Ontologie drei Haupttypen von Verbindungen nutzt:
+Diese Fragen werden mithilfe der typisierten, gerichteten Verbindungen zwischen einzelnen Begriffen erzeugt, wobei das Quiz aus der SNIK-Ontologie zwei Gruppen von Verbindungen nutzt:
 \begin{itemize}
     \item 1. Objekt A definiert Objekt B (A defines B),
-    \item 2. Objekt A beinhaltet Objekt B (A contains B) und
-    \item 3. Objekt A unterstützt Objekt B (A supports B).
+    \item 2. Objekt A beschreibt die Verbindung zweier Objekte B und C (B is related to C in way A)
 \end{itemize}
 Dadurch werden für jeden Verbindungstyp unterschiedliche Fragen generiert.
 Für Definitionen generiert sich der Fragetitel hierbei zum Beispiel nach dem folgenden Muster:
@@ -461,13 +460,13 @@ Um nun diesen vorhandenen Prototypen im Sinne der Nutzerfreundlichkeit zu verbes
 \section{Lösung für Aufgabe A1.1}
 \subsection{Untersuchen der bestehenden Queries}
 \todo{Tatsächlichen Referrer zu 1.1.1 hinzufügen}
-Wie in Abschnitt 1.1.1 bereits beschrieben wurde, gibt es bei dem existierenden Prototypen 3 Typen von Strategien, die zur Generierung von Fragen genutzt werden:
+Wie in Abschnitt 1.1.1 bereits beschrieben wurde, gibt es bei dem existierenden Prototypen 2 Typen von Strategien, die zur Generierung von Fragen genutzt werden:
 \begin{itemize}
 \item die DEFINITION-Query (A defines B),
-\item die CONTAINS-Query (A contains B),
-\item und die SUPPORTS-Query (A supports B).
+\item und die SUBJECT-Query (A is related to B in way C)
 \end{itemize}
-Die drei vorhandenen Strategien generieren auf Basis dieser Queries Fragen.
+Jedoch findet sich auch noch andere, ungenutzte Queries, die in der finalen Version nicht genutzt wurden. 
+Die zwei vorhandenen Strategien generieren auf Basis dieser Queries Fragen.
 Um die Verständlichkeit zu erhöhen, werde ich die erste Strategie umfangreicher erklären und umfangreicher auf bestimmte Operationen und Methoden eingehen.
 \subsubsection{DEFINITION-Query}
 Query:
@@ -493,8 +492,8 @@ FILTER(LANGMATCHES(LANG(?def),"en"))
 # Sei ?def in englischer Sprache und zwischen 10 und 600 Zeichen lang
 
 ?class (!meta:subTopClass){1,2} ?a1,?a2,?a3.
-# Seien ?a1, ?a2, ?a3 in direkter oder indirekter Nachbarschaft von ?class mit Pfadlänge 1-2
-# Pfad darf hierbei nicht über die meta:subTopClass führen
+# Seien ?a1, ?a2, ?a3 in direkter oder indirekter Nachbarschaft von ?class mit Pfadlaenge 1-2
+# Pfad darf hierbei nicht ueber die meta:subTopClass fuehren
 
 owl:Class ^a ?a1,?a2,?a3.FILTER(
 ?class!=?a1&&?class!=?a2&&?class!=?a3&&?a1<?a2&&?a2<?a3)
