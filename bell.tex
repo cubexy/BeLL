@@ -465,6 +465,7 @@ Wie in Abschnitt 1.1.1 bereits beschrieben wurde, gibt es bei dem existierenden 
 \item die DEFINITION-Query (A defines B),
 \item und die SUBJECT-Query (A is related to B in way C)
 \end{itemize}
+Jedoch findet sich auch noch andere, ungenutzte Queries, die in der finalen Version nicht genutzt wurden. 
 Die zwei vorhandenen Strategien generieren auf Basis dieser Queries Fragen.
 Um die Verständlichkeit zu erhöhen, werde ich die erste Strategie umfangreicher erklären und umfangreicher auf bestimmte Operationen und Methoden eingehen.
 \subsubsection{DEFINITION-Query}
@@ -584,35 +585,6 @@ Hierbei ist \enquote{Skateboard} die richtige Antwortmöglichkeit.
 
 
 \subsubsection{CONTAINS-Query}
-\begin{lstlisting}
-SELECT DISTINCT ?p ?o (min(?c1) as ?c1) (min(?c2) as ?c2) (min(?c3) as ?c3) ?c4
-# Gebe ?p, ?o, ?c1, ?c2, ?c3, ?c4 aus
-from <http://www.snik.eu/ontology/bb>
-from <http://www.snik.eu/ontology/derived>
-# Nutzung mehrerer Ontologien --> DERIVED für meta:closeNeighbour
-{
- ?c1 meta:closeNeighbour ?c2,?c3,?c4. 
-# Seien ?c2, ?c3, ?c4 direkte Nachbarn (Pfadlaenge 1) mit ?c1
- owl:Class ^a ?c1,?c2,?c3,?c4,?o.
-
- filter(?o!=?c1&&?o!=?c2&&?o!=?c3&&?o!=?c4).
- filter(?c1!=?c2&&?c1!=?c3&&?c1!=?c4&&?c1<?c2&&?c2<?c3&&?c3<?c4).
-# Stelle sicher, dass die Antworten ungleich einander sind
-
- # Distractors
- graph <http://www.snik.eu/ontology/bb>
- {?c1 ?p ?o.
-# Sei ?c1 in Beziehung ?p mit ?o (richtige Antwort)
- FILTER(?p!=meta:isAssociatedWith).
-# Entferne alle Beziehungen, die keine Beziehung verdeutlichen
- MINUS {?c2 ?p ?o} 
- MINUS {?c3 ?p ?o} 
- MINUS {?c4 ?p ?o} 
-# Entferne alle Antwortmöglichkeiten, die auch richtig waeren, da sie die selbe Beziehung wie die richtige Antwort zum Praedikat besitzen wuerden
- }
-
-}
-\end{lstlisting}
 
 \chapter{Ergebnis}
 \todo{
