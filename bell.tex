@@ -627,8 +627,9 @@ from <http://www.snik.eu/ontology/derived>
 
 Die CONTAINS-Query wird als Strategie für Fragen genutzt, bei denen zwei Parameter gegeben sind und ein dritter zur Auswahl steht.
 Hier ist dabei im Besonderen eine Klasse X und die Beziehung Y dieser Klasse X zu einer anderen Klasse Z gegeben, wobei hier Klasse Z gesucht wird.
-Dabei verläuft die Fragengeneration ähnlich wie bei der DEFINITION-Query: Im ersten Schritt wird sichergestellt, dass ?c1, ?c2, ?c3 und ?c4 direkte Nachbarn miteinander sind.
-Eine direkte Nachbarschaft im ontologischen Sinne wird dadurch kategorisiert, dass die Pfadlänge zwischen den einzelnen Elementen genau 1 beträgt.
+Dabei verläuft die Fragengeneration ähnlich wie bei der DEFINITION-Query.
+Im ersten Schritt wird die direkte Nachbarschaft von ?c1, ?c2, ?c3 und ?c4 sichergestellt. 
+Eine direkte Nachbarschaft im ontologischen Sinne wird dadurch  ..,m, dass die Pfadlänge zwischen den einzelnen Elementen genau 1 beträgt.
 Es kann dadurch keine Zwischenelemente geben, die zwischen den Klassen stehen.
 
 Da nun die Generierung von vier untereinander benachbarten Antworten beendet ist, wird nun bei der ersten Antwort eine Beziehung zu einem Objekt hergestellt.
@@ -638,6 +639,28 @@ Stehen keine Antwortmöglichkeiten mehr zur Verfügung, wird das gesamte Anfangs
 
 Am Ende werden die vier Antwortmöglichkeiten, das Objekt ?o und die Beziehung ?p ausgegeben. 
 
+\begin{table}
+\begin{centering}
+\begin{tabularx}{\textwidth}{XXX}
+\toprule
+\multicolumn{2}{p{0.97\textwidth}}{Welche Klasse beinhaltet \enquote{Lastkraftwagen (LKW)}?}\\
+\midrule
+Personenkraftwagen (PKW)	&\textcolor{green}{Landfahrzeuge}\\
+Amphibienfahrzeuge			&Schienenfahrzeuge\\
+\bottomrule
+\end{tabularx}
+\end{centering}
+\caption{Fragestellung der CONTAINS-Query.}
+\label{tab:sparqcontainsexample}
+\end{table}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{images/contains.pdf}
+\caption{Fragengenerierung mithilfe der CONTAINS-Query.}
+\label{img:contains-query-prototype}
+\end{figure}
 
 \chapter{Ergebnis}
 \todo{
