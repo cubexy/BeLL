@@ -488,16 +488,19 @@ FILTER(LANGMATCHES(LANG(?cl),"en"))
 # Sei ?def die Definition von ?class
 FILTER(STRLEN(?def)>10&&STRLEN(?def)<600).
 FILTER(LANGMATCHES(LANG(?def),"en"))
-# Sei ?def in englischer Sprache und zwischen 10 und 600 Zeichen lang
+# Sei ?def in englischer Sprache und zwischen 10 und 600
+  Zeichen lang
 
 ?class (!meta:subTopClass){1,2} ?a1,?a2,?a3.
-# Seien ?a1, ?a2, ?a3 in direkter oder indirekter Nachbarschaft von ?class mit Pfadlaenge 1-2
+# Seien ?a1, ?a2, ?a3 in direkter oder indirekter
+  Nachbarschaft von ?class mit Pfadlaenge 1-2
 # Pfad darf hierbei nicht ueber die meta:subTopClass fuehren
 
 owl:Class ^a ?a1,?a2,?a3.FILTER(
 ?class!=?a1&&?class!=?a2&&?class!=?a3&&?a1<?a2&&?a2<?a3)
 # Seien ?a1, ?a2, ?a3 Klassen
-# Seien ?a1, ?a2, ?a3 paarweise verschieden und ungleich ?class
+# Seien ?a1, ?a2, ?a3 paarweise verschieden und
+  ungleich ?class
 
 ?a1 rdfs:label ?a1l.FILTER(LANGMATCHES(LANG(?a1l),"en"))
 ?a2 rdfs:label ?a2l.FILTER(LANGMATCHES(LANG(?a2l),"en"))
@@ -535,7 +538,8 @@ Weiterhin wird die Anzahl der Zeichen so beschränkt, dass nur Ergebnisse zwisch
 
 Im nächsten Schritt werden nun die Distraktoren generiert.
 Diese heißen im Beispiel ?a1,?a2 und ?a3 und sind ebenfalls Klassen, die jedoch nicht mit ?class (\enquote{Skateboard}) zusammenhängen dürfen.
-Nun wird die Limitierung !subTopClass{1,2} gesetzt, die beschränkt, welche Entfernung die Elemente von ?class besitzen dürfen. Diese Entfernung darf nicht über Oberelemente gemessen werden, sondern ausschließlich über Unterklassen. 
+Nun wird die Limitierung !subTopClass(1,2) gesetzt, die beschränkt, welche Entfernung die Elemente von ?class besitzen dürfen.
+Diese Entfernung darf nicht über Oberelemente gemessen werden, sondern ausschließlich über Unterklassen. 
 
 Im letzten Schritt werden die drei Variablen ?a1l, ?a2l und ?a3l mit den Labels von ?a1, ?a2, ?a3 versehen.
 Nun werden die Variablen ?cl, ?a1l, ?a2l, ?a3l sowie ?def ausgegeben, wobei bei ?def noch jedes Vorkommen von ?cl durch X ersetzt wird.
@@ -585,11 +589,16 @@ Hierbei ist \enquote{Skateboard} die richtige Antwortmöglichkeit.
 
 \subsubsection{CONTAINS-Query}
 \begin{lstlisting}
-SELECT DISTINCT ?p ?o (min(?c1) as ?c1) (min(?c2) as ?c2) (min(?c3) as ?c3) ?c4
+SELECT DISTINCT ?p
+?o
+(min(?c1) as ?c1)
+(min(?c2) as ?c2)
+(min(?c3) as ?c3)
+?c4
 # Gebe ?p, ?o, ?c1, ?c2, ?c3, ?c4 aus
 from <http://www.snik.eu/ontology/bb>
 from <http://www.snik.eu/ontology/derived>
-# Nutzung mehrerer Ontologien --> DERIVED für meta:closeNeighbour
+# Nutzung mehrerer Ontologien
 {
  ?c1 meta:closeNeighbour ?c2,?c3,?c4. 
 # Seien ?c2, ?c3, ?c4 direkte Nachbarn (Pfadlaenge 1) mit ?c1
@@ -599,7 +608,7 @@ from <http://www.snik.eu/ontology/derived>
  filter(?c1!=?c2&&?c1!=?c3&&?c1!=?c4&&?c1<?c2&&?c2<?c3&&?c3<?c4).
 # Stelle sicher, dass die Antworten ungleich einander sind
 
- # Distractors
+
  graph <http://www.snik.eu/ontology/bb>
  {?c1 ?p ?o.
 # Sei ?c1 in Beziehung ?p mit ?o (richtige Antwort)
@@ -608,11 +617,27 @@ from <http://www.snik.eu/ontology/derived>
  MINUS {?c2 ?p ?o} 
  MINUS {?c3 ?p ?o} 
  MINUS {?c4 ?p ?o} 
-# Entferne alle Antwortmöglichkeiten, die auch richtig waeren, da sie die selbe Beziehung wie die richtige Antwort zum Praedikat besitzen wuerden
+# Entferne alle Antwortmoeglichkeiten, die auch richtig waeren,
+  da sie die selbe Beziehung wie die richtige Antwort zum Praedikat
+  besitzen wuerden
  }
  
 }
 \end{lstlisting}
+
+Die CONTAINS-Query wird als Strategie für Fragen genutzt, bei denen zwei Parameter gegeben sind und ein dritter zur Auswahl steht.
+Hier ist dabei im Besonderen eine Klasse X und die Beziehung Y dieser Klasse X zu einer anderen Klasse Z gegeben, wobei hier Klasse Z gesucht wird.
+Dabei verläuft die Fragengeneration ähnlich wie bei der DEFINITION-Query: Im ersten Schritt wird sichergestellt, dass ?c1, ?c2, ?c3 und ?c4 direkte Nachbarn miteinander sind.
+Eine direkte Nachbarschaft im ontologischen Sinne wird dadurch kategorisiert, dass die Pfadlänge zwischen den einzelnen Elementen genau 1 beträgt.
+Es kann dadurch keine Zwischenelemente geben, die zwischen den Klassen stehen.
+
+Da nun die Generierung von vier untereinander benachbarten Antworten beendet ist, wird nun bei der ersten Antwort eine Beziehung zu einem Objekt hergestellt.
+Diese Beziehung ?p zu Objekt ?o wird im nächsten Schritt auch zu den anderen 3 Antwortmöglichkeiten geprüft.
+Besteht diese Beziehung dort ebenfalls, wird die potentielle Antwortmöglichkeit entfernt.
+Stehen keine Antwortmöglichkeiten mehr zur Verfügung, wird das gesamte Anfangstripel übersprungen und die nächste Beziehung wird aufgebaut.
+
+Am Ende werden die vier Antwortmöglichkeiten, das Objekt ?o und die Beziehung ?p ausgegeben. 
+
 
 \chapter{Ergebnis}
 \todo{
