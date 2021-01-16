@@ -115,6 +115,7 @@ try:
                     # Zwischen is und das nächste Wort wird die Sache eingefügt, für die einer der Antwortmöglichkeiten verantwortlich ist
                     # Da manche Fragen keine Verantwortlichkeiten mit "is" besitzen, werden diese übersprungen, daher auch die Generierung von mehr als 3 Fragen, damit Überschuss vorhanden ist
                     # Sind 3 Fragen vorhanden, werden die restlichen übersprungen                    towrite.append(files[2] + linebreak)
+                    towrite.append(files[2] + linebreak)
                     towrite.append(files[3] + linebreak)
                     towrite.append(files[4] + linebreak)
                     towrite.append(files[5] + linebreak)
