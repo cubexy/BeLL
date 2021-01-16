@@ -16,8 +16,6 @@ WHERE {
    # ?class is a class
  ?class a owl:Class.
    # Let ?cAns be the label (string/text equivalent) of ?class.
- ?class rdfs:label ?cAns.
- # FILTER(LANGMATCHES(LANG(?cAns),"en")) - NOT WORKING
   # Let ?AnswDefinition be the definition of ?class.
  ?class skos:definition ?AnswDefinition.
  # Filter for english definitions only.

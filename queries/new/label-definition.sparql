@@ -42,33 +42,29 @@ FILTER(LANGMATCHES(LANG(?dl3),"en")).
 # Without filters:
 
 SELECT
-?class
 SAMPLE(str(?q)) as ?correctlabel
 SAMPLE(str(?ans)) as ?correct
 SAMPLE(str(?d1)) as ?distractor1
 SAMPLE(str(?d2)) as ?distractor2
 SAMPLE(str(?d3)) as ?distractor3
-WHERE {
-?class a owl:Class.
-?class rdfs:label ?q.
-?class skos:definition ?ans.
-
-?class (!(meta:subTopClass|meta:chapter)){1,2} ?dist1,?dist2,?dist3.
-FILTER(?class!=?dist1&&?class!=?dist2&&?class!=?dist3&&?dist1<?dist2&&?dist2<?dist3).
-
-?dist1 skos:definition ?d1.
-?dist2 skos:definition ?d2.
-?dist3 skos:definition ?d3.
-
-FILTER (STRLEN(?ans)<225).
-FILTER (STRLEN(?d1)<225).
-FILTER (STRLEN(?d2)<225).
-FILTER (STRLEN(?d3)<225).
-
-FILTER(LANGMATCHES(LANG(?ans),"en")).
-FILTER(LANGMATCHES(LANG(?q),"en")).
-FILTER(LANGMATCHES(LANG(?d1),"en")).
-FILTER(LANGMATCHES(LANG(?d2),"en")).
-FILTER(LANGMATCHES(LANG(?d3),"en")).
-
-}GROUP BY ?class ORDER BY RAND()
+WHERE
+{
+  ?class a owl:Class.
+  ?class rdfs:label ?q.
+  ?class skos:definition ?ans.
+  ?class (!(meta:subTopClass|meta:chapter)){1,2} ?dist1,?dist2,?dist3.
+  FILTER(?class!=?dist1&&?class!=?dist2&&?class!=?dist3&&?dist1<?dist2&&?dist2<?dist3).
+  ?dist1 skos:definition ?d1.
+  ?dist2 skos:definition ?d2.
+  ?dist3 skos:definition ?d3.
+  FILTER (STRLEN(?ans)<225).
+  FILTER (STRLEN(?d1)<225).
+  FILTER (STRLEN(?d2)<225).
+  FILTER (STRLEN(?d3)<225).
+  FILTER(LANGMATCHES(LANG(?ans),"en")).
+  FILTER(LANGMATCHES(LANG(?q),"en")).
+  FILTER(LANGMATCHES(LANG(?d1),"en")).
+  FILTER(LANGMATCHES(LANG(?d2),"en")).
+  FILTER(LANGMATCHES(LANG(?d3),"en")).
+  FILTER ( 1 >  <bif:rnd> (10, ?class) )
+} GROUP BY ?q ORDER BY RAND()
