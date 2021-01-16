@@ -1,3 +1,0 @@
-select *{
-?x a owl:ObjectProperty
-}

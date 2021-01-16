@@ -1,4 +1,0 @@
-select *{
-?x a owl:Class.
-?x ?r ?y
-} GROUP BY ?x
