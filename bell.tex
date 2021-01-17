@@ -33,9 +33,9 @@
 \author{Max Niclas Wächtler}
 \newcommand\idea[1]{\textcolor{red}{#1}}
 
-\newcommand\todo[1]{TODO: \textcolor{teal}{#1}}
+%\newcommand\todo[1]{TODO: \textcolor{teal}{#1}}
 %show comments for students, comment out for finished work or remove the todo statements and their content
-%\newcommand\todo[1]{}%hide comments for students, uncomment for the finished work 
+\newcommand\todo[1]{}%hide comments for students, uncomment for the finished work 
 %remove "Kapitel X" headers *****
 \setlength{\parindent}{0em}
 
@@ -162,7 +162,8 @@ Darunter fallen zum Beispiel die Erwähnung der richtigen Antwort im Fragetitel 
 Dadurch wird der Nutzer nicht genug herausgefordert, was dazu führt, dass er die Fragen nicht mithilfe seines Fachwissens, sondern einfach durch logisches Denken beantworten kann. 
 \paragraph{Heterogenität}
 Das Quiz sollte für den Nutzer möglichst einen großen Teil der Möglichkeiten der SNIK-Ontologie anschaulich machen.
-Da jedoch das existierende Quiz nur zwei der 18 Typen von Verbindungen zwischen Objekten nutzt, die in der SNIK-Ontologie vorkommen, variieren die Fragetypen nur wenig, was auf Dauer für Nutzer langweilig oder anstrengend wird. Außerdem wird dadurch ein großer Teil des verfügbaren Wissens nicht abgefragt, 
+Da jedoch das existierende Quiz nur zwei der 18 Typen von Verbindungen zwischen Objekten nutzt, die in der SNIK-Ontologie vorkommen, variieren die Fragetypen nur wenig, was auf Dauer für Nutzer langweilig oder anstrengend wird.
+Außerdem wird dadurch ein großer Teil des verfügbaren Wissens nicht abgefragt, was dem eigentlichen Sinn der riesigen Datenmenge einer Ontologie nicht gerecht wird.
 \\\\\todo{
 \begin{itemize}
 \item Worin bestehen die Probleme?
@@ -237,9 +238,9 @@ Sein Problem ist zu ermitteln und so zu formulieren, er/sie das Problem wiederer
 } 
 \begin{itemize}
     \item Aufgabe A1.1 zu Ziel Z1: Analyse der Strategien zur Generierung der Stämme und Distraktoren
-    \item Aufgabe A2.1 zu Ziel Z2: Entwickeln neuer Strategien zur Generierung der Stämme
-    \item Aufgabe A2.2 zum Ziel Z2: Entwickeln neuer Strategien zur Generierung von Distraktoren
-    \item Aufgabe A2.3 zum Ziel Z2: Aufstellen von Regeln zur Nutzerfreundlichkeit der Fragen
+    \item Aufgabe A2.1 zu Ziel Z2: Entwickeln und Verbessern der Strategien zur Generierung von Fragen und Antworten
+    \item Aufgabe A2.2 zum Ziel Z2: Aufstellen von Regeln zur Nutzerfreundlichkeit der Fragen
+    \item Aufgabe A2.3 zum Ziel Z2: Entwickeln einer plattformunabhängigen Lösung zur Anzeige der Fragen
 \end{itemize}
 
 \todo{(2--3 Seiten)}
@@ -642,7 +643,7 @@ Am Ende werden die vier Antwortmöglichkeiten, das Objekt ?o und die Beziehung ?
 \section{Lösung für Aufgabe A2.1}
 \subsection{Entwickeln neuer Strategien zur Generierung von Fragen}
 
-\todo{hier}
+Da die Ontologie viele Arten von Eigenschaften bietet, die genutzt werden können, um daraus Fragen zu generieren, müssen daher erst einmal geeignete Eigenschaften herausgesucht werden. 
 
 \begin{table}
 \begin{centering}
