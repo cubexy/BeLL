@@ -430,17 +430,25 @@ Für die Frage und die jeweiligen Antworten werden bei dem Quellcodeausschnitt j
 \end{comment}
 Um den Inhalt dieser Fragen zu erhalten, muss eine Abfrage an den SPARQL-Endpunkt gesendet werden, der auf die Ontologie zugreift und mithilfe der Abfrage bestimmte Informationen an das Programm ausgibt.
 Die erhaltenen Daten werden nun von dem Programm spezifisch für den Verbindungstyp verarbeitet, wie in \cref{sub:Gegenstand} schon erkärt wurde. Bei der spezifischen Verarbeitung gibt es eine wichtige Unterscheidung: die Methodik der Generierung des Stammes und die Methodik der Generierung der Distraktoren. Während ersteres für jeden Fragetyp unterschiedlich ist, werden Distraktoren stets gleich generiert. Hierzu müssen also im nächsten Abschnitt die Generierung der verschiedenen Fragen und Antworten analysiert werden.
+
 \section{Lösungsansatz zu Aufgabe A2.1}
-Um nun diesen vorhandenen Prototypen zu verbessern, müssen zuerst die Strategien der Queries überarbeitet werden, die die generellen Fragen und die richtige Antwort generieren.
+Um nun diesen vorhandenen Prototypen zu verbessern, müssen  die Strategien der Queries überarbeitet werden, die die generellen Fragen und die richtige Antwort generieren.
 Hierzu müssen in \cref{sub:Problematik} beschriebene Probleme gelöst werden.
-Weiterhin sollen weitere Typen von Abfragen entwickelt werden, die auf den drei bestehenden Verbindungstypen basieren und neue Typen nutzen.
-Die SNIK-Ontologie bietet eine Vielzahl von Verbindungstypen, welches sich das Quiz zunutze machen kann.
+Weiterhin sollen weitere Typen von Abfragen entwickelt werden, die neben den bestehenden Abfragen genutzt werden können.
+Die SNIK-Ontologie bietet eine Vielzahl von Verbindungstypen, welches sich das Quiz hierbei zunutze machen kann.
+
 \section{Lösungsansatz zu Aufgabe A2.2}
-In dem aktuellen Prototyp wird immer dieselbe Query genutzt, um Distraktoren zu generieren.
-Um die Entwicklung bestimmter neuer Fragetypen zu ermöglichen, müssen jedoch neue Abfragen generiert werden, die auf die richtige Antwort von Fragen angepasst sind. Das ist beispielsweise bei Fragen notwendig, wo die Definition zu einem Wort gefragt ist oder bei einer Frage, die eine Antwort in Zahlen- oder Prozentform erfordert. 
+Um die einzelnen Fragen im Sinne der Nutzerfreundlichkeit zu verbessern, müssen die neuen Query-Strategien, welche den eben genannten neuen Konzepten zur Fragenbildung folgen, mit Regeln belegt werden.
+Diese sollten Aspekte wie beispielsweise die maximale Anzahl an Zeichen für eine Frage bestimmen, um sie so verständlich wie nur möglich zu gestalten.
+Die Fragen sollten in normaler Textform stehen, sodass ein Nutzer sie ohne jegliche Kenntnisse einer Ontologie einfach verstehen und beantworten kann.
+Auch in Erwägung zu ziehen währen weitere Faktoren wie die Sprache der Fragen, um Menschen ohne Englischkenntnissen das Verstehen der Fragen zu vereinfachen.
 
 \section{Lösungsansatz zu Aufgabe A2.3}
-Um nun diesen vorhandenen Prototypen im Sinne der Nutzerfreundlichkeit zu verbessern, müssen die neuen Query-Strategien, welche den eben genannten neuen Konzepten zur Fragenbildung folgen, mit Regeln belegt werden. Diese sollten Aspekte wie beispielsweise die maximale Anzahl an Zeichen für eine Frage regulieren, um sie so verständlich wie nur möglich zu gestalten. Außerdem kann ein Interpreter entworfen werden, der die Ergebnisse dieser SPARQL-Queries in den existierenden JavaScript-Code des Quiz einfügt. Damit kann der vorhandene Code zum Anzeigen weiterhin verwendet werden. Weiterhin sollte dieser Interpreter auch in der Lage sein, diese Query-Ergebnisse in QuizMaster-Dateien umzuwandeln, sodass die Fragen auch in einer Windows-Desktopapplikation angezeigt und beantwortet werden können.
+Zur letztendlichen Verarbeitung der Queries und zum Anzeigen der Fragen sollte eine Lösung entwickelt werden, die die Fragen aus Queries generiert und anzeigt.
+Sie sollte in der Lage sein, dem Nutzer nur durch Auswahl des Fragetyps Fragen auszugeben.
+Darüber hinaus sollte die Lösung weitere Funktionen wie das Öffnen der Fragen in externen Programmen wie QuizMaster berücksichtigen.
+Auch müssen weiterhin die Regeln der Nutzerfreundlichkeit aus Abschnitt 2.2 umgesetzt werden.
+
 
 \begin{figure}
 \centering
@@ -490,25 +498,27 @@ FILTER(LANGMATCHES(LANG(?cl),"en"))
 FILTER(STRLEN(?def)>10&&STRLEN(?def)<600).
 FILTER(LANGMATCHES(LANG(?def),"en"))
 # Sei ?def in englischer Sprache und zwischen 10 und 600
-  Zeichen lang
+# Zeichen lang
 
 ?class (!meta:subTopClass){1,2} ?a1,?a2,?a3.
 # Seien ?a1, ?a2, ?a3 in direkter oder indirekter
-  Nachbarschaft von ?class mit Pfadlaenge 1-2
+# Nachbarschaft von ?class mit Pfadlaenge 1-2
+
 # Pfad darf hierbei nicht ueber die meta:subTopClass fuehren
 
 owl:Class ^a ?a1,?a2,?a3.FILTER(
 ?class!=?a1&&?class!=?a2&&?class!=?a3&&?a1<?a2&&?a2<?a3)
 # Seien ?a1, ?a2, ?a3 Klassen
+
 # Seien ?a1, ?a2, ?a3 paarweise verschieden und
-  ungleich ?class
+# ungleich ?class
 
 ?a1 rdfs:label ?a1l.FILTER(LANGMATCHES(LANG(?a1l),"en"))
 ?a2 rdfs:label ?a2l.FILTER(LANGMATCHES(LANG(?a2l),"en"))
 ?a3 rdfs:label ?a3l.FILTER(LANGMATCHES(LANG(?a3l),"en"))
 # Seien ?a1l, ?a2l, ?a3l die woertlichen Bezeichnungen von
-  ?a1, ?a2, ?a3 in englischer Sprache
-) GROUP BY ?class limit 1000
+# ?a1, ?a2, ?a3 in englischer Sprache
+) GROUP BY ?class limit 3
 
 \end{lstlisting}
 
@@ -619,8 +629,8 @@ from <http://www.snik.eu/ontology/derived>
  MINUS {?c3 ?p ?o} 
  MINUS {?c4 ?p ?o} 
 # Entferne alle Antwortmoeglichkeiten, die auch richtig waeren,
-  da sie die selbe Beziehung wie die richtige Antwort zum Praedikat
-  besitzen wuerden
+# da sie die selbe Beziehung wie die richtige Antwort zum Praedikat
+# besitzen wuerden
  }
  
 }
@@ -638,19 +648,6 @@ Diese Beziehung ?p zu Objekt ?o wird im nächsten Schritt auch zu den anderen 3 
 Besteht diese Beziehung dort ebenfalls, wird die potentielle Antwortmöglichkeit entfernt.
 Stehen keine Antwortmöglichkeiten mehr zur Verfügung, wird das gesamte Anfangstripel übersprungen und die nächste Beziehung wird aufgebaut.
 
-Am Ende werden die vier Antwortmöglichkeiten, das Objekt ?o und die Beziehung ?p ausgegeben. 
-
-\section{Lösung für Aufgabe A2.1}
-\subsection{Entwickeln neuer und Verbessern bestehender Strategien zur Generierung von Fragen}
-
-Da die Ontologie viele Arten von Eigenschaften bietet, die genutzt werden können, um daraus Fragen zu generieren, müssen zur Entwicklung neuer Strategien Eigenschaften gefunden werden, die sich zur sinnvollen Fragengenerierung anbieten.
-Hierzu eignet sich der Fakt, dass ein großer Teil der Elemente, welche in der Ontologie ein Label besitzen, auch eine Definition als Eigenschaft enthalten.
-
-\subsection{LABEL-DEFINITION-Query}
-
-Die LABEL-DEFINITION-Query ist ein weiterer Querytyp, bei dem ein Parameter gegeben ist und einer zur Auswahl steht.
-
-
 \begin{table}
 \begin{centering}
 \begin{tabularx}{\textwidth}{XXX}
@@ -665,6 +662,76 @@ Amphibienfahrzeuge			&Schienenfahrzeuge\\
 \caption{Fragestellung der CONTAINS-Query.}
 \label{tab:sparqcontainsexample}
 \end{table}
+
+
+Am Ende werden die vier Antwortmöglichkeiten, das Objekt ?o und die Beziehung ?p ausgegeben.
+
+\section{Lösung für Aufgabe A2.1}
+\subsection{Entwickeln neuer und Verbessern bestehender Strategien zur Generierung von Fragen}
+
+Da die Ontologie viele Arten von Eigenschaften bietet, die genutzt werden können, um daraus Fragen zu generieren, müssen zur Entwicklung neuer Strategien Eigenschaften gefunden werden, die sich zur sinnvollen Fragengenerierung anbieten.
+Hierzu eignet sich der Fakt, dass ein großer Teil der Elemente, welche in der Ontologie ein Label besitzen, auch eine Definition als Eigenschaft enthalten.
+
+\subsection{LABEL-DEFINITION-Query}
+
+\begin{lstlisting}
+SELECT
+# Gebe korrektes Label (?correctlabel) und korrekte Definition
+# (?correct) sowie 3 Distraktoren (?distractor1-3) aus
+SAMPLE(str(?q)) as ?correctlabel
+SAMPLE(str(?ans)) as ?correct
+SAMPLE(str(?d1)) as ?distractor1
+SAMPLE(str(?d2)) as ?distractor2
+SAMPLE(str(?d3)) as ?distractor3
+WHERE
+{
+  ?class a owl:Class.
+# Sei ?class eine Klasse
+  ?class rdfs:label ?q.
+# Sei ?q die woertliche Umschreibung der Klasse ?class
+  ?class skos:definition ?ans.
+# Sei ?ans die Definition der woertlichen Umschreibung ?q
+
+  ?class (!(meta:subTopClass|meta:chapter)){1,2}
+         ?dist1,?dist2,?dist3.
+# Seien ?dist1, ?dist2, ?dist3 Nachbarn der Klasse ?class
+# mit Pfadlaenge 1-2 und keine Bestandteile der Bibliothek
+# meta:chapter
+
+# (meta:chapter beinhaltet nur ObjectProperty, welches
+# fuer die Fragengenerierung ungeeignet ist und unwichtig ist)
+  FILTER(?class!=?dist1&&?class!=?dist2&&?class!=?dist3
+         &&?dist1<?dist2&&?dist2<?dist3).
+# Sei die Klasse ?class ungleich der drei Distraktoren
+  ?dist1 skos:definition ?d1.
+  ?dist2 skos:definition ?d2.
+  ?dist3 skos:definition ?d3.
+# Seien ?d1, ?d2, ?d3 die woertlichen Definitionen der Klassen
+# ?dist1-3
+
+  FILTER (STRLEN(?ans)<225).
+  FILTER (STRLEN(?d1)<225).
+  FILTER (STRLEN(?d2)<225).
+  FILTER (STRLEN(?d3)<225).
+# Seien die Definitionen hoechstens 225 Zeichen lang
+
+  FILTER(LANGMATCHES(LANG(?ans),"en")).
+  FILTER(LANGMATCHES(LANG(?q),"en")).
+  FILTER(LANGMATCHES(LANG(?d1),"en")).
+  FILTER(LANGMATCHES(LANG(?d2),"en")).
+  FILTER(LANGMATCHES(LANG(?d3),"en")).
+# Seien die Definitionen in englischer Sprache
+
+  FILTER ( 1 >  <bif:rnd> (10, ?class) )
+# Treffe beim Suchen eine zufaellige Auswahl der ?class
+# beim Ausfuehren der Query
+} GROUP BY ?q ORDER BY RAND()
+\end{lstlisting}
+
+Die LABEL-DEFINITION-Query ist ein weiterer Querytyp, bei dem ein Parameter gegeben ist und einer zur Auswahl steht.
+Bei dieser Query wird zuerst eine Klasse generiert, von der der wörtliche Name an eine Variable übertragen wird.
+Neben dem wörtlichen Namen wird noch die Definition abgezweigt.
+Nach der Abtretung der Werte werden nun Distraktoren generiert, indem im näheren Umfeld bei einer Pfadlänge von maximal 2 nach geeigneten Klassen gesucht wird.
 
 
 \begin{figure}
