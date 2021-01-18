@@ -54,12 +54,33 @@ def execute_query(type):
     else:
         return "ERROR: Query code"
 
+def get_type():
+    t = input("Query-Typ angeben [DEF|LDEF|RESP]:   ").upper()
+    if t == "DEF" or t == "LDEF" or t == "RESP":
+        return t
+    else:
+        get_type()
 
-type = input("Query-Typ angeben [DEF|LDEF|RESP]:   ").upper()
-format = input("Wo willst du die Fragen ansehen? [EXTERN|KONSOLE]:   ").upper()
+def get_format():
+    f = input("Wo willst du die Fragen ansehen? [EXTERN|KONSOLE]:   ").upper()
+    if f == "EXTERN" or f == "KONSOLE":
+        return f
+    else:
+        get_format()
+
+def get_name():
+    n = input("Name für Quiz angeben (ohne Dateiendung):   ")
+    if n == "":
+        get_name()
+    else:
+        return n
+
+
+type = get_type()
+format = get_format()
 if format == "EXTERN":
     print("Hinweis: Externe Quizdateien können in QuizMaster geöffnet werden. (Dateiendung .qmqf)")
-    name = input("Name für Quiz angeben (ohne Dateiendung):   ")
+    name = get_name()
     linebreak = "\n"
 print("")
 # Nutzereingabe für Programm erfassen
@@ -85,7 +106,8 @@ try:
             files = info.split('","')
             # Teilt die einzelnen Fragen auf einen Array auf
             if type == "DEF":
-                towrite.append('What is defined by "' + files[0] + '"?' + linebreak)
+                censored_title = files[0].replace(str(files[1]),"X")
+                towrite.append('What is defined by "' + censored_title + '"?' + linebreak)
                 towrite.append(files[1] + linebreak)
                 towrite.append(files[2] + linebreak)
                 towrite.append(files[3] + linebreak)
@@ -139,3 +161,7 @@ try:
     input()
 except Exception as e:
     print(e)
+
+
+
+# Max Wächtler, 2020-21

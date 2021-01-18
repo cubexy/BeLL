@@ -522,6 +522,13 @@ owl:Class ^a ?a1,?a2,?a3.FILTER(
 
 \end{lstlisting}
 
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{images/definition.pdf}
+\caption{Fragengenerierung mithilfe der DEFINITION-Query.}
+\label{img:definition-query-prototype}
+\end{figure}
+
 Die DEFINITION-Query dient als Ausführung der gleichnamigen Strategie der Generierung für Fragen, bei denen ein Parameter gegeben ist und ein anderer durch Antwortmöglichkeiten ausgewählt werden muss. 
 Dabei ist im Speziellen hier eine Definition einer Klasse x vorgegeben, zu der diese Klasse x gesucht wird.
 Die Ergebnismenge von ?class wird nun auf Klassen beschränkt.
@@ -554,7 +561,7 @@ Diese Entfernung darf nicht über Oberelemente gemessen werden, sondern ausschli
 
 Im letzten Schritt werden die drei Variablen ?a1l, ?a2l und ?a3l mit den Labels von ?a1, ?a2, ?a3 versehen.
 Nun werden die Variablen ?cl, ?a1l, ?a2l, ?a3l sowie ?def ausgegeben, wobei bei ?def noch jedes Vorkommen von ?cl durch X ersetzt wird.
-Die Ausgabe der Query wäre nun:
+
 \begin{table}
 \begin{centering}
 \begin{lstlisting}
@@ -570,8 +577,6 @@ ist ein Brett (Deck) mit zwei Achsen (Trucks) [...]"
 \label{tab:sparqldefinitionexampledata}
 \end{table}
 
-Die eben generierte Fragestellung würde hier wie folgt aussehen:\\
-
 \begin{table}
 \begin{centering}
 \begin{tabularx}{\textwidth}{XXX}
@@ -584,19 +589,11 @@ Rollschuhe										&Rollsportgeräte\\
 \bottomrule
 \end{tabularx}
 \end{centering}
-\caption{Fragestellung der DEFINITION-Query.}
+\caption{Fragestellung der DEFINITION-Query, basierend auf der generierten Fragestellung.}
 \label{tab:sparqldefinitionexample}
 \end{table}
 
 Hierbei ist \enquote{Skateboard} die richtige Antwortmöglichkeit. 
-
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{images/definition.pdf}
-\caption{Fragengenerierung mithilfe der DEFINITION-Query.}
-\label{img:definition-query-prototype}
-\end{figure}
-
 
 \subsubsection{CONTAINS-Query}
 \begin{lstlisting}
@@ -636,6 +633,13 @@ from <http://www.snik.eu/ontology/derived>
 }
 \end{lstlisting}
 
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{images/contains.pdf}
+\caption{Fragengenerierung mithilfe der CONTAINS-Query.}
+\label{img:contains-query-prototype}
+\end{figure}
+
 Die CONTAINS-Query wird als Strategie für Fragen genutzt, bei denen zwei Parameter gegeben sind und ein dritter zur Auswahl steht.
 Hier ist dabei im Besonderen eine Klasse X und die Beziehung Y dieser Klasse X zu einer anderen Klasse Z gegeben, wobei hier Klasse Z gesucht wird.
 Dabei verläuft die Fragengeneration ähnlich wie bei der DEFINITION-Query.
@@ -662,6 +666,7 @@ Amphibienfahrzeuge			&Schienenfahrzeuge\\
 \caption{Fragestellung der CONTAINS-Query.}
 \label{tab:sparqcontainsexample}
 \end{table}
+
 
 
 Am Ende werden die vier Antwortmöglichkeiten, das Objekt ?o und die Beziehung ?p ausgegeben.
@@ -731,15 +736,14 @@ WHERE
 Die LABEL-DEFINITION-Query ist ein weiterer Querytyp, bei dem ein Parameter gegeben ist und einer zur Auswahl steht.
 Bei dieser Query wird zuerst eine Klasse generiert, von der der wörtliche Name an eine Variable übertragen wird.
 Neben dem wörtlichen Namen wird noch die Definition abgezweigt.
-Nach der Abtretung der Werte werden nun Distraktoren generiert, indem im näheren Umfeld bei einer Pfadlänge von maximal 2 nach geeigneten Klassen gesucht wird.
+Nach der Abtretung der Werte werden nun Distraktoren generiert.
+Durch meta:subTopClass mit Startwert 1 und Endwert 2 werden im Umfeld zwischen 1 und 2 Schrittweiten entfernt von der Klasse nach geeigneten Klassen gesucht.
+Dabei besteht die Bedingung, dass diese Klassen eine Definition mit einer Gesamtzeichenanzahl unter 225 besitzen.
+Die Definition muss außerdem englischsprachig sein, um sie sprachlich homogen mit den restlichen Definitionen und der Frage zu gestalten.
+Schlussendlich wird die Auswahl der Klasse ?class randomisiert.
+Durch diesen Parameter durchläuft die Query die Ontologie nicht in einem vorgegebenen Muster, sondern sucht stattdessen an zufälligen Knotenpunkten.
+Das hat zur Folge, dass das Ergebnis beim Ausführen der Query im SPARQL-Endpunkt immer ein anderes ist.
 
-
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{images/contains.pdf}
-\caption{Fragengenerierung mithilfe der CONTAINS-Query.}
-\label{img:contains-query-prototype}
-\end{figure}
 
 \chapter{Ergebnis}
 \todo{
