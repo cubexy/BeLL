@@ -1,9 +1,10 @@
 SELECT
-?class ?corrAns ?cDef ?d1 ?d2 ?d3
+?corrAns ?cDef ?d1 ?d2 ?d3 ?class
 {
 ?class rdfs:label ?corrAns.
 FILTER(LANGMATCHES(LANG(?corrAns),"en"))
-# Subquery because the inner FILTER didnt work out, it filtered wrongly
+# Subquery, da innerer Filter nicht funktional
+# Sei ?corrAns die woertliche Umschreibung von ?class
 {
 SELECT
 ?class
@@ -13,22 +14,21 @@ SAMPLE(str(?dist2l)) as ?d2
 SAMPLE(str(?dist3l)) as ?d3
 # Select a SAMPLE (unique for every class) of answers to avoid repetition and similar questions
 WHERE {
-   # ?class is a class
+   # Sei ?class eine Klasse
  ?class a owl:Class.
-   # Let ?cAns be the label (string/text equivalent) of ?class.
-  # Let ?AnswDefinition be the definition of ?class.
+   # Sei ?AnswDefinition die woertliche Definition von ?class
  ?class skos:definition ?AnswDefinition.
  # Filter for english definitions only.
  FILTER(LANGMATCHES(LANG(?AnswDefinition),"en"))
 
- # Let distractors ?distX be neither from a chapter or a subTopClass of ?class.
+ # Seien ?dist1-2 Bestandteile von meta:chapter und im nahen Umfeld von ?class
  ?class (!(meta:subTopClass|meta:chapter)){1,2} ?dist1,?dist2,?dist3.
- # Let ?distX be a class.
+ # Seien ?dist1-3 Distraktoren
  owl:Class ^a ?dist1,?dist2,?dist3.
- # Filter to avoid similarity between the classes.
+ # Filtern, um Aehnlichkeiten zwischen den Klassen zu verhindern
  FILTER(?class!=?dist1&&?class!=?dist2&&?class!=?dist3&&?dist1<?dist2&&?dist2<?dist3)
 
- # Write labels for ?distX, make sure they are in English
+ # Woertliche Umschreibungen, pruefe englische Sprache
  ?dist1 rdfs:label ?dist1l.
  FILTER(LANGMATCHES(LANG(?dist1l),"en"))
 
@@ -38,11 +38,12 @@ WHERE {
  ?dist3 rdfs:label ?dist3l.
  FILTER(LANGMATCHES(LANG(?dist3l),"en"))
 
- # Filter the strings to make readability better
+ # Begrenze Laenge der Definition, um Lesbarkeit zu verbessern
  FILTER (STRLEN(?AnswDefinition)<225 && STRLEN(?AnswDefinition)>50).
-   # Randomize selection
+   # Randomisiere Auswahl
  FILTER ( 1 >  <bif:rnd> (10, ?class) )
  FILTER (UCASE(SUBSTR(str(?AnswDefinition), 1, 1)))
 }ORDER BY RAND() LIMIT 100
+# Limitiere mit Anzahl der benoetigten Fragen
 }
 }GROUP BY ?class ORDER BY RAND()

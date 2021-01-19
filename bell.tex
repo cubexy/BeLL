@@ -31,7 +31,7 @@
 \daurl{it4it}{http://www.snik.eu/ontology/it4it/}
 \daurl{meta}{http://www.snik.eu/ontology/meta/}
 \author{Max Niclas Wächtler}
-\newcommand\idea[1]{\textcolor{red}{#1}}
+\bibliographystyle{dinat}
 
 %\newcommand\todo[1]{TODO: \textcolor{teal}{#1}}
 %show comments for students, comment out for finished work or remove the todo statements and their content
@@ -375,7 +375,6 @@ Dabei konzentriert sich das SNIK-Projekt hauptsächlich auf die Daten der medizi
 
 \subsection{JavaScript}
 \label{sub:js}
-%\cite{fard2013jsnose}
 JavaScript ist eine leistungsstarke und flexible Skriptsprache, die von Entwicklern zunehmend zur Erstellung interaktiver Webanwendungen eingesetzt wird.
 Die Sprache ist dynamisch, schwach typisiert und verfügt über eine Vielzahl an für Webanwendungen essentiellen Funktionen. 
 Sie lässt sich außerdem hervorragend mit anderen Websprachen wie CSS und HTML implementieren und besitzt die Fähigkeit, mit diesen zu interagieren.\\
@@ -794,7 +793,68 @@ Eine mögliche Fragestellung hier wäre also:
 Weiterhin wäre es möglich, andere Beziehungen wie \textit{A approves B} oder \textit{A uses B} zu nutzen.
 
 \section{Lösung für Aufgabe A2.2}
+
 \subsection{Aufstellen von Regeln zur Nutzerfreundlichkeit}
+
+\subsubsection{Begrenzung der Zeichenanzahl}
+Um die Lesbarkeit der Fragen zu verbessern, wurden in den oben beschriebenen Queries Filter eingebaut, um die Zeichenanzahl bei besonders charakterlastigen Elementen wie beispielsweise Definitionen zu minimieren.
+Diese wurde auf 225 Zeichen pro Definition begrenzt.
+Geht man nun von einer durchschnittlichen Zeichenzahl von 6 Zeichen pro Wort aus, und zieht man dabei in Betracht, dass nach jedem Wort meist genau ein Zeichen ist (Leerzeichen bzw. Punkt), so kommt man auf 7 Zeichen pro Wort.
+Daraus ergibt sich eine durchschnittliche Wortzahl von 32 Wörtern pro Definition.
+
+\subsubsection{Handling der Fragenausgabe}
+Da die Fragengenerierung über einen Endpunkt bei IMISE geschieht, müssen die Fragen durch einen Zwischenweg zum Endnutzer gelangen, ohne dass dieser Queries eingeben muss.
+Dazu muss ein Programm entwickelt werden, welches durch einfache Eingabe der Querytypen Fragen ausgibt, die dann in einem Quizprogramm weiter genutzt werden können.
+
+\section{Lösung für Aufgabe A2.3}
+
+\subsection{Entwickeln einer plattformunabhängigen Lösung zur Anzeige der Fragen}
+
+\subsubsection{Einführung}
+
+Um eine plattformunabhängige Lösung zu erhalten, muss auf eine Programmiersprache zurückgegriffen werden, die logisch plattformunabhängig ist.
+Während Programmiersprachen wie Delphi hier ausscheiden, bietet sich hier Python an, da es sowohl als Web- als auch als normale Programmiersprache einfach nutzbar ist.
+Es besitzt eine Vielzahl frei verfügbarer Pakete und ist von jedem kostenlos nutzbar, weswegen ich mich für Python 3 zur Umsetzung eines Demoprogrammes entschieden habe.
+
+\subsubsection{SPARQLWrapper}
+
+SPARQLWrapper ( https://github.com/RDFLib/sparqlwrapper ) ist ein einfacher Python-Wrapper, der sich zur simplen Ausführung von SPARQL-Queries auf öffentlich verfügbaren Endpunkten eignet.
+Es wurde unter anderem von Iman Herman auf Basis eines ähnlichen JavaScript-Wrappers entwickelt.
+SPARQLWrapper bietet die Möglichkeit, mithilfe von HTTP-GET Queryergebnisse auszugeben und wandelt diese direkt in CSV-Format um, was wiederum einfach weiterverwendet werden kann.
+Hierbei können anders als bei ähnlichen Paketen direkt Argumente mitgesendet werden, die direkt vom Endpunkt mit beachtet werden, was in diesem Fall essentiell ist.
+
+\subsubsection{py2exe}
+
+py2exe ( https://github.com/py2exe/py2exe ) ist ein für Python verfügbares Paket, welches Python-Dateien in ausführbare Dateien für Windows konvertiert.
+Hierdurch müssen weder Python noch sonstige Pakete installiert werden, um Python-Code auf Windows-PCs auszuführen.
+
+\subsubsection{Aufbau}
+
+Das Demoprogramm selbst ist eine Kommandozeilenapplikation, die sich mit wenig Eigenaufwand nutzen lässt.
+Nach Eingabe des gewünschten Querytyps und der Anzeigeform zeigt das Programm nach kurzer Verarbeitungszeit die Fragen entweder auf der Kommandozeile oder in einem externen Quizprogramm an.
+Hierbei müssen dank der Nutzung von py2exe keine Python-Bibliotheken oder Python selbst installiert werden.
+Zu Demozwecken werden bei dem Programm von jedem Fragetyp 3 Fragen ausgegeben, wobei die in dieser Arbeit entwickelten Queries sowie zusätzlicher unterstützender Code genutzt werden.
+
+Zur Ausführung des Programms ist zwingend Internet erforderlich, um sich mit dem IMISE-Endpunkt zu verbinden.
+
+\subsection{Funktionsweise}
+
+\textit{Da dies nicht Bestandteil dieser Arbeit ist, ist die Beschreibung der Funktionsweise des Programms absichtlich etwas gekürzt.}
+Das Programm verbindet sich nach Initialisierung mit dem Endpunkt der IMISE und initialisiert genutzte Bibliotheken.
+Anschließend wird eine Nutzereingabe veranlasst, in der durch Eingabe von Kürzeln der Querytyp sowie die gewünschte Ausgabeform selektiert wird.
+Hierzu werden rekursive Funktionen mit der Abbruchbedingung einer korrekten Nutzereingabe verwendet.
+Ist die Eingabe vollständig erfasst, beginnt das Programm mit der Ausführung der Query.
+Hier wird je nach Querytyp ein verschiedenes Timeout gesetzt, nachdem die Ergebnisse der Query angefordert werden.
+In Folge dessen werden nach Erhalt der Daten die Daten formatiert und die Werte auf einen Array übertragen.
+Weiterhin werden die Werte des Array genutzt, um daraus die Frage und die 4 Antworten zu generieren.
+Hier werden beispielsweise für die RESPONSIBLE-FOR-Query erst einmal alle Beziehungen verworfen, die nicht mit "is" beginnen.
+Nun wird der String für den Fragenkopf beispielhaft wie folgt zusammengesetzt:\\
+\textit{Wofür ist \textcolor{blue}{ein Doktor} \textcolor{red}{verantwortlich}}?
+Der String wird an der Stelle des 1. (0.) Element des Array eingesetzt.
+Die weiteren 4 Elemente des Array bilden nun die Antwortmöglichkeiten, wobei die richtige Antwort im Demoprogramm stets an oberster Stelle steht. \\
+Als letzter Schritt wird aufgrund der besseren Lesbarkeit eine leere Zeile im Array eingefügt.
+Nun wird in der Schleife die nächste Frage behandelt.
+Am Ende werden die einzelnen Zeilen des Array ausgegeben und das Programm beendet sich.
 
 
 \chapter{Ergebnis}
@@ -804,6 +864,13 @@ So soll es möglich sein, dass ein Leser von der Arbeit lediglich die Einleitung
 Dieses Kapitel kann auch in mehrere Unterkapitel aufgeteilt werden, wenn das sinnvoll ist!
 }
 
+In der Besonderen Lernleistung wurde die automatische Erstellung von Quizfragen mithilfe einer Ontologie aufgeschlüsselt und dargestellt.
+Hierbei wurde mit der Querysprache SPARQL und der SNIK-Ontologie gearbeitet, um Fragen unter Nutzung der Daten der Ontologie zu generieren.
+Genutzt wurden hierbei unter anderem Eigenschaften wie etwa die Definition oder die Bezeichung einzelner Objekte sowie die Beziehung von Objekten untereinander.
+Die Rohdaten wurden mithilfe eines Python-Demoprogrammes verarbeitet, sodass am Ende reguläre Quizfragen als Ergebnis erreicht wurden.
+Hierbei wurde die öffentlich verfügbare Python-Bibliothek SPARQLWrapper mit Python 3.7 zur Verbindung zum Endpunkt genutzt.
+
+
 \chapter{Diskussion und Ausblick \todo{1--2 Seiten}}
 \todo{
 In der Diskussion wird das Ergebnis der Arbeit noch einmal kritisch bewertet.
@@ -812,6 +879,147 @@ Die Eignung für ein konkretes Forschungsprojekt sollte hier diskutiert werden.
 In der Diskussion kann auch die Kritik des Autors an dem stehen, was er in der Literatur zu dem zu bearbeitenden Thema hier und da gelesen hat.
 Außerdem soll ein Ausblick gegeben werden, welche weiteren Fragestellungen noch bearbeitet werden sollten.
 }
+\newpage
+\subsubsection{Anhang}
+
+\textit{Verbesserte DEFINITION-Query}
+\begin{lstlisting}[basicstyle=\tiny]
+SELECT
+?corrAns ?cDef ?d1 ?d2 ?d3 ?class
+{
+?class rdfs:label ?corrAns.
+FILTER(LANGMATCHES(LANG(?corrAns),"en"))
+# Subquery, da innerer Filter nicht funktional
+# Sei ?corrAns die woertliche Umschreibung von ?class
+{
+SELECT
+?class
+SAMPLE(str(?AnswDefinition)) as ?cDef
+SAMPLE(str(?dist1l)) as ?d1
+SAMPLE(str(?dist2l)) as ?d2
+SAMPLE(str(?dist3l)) as ?d3
+# Waehle ein SAMPLE(Beispiel) fuer jede Definition, um Repetition
+# zu vermeiden
+WHERE {
+# Sei ?class eine Klasse
+ ?class a owl:Class.
+# Sei ?AnswDefinition die woertliche Definition von ?class
+ ?class skos:definition ?AnswDefinition.
+# Filter for english definitions only.
+ FILTER(LANGMATCHES(LANG(?AnswDefinition),"en"))
+
+ # Seien ?dist1-2 Bestandteile von meta:chapter und im nahen
+ # Umfeld von ?class
+ ?class (!(meta:subTopClass|meta:chapter)){1,2} 
+ ?dist1,?dist2,?dist3.
+ # Seien ?dist1-3 Distraktoren
+ owl:Class ^a ?dist1,?dist2,?dist3.
+ # Filtern, um Aehnlichkeiten zwischen den Klassen zu verhindern
+ FILTER(?class!=?dist1&&?class!=?dist2&&?class!=?dist3&&
+        ?dist1<?dist2&&?dist2<?dist3)
+
+ # Woertliche Umschreibungen, pruefe englische Sprache
+ ?dist1 rdfs:label ?dist1l.
+ FILTER(LANGMATCHES(LANG(?dist1l),"en"))
+
+ ?dist2 rdfs:label ?dist2l.
+ FILTER(LANGMATCHES(LANG(?dist2l),"en"))
+
+ ?dist3 rdfs:label ?dist3l.
+ FILTER(LANGMATCHES(LANG(?dist3l),"en"))
+
+# Begrenze Laenge der Definition, um
+# Lesbarkeit zu verbessern
+ FILTER (STRLEN(?AnswDefinition)<225 
+         && STRLEN(?AnswDefinition)>50).
+   # Randomisiere Auswahl
+ FILTER ( 1 >  <bif:rnd> (10, ?class) )
+ FILTER (UCASE(SUBSTR(str(?AnswDefinition), 1, 1)))
+}ORDER BY RAND() LIMIT 100
+# Limitiere mit Anzahl der benoetigten Fragen
+}
+}GROUP BY ?class ORDER BY RAND()
+
+\end{lstlisting}
+
+\textit{Verbesserte CONTAINS-Query}
+
+\begin{lstlisting}[basicstyle=\tiny]
+
+SELECT DISTINCT
+SAMPLE(str(?corrAns)) as ?corrAns
+SAMPLE(str(?responsibleFor)) as ?responsibleFor
+SAMPLE(str(?responsibility)) as ?responsibility
+SAMPLE(str(?distractor1)) as ?distractor1
+SAMPLE(str(?distractor2)) as ?distractor2
+SAMPLE(str(?distractor3)) as ?distractor3
+# Ausgabe der Antworten als Literale, um ungewollte
+# Nebenbezeichnungen wie Sprachinformationen zu vermeiden
+{
+  ?c1 rdfs:label ?corrAns.
+  FILTER(LANGMATCHES(LANG(?corrAns),"en"))
+  ?p rdfs:label ?responsibleFor.
+  FILTER(LANGMATCHES(LANG(?responsibleFor),"en"))
+  ?y rdfs:label ?responsibility.
+  FILTER(LANGMATCHES(LANG(?responsibility),"en"))
+  ?c2 rdfs:label ?distractor1.
+  FILTER(LANGMATCHES(LANG(?distractor1),"en"))
+  ?c3 rdfs:label ?distractor2.
+  FILTER(LANGMATCHES(LANG(?distractor2),"en"))
+  ?c4 rdfs:label ?distractor3.
+  FILTER(LANGMATCHES(LANG(?distractor3),"en"))
+  # Seien ?c1,?p,?y,?c2,?c3,?c4 die woertlichen Bezeichungen
+  # der zugehoerigen Klassen
+  {
+    SELECT DISTINCT ?c1 ?p ?y ?c2 ?c3 (SAMPLE(?c4) as ?c4)
+    {
+      meta:Role ^meta:subTopClass ?c4.
+      ?c1 (!meta:subTopClass){1,2} ?c4.
+      filter(?c1!=?c4&&?c2!=?c4&&?c3!=?c4&&?c1!=?y&&?c2!=?y&&?c3!=?y&&?c4!=?y)
+      # Sei ?c4 eine Klasse mit Pfadlaenge 1-2 von ?c1, ungleich ?c1, ?c2, ?c3
+      {
+        SELECT DISTINCT ?c1 ?p ?y ?c2 (SAMPLE(?c3) as ?c3)
+        {
+          meta:Role ^meta:subTopClass ?c3.
+          ?c1 (!meta:subTopClass){1,2} ?c3.
+          filter(?c1!=?c3&&?c2!=?c3)
+          # Sei ?c3 eine Klasse mit Pfadlaenge 1-2 von ?c1, ungleich ?c1, ?c2
+          {
+            SELECT DISTINCT
+            ?c1
+            ?p
+            ?y
+            (SAMPLE(?c2) as ?c2)
+            {
+              meta:Role ^meta:subTopClass ?c2.
+              ?c1 (!meta:subTopClass){1,2}
+              ?c2. filter(?c1!=?c2)
+              # Sei ?c2 eine Klasse mit Pfadlaenge 1-2 von ?c1, ungleich ?c1
+              {
+                SELECT DISTINCT 
+                MIN(?c1) as ?c1 ?p ?y
+                # Waehle einen minimalen Wert fuer ?c1 aus einer Gruppe von Variablen
+                {
+                  ?y a owl:Class.
+                  # Sei ?y eine Klasse
+                  ?c1 ?p ?y.
+                  # Sei ?c1 ein Element, welches die Beziehung ?p zur Klasse ?y aufweist
+                  ?c1 meta:subTopClass meta:Role.
+                  # Sei ?c1 ein Element mit Nebenelement Rolle -> benoetigt, um Informationen wie 
+                  # "A ist ueber X zu B verwandt" zu erhalten
+                  FILTER ( 1 >  <bif:rnd> (10, ?y) )
+                  # Randomisiere die Auswahl der Klassen
+                }
+              }
+            } GROUP BY ?c1 ?p ?y
+          }
+        }
+      }
+    }
+  }
+}
+GROUP BY ?corrAns ?responsibleFor ?responsibility ORDER BY RAND()
+\end{lstlisting}
 
 \renewcommand{\bibpreamble}{
 \todo{
@@ -826,7 +1034,6 @@ Alternativ: X von Y lässt sich auf Basis von Z ermitteln~\citep{his}.
 }
 }
 
-\bibliographystyle{dinat}
-\bibliography{bell}
+\bibliography{sample}
 
 \end{document}
