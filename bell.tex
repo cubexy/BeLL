@@ -86,7 +86,7 @@ Jedoch müssen Anwender diese Kompetenz erst einmal durch Quellen wie Lehrbüche
 
 
 \section*{Begriffs- und Abkürzungsverzeichnis}
-\begin{acronym} [SPARQL]
+\begin{acronym}
 \acro{SPARQL}{SPARQL Protocol and RDF Query Language}
 \acro{W3C}{World Wide Web Consortium}
 \acro{KI}{Künstliche Intelligenz}
@@ -641,11 +641,12 @@ from <http://www.snik.eu/ontology/derived>
 \end{figure}
 
 Die CONTAINS-Query wird als Strategie für Fragen genutzt, bei denen zwei Parameter gegeben sind und ein dritter zur Auswahl steht.
+Sie besitzt ihren Namen, da hier nur Beziehungen betrachtet werden, die sich untereinander beinhalten (contain).
 Hier ist dabei im Besonderen eine Klasse X und die Beziehung Y dieser Klasse X zu einer anderen Klasse Z gegeben, wobei hier Klasse Z gesucht wird.
 Dabei verläuft die Fragengeneration ähnlich wie bei der DEFINITION-Query.
 Im ersten Schritt wird die direkte Nachbarschaft von ?c1, ?c2, ?c3 und ?c4 sichergestellt. 
-Eine direkte Nachbarschaft im ontologischen Sinne wird dadurch  ..,m, dass die Pfadlänge zwischen den einzelnen Elementen genau 1 beträgt.
-Es kann dadurch keine Zwischenelemente geben, die zwischen den Klassen stehen.
+Eine direkte Nachbarschaft im ontologischen Sinne wird dadurch sichergestellt, dass die Pfadlänge zwischen den einzelnen Elementen genau 1 beträgt.
+Es kann so keine Zwischenelemente geben, die zwischen den Klassen stehen.
 
 Da nun die Generierung von vier untereinander benachbarten Antworten beendet ist, wird nun bei der ersten Antwort eine Beziehung zu einem Objekt hergestellt.
 Diese Beziehung ?p zu Objekt ?o wird im nächsten Schritt auch zu den anderen 3 Antwortmöglichkeiten geprüft.
@@ -672,12 +673,13 @@ Amphibienfahrzeuge			&Schienenfahrzeuge\\
 Am Ende werden die vier Antwortmöglichkeiten, das Objekt ?o und die Beziehung ?p ausgegeben.
 
 \section{Lösung für Aufgabe A2.1}
-\subsection{Entwickeln neuer und Verbessern bestehender Strategien zur Generierung von Fragen}
+\subsection{Entwickeln neuer Strategien zur Generierung von Fragen}
 
 Da die Ontologie viele Arten von Eigenschaften bietet, die genutzt werden können, um daraus Fragen zu generieren, müssen zur Entwicklung neuer Strategien Eigenschaften gefunden werden, die sich zur sinnvollen Fragengenerierung anbieten.
 Hierzu eignet sich der Fakt, dass ein großer Teil der Elemente, welche in der Ontologie ein Label besitzen, auch eine Definition als Eigenschaft enthalten.
 
-\subsection{LABEL-DEFINITION-Query}
+\subsubsection{LABEL-DEFINITION-Query}
+\label{sub:labeldefinition}
 
 \begin{lstlisting}
 SELECT
@@ -696,7 +698,6 @@ WHERE
 # Sei ?q die woertliche Umschreibung der Klasse ?class
   ?class skos:definition ?ans.
 # Sei ?ans die Definition der woertlichen Umschreibung ?q
-
   ?class (!(meta:subTopClass|meta:chapter)){1,2}
          ?dist1,?dist2,?dist3.
 # Seien ?dist1, ?dist2, ?dist3 Nachbarn der Klasse ?class
@@ -713,23 +714,21 @@ WHERE
   ?dist3 skos:definition ?d3.
 # Seien ?d1, ?d2, ?d3 die woertlichen Definitionen der Klassen
 # ?dist1-3
-
   FILTER (STRLEN(?ans)<225).
   FILTER (STRLEN(?d1)<225).
   FILTER (STRLEN(?d2)<225).
   FILTER (STRLEN(?d3)<225).
 # Seien die Definitionen hoechstens 225 Zeichen lang
-
   FILTER(LANGMATCHES(LANG(?ans),"en")).
   FILTER(LANGMATCHES(LANG(?q),"en")).
   FILTER(LANGMATCHES(LANG(?d1),"en")).
   FILTER(LANGMATCHES(LANG(?d2),"en")).
   FILTER(LANGMATCHES(LANG(?d3),"en")).
 # Seien die Definitionen in englischer Sprache
-
   FILTER ( 1 >  <bif:rnd> (10, ?class) )
 # Treffe beim Suchen eine zufaellige Auswahl der ?class
-# beim Ausfuehren der Query
+# beim Ausfuehren der Query -> sorgt manchmal fuer
+# wenige Antwortmoeglichkeiten
 } GROUP BY ?q ORDER BY RAND()
 \end{lstlisting}
 
@@ -738,11 +737,64 @@ Bei dieser Query wird zuerst eine Klasse generiert, von der der wörtliche Name 
 Neben dem wörtlichen Namen wird noch die Definition abgezweigt.
 Nach der Abtretung der Werte werden nun Distraktoren generiert.
 Durch meta:subTopClass mit Startwert 1 und Endwert 2 werden im Umfeld zwischen 1 und 2 Schrittweiten entfernt von der Klasse nach geeigneten Klassen gesucht.
-Dabei besteht die Bedingung, dass diese Klassen eine Definition mit einer Gesamtzeichenanzahl unter 225 besitzen.
+Dabei besteht die Bedingung, dass diese Klassen eine Definition mit einer Gesamtzeichenanzahl unter 225 besitzen, welches sich als ein guter Kompromiss zwischen Lesbarkeit der Frage und generierter Anzahl der Fragen herausstellt.
+Filtert man hierbei nach einer zu kleinen Gesamtzeichenanzahl, so handelt es sich um einen corner-case und es werden wenige Klassen mit der Bedingung gefunden, während bei einer zu großen Anzahl von Zeichen die Frage unleserlich wird.
 Die Definition muss außerdem englischsprachig sein, um sie sprachlich homogen mit den restlichen Definitionen und der Frage zu gestalten.
 Schlussendlich wird die Auswahl der Klasse ?class randomisiert.
 Durch diesen Parameter durchläuft die Query die Ontologie nicht in einem vorgegebenen Muster, sondern sucht stattdessen an zufälligen Knotenpunkten.
 Das hat zur Folge, dass das Ergebnis beim Ausführen der Query im SPARQL-Endpunkt immer ein anderes ist.
+Hierdurch wird es möglich, neue Quizfragen im Hintergrund zu generieren, wodurch Live-Demonstrationen oder etwa Quizprogramme mit unendlich vielen Fragen möglich sind.
+
+\begin{table}
+\begin{centering}
+\begin{tabularx}{\textwidth}{XXX}
+\toprule
+\multicolumn{2}{p{0.97\textwidth}}{Welche der Definitionen definiert den Begriff \enquote{Fahrrad}?}\\
+\midrule
+Motorisiertes Zweirad		&\textcolor{green}{Nichtmotorisiertes Zweirad mit Pedalen}\\
+Dreirädriges Fahrzeug		&Öffentliches Verkehrsmittel\\
+\bottomrule
+\end{tabularx}
+\end{centering}
+\caption{Fragestellung der LABEL-DEFINITION-Query.}
+\label{tab:sparqllabeldefinitionexample}
+\end{table}
+
+\subsection{Verbessern bestehender Strategien zur Generierung von Fragen}
+
+\subsubsection{Verbesserte DEFINITION-Query}
+
+\textit{Hinweis: Zur Vermeidung von unnötigem Text im Hauptteil befinden sich die verbesserten SPARQL-Queries samt Kommentaren im Anhang, da sie im Gesamten trotzdem die alten Queries beinhalten.}
+Die DEFINITION-Query wurde anfangs vom Prototyp übernommen und im Weitergang verbessert.
+Um Anzeigefehler wie ObjectProperty zu vermeiden, welche auch in der LABEL-DEFINITION-Query auftraten, wurde hier erneut ein Filter für meta:chapter hinzugefügt.
+Das begründet sich wie folgt, da das Element ObjectProperty erst später in die Ontologie eingeführt wurde, weshalb es in der originalen Query nicht gefiltert wurde.
+Weiterhin wurde für die Definition ein Zeichenlimit eingeführt, welches besagt, dass für die Anzahl der Charakter in der Definition 50<x<225 gilt. Hierdurch soll unter anderem die Lesbarkeit der gesamten Frage verbessert werden, wie bereits in \cref{sub:labeldefinition} beschrieben.
+Auch weiterhin eingefügt wurde der bif:rnd-Filter, der die Auswahl der Klasse bei jedem Durchlauf der Query randomisiert. Dadurch entstehen hier bei jedem Ausführen unterschiedliche Ergebnisse, was für Live-Queries mit Direktausführung wie in meinem Fall besonders geeignet ist.
+Will man eine größere Menge Fragen generieren, so ist der Filter ungeeignet, da durch den Erneutdurchlauf nach einer bestimmten Zeit alte Ergebnisse verworfen werden. Das Resultat ist hier eine Antwortmenge, die bei jeder Ausführung unabhängig von der Timeout-Zeit variiert, während sich ohne Randomisierung eine proportional zur Rechenzeit ansteigende Fragenmenge abzeichnet.
+Zuletzt wurde ein Fehler behoben, bei dem die korrekte Antwort nicht nach Sprache gefiltert wurde, was dazu führte, dass zu englischen Fragen beispielsweise deutsche Antworten herauskamen und außerdem die Fragenmenge deutlich reduziert wurde.
+Durch Verschachtelung der Queries konnte hier außerhalb gefiltert werden, was das Problem behob.
+
+\subsubsection{Verbesserte CONTAINS-Query}
+Da die CONTAINS-Query aus dem Prototyp im Original nicht funktional war, wurde sie hier vollständig überarbeitet.
+Hierbei wurde mit Verschachtelung gearbeitet, um die Mehrfachnennung von Klassen zu verhindern, d.h. um das mehrfache Auftreten einer einzelnen Klasse in mehreren Fragen mit gleicher Beziehung, aber unterschiedlichen Distraktoren zu vermeiden.
+Zuerst wird hierbei eine Variable als Klasse A definiert, zu welcher ein weiteres Objekt O mit Beziehung B existiert. Nun sei die Auswahl der Klasse A erneut zufällig.
+Aus der Menge der Klassen A wird nun der niedrigste Wert für A gewählt.
+Im nächsten Schritt wird ein Distraktor definiert, der die Pfadlänge 1-2 zur Klasse A aufweist und ungleich A ist.
+Nun wird dieser Schritt verschachtelt zweifach mit den anderen beiden Distraktoren wiederholt, wobei bei diesen auch die Ungleichheit zu den bestehenden Distraktoren hergestellt wird.
+Im letzten Schritt werden die Distraktoren nach Sprache gefiltert, um englische Fragen und Antworten zu erhalten.
+Die wörtlichen Umschreibungen der Distraktoren werden nun auf Variablen beschrieben und als einzelne Samples (Beispiele) zur Verhinderung der Wiederholung ausgegeben.
+Die Fragen werden nun nach dem Tripel A,O,B gruppiert, um für jedes genannte Tripel nur eine einzige Frage zu erhalten.
+Dadurch wird ausgeschlossen, das mit gleichen Fragen und unterschiedlichen Distraktoren bei derselben Query immer gleiche Ergebnisse generiert werden.
+
+Anders als bei der bisherigen Query können hier neben \enquote{A is responsible for (...)} auch andere Beziehungen B generiert werden, die am Ende verwendet werden, beispielsweise \enquote{A is involved in (...)}.
+Eine mögliche Fragestellung hier wäre also:
+
+\textit{What is a Doctor involved in?}
+
+Weiterhin wäre es möglich, andere Beziehungen wie \textit{A approves B} oder \textit{A uses B} zu nutzen.
+
+\section{Lösung für Aufgabe A2.2}
+\subsection{Aufstellen von Regeln zur Nutzerfreundlichkeit}
 
 
 \chapter{Ergebnis}

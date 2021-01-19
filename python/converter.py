@@ -116,6 +116,8 @@ try:
                 qCount = qCount + 1
                 if format == "EXTERN":
                     towrite.append("4\n")
+                else:
+                    towrite.append("")
             elif type == "LDEF":
                 towrite.append('How is "' + files[0] + '" defined?' + linebreak)
                 towrite.append(files[1] + linebreak)
@@ -125,6 +127,8 @@ try:
                 qCount = qCount + 1
                 if format == "EXTERN":
                     towrite.append("4\n")
+                else:
+                    towrite.append("")
             elif type == "RESP":
                 if str(files[1])[:2] == "is" and qCount < 3:
                     if str(files[1])[:1]==" ":
