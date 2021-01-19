@@ -412,7 +412,14 @@ Eine Erläuterung der Ausführung dieser erfolgt im nächsten Kapitel.
 Um den bestehenden Prototyp zu verstehen und diesen zu erweitern bzw. zu verbessern, müssen wir dazu die Methodik zur Generierung der Fragen analysieren.
 Diese Generierung hat die Zielsetzung, menschenlesbare Quizfragen zu erzeugen.
 Dazu wird als Erstes im existierenden Prototyp eine Abfrage an die Ontologie gesendet, um die nötigen Daten für die Generierung der Frage zu erhalten.
-Solche Abfragen werden in der SNIK-Ontologie durch SPARQL-Queries (\cref{sub:sparql}) gehandhabt. Gesendete Queries werden von einem Endpunkt auf dem SNIK-Server angenommen, welcher diese dann als Abfrage an die Ontologie weiterleitet und diese umsetzt. Diese Rückgabewerte werden dann in dem Quiz genutzt und mithilfe von einfachem JavaScript-Code im Browser des Benutzers in einfacher Wortform angezeigt. Um Ressourcen zu schonen, wird jedoch nicht bei jedem Aufruf des Quizzes eine einzelne Frage generiert - das Quiz greift auf eine große Liste aus vorher generierten Fragen zu.
+Solche Abfragen werden in der SNIK-Ontologie durch SPARQL-Queries (\cref{sub:sparql}) gehandhabt. Gesendete Queries werden von einem Endpunkt auf dem SNIK-Server angenommen, welcher diese dann als Abfrage an die Ontologie weiterleitet und diese umsetzt.
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{images/sparql-gen.pdf}
+\caption{Die SPARQL-Abfrage im Ablauf.}
+\label{img:sparql-question-generation}
+\end{figure}
+Diese Rückgabewerte werden dann in dem Quiz genutzt und mithilfe von einfachem JavaScript-Code im Browser des Benutzers in einfacher Wortform angezeigt. Um Ressourcen zu schonen, wird jedoch nicht bei jedem Aufruf des Quizzes eine einzelne Frage generiert - das Quiz greift auf eine große Liste aus vorher generierten Fragen zu.
 Diese sind im JavaScript-Code, welcher durch den Browser angezeigt wird, fest implementiert.\\
 \begin{comment}wie in diesem Beispiel deutlich wird:
 \begin{lstlisting}
@@ -429,6 +436,12 @@ Für die Frage und die jeweiligen Antworten werden bei dem Quellcodeausschnitt j
 \end{comment}
 Um den Inhalt dieser Fragen zu erhalten, muss eine Abfrage an den SPARQL-Endpunkt gesendet werden, der auf die Ontologie zugreift und mithilfe der Abfrage bestimmte Informationen an das Programm ausgibt.
 Die erhaltenen Daten werden nun von dem Programm spezifisch für den Verbindungstyp verarbeitet, wie in \cref{sub:Gegenstand} schon erkärt wurde. Bei der spezifischen Verarbeitung gibt es eine wichtige Unterscheidung: die Methodik der Generierung des Stammes und die Methodik der Generierung der Distraktoren. Während ersteres für jeden Fragetyp unterschiedlich ist, werden Distraktoren stets gleich generiert. Hierzu müssen also im nächsten Abschnitt die Generierung der verschiedenen Fragen und Antworten analysiert werden.
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{images/ausg-frage.pdf}
+\caption{Ausgabe der Fragen an den Nutzer.}
+\label{img:question-output-to-user}
+\end{figure}
 
 \section{Lösungsansatz zu Aufgabe A2.1}
 Um nun diesen vorhandenen Prototypen zu verbessern, müssen  die Strategien der Queries überarbeitet werden, die die generellen Fragen und die richtige Antwort generieren.
@@ -449,19 +462,6 @@ Darüber hinaus sollte die Lösung weitere Funktionen wie das Öffnen der Fragen
 Auch müssen weiterhin die Regeln der Nutzerfreundlichkeit aus Abschnitt 2.2 umgesetzt werden.
 
 
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{images/sparql-gen.pdf}
-\caption{Die SPARQL-Abfrage im Ablauf.}
-\label{img:sparql-question-generation}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth]{images/ausg-frage.pdf}
-\caption{Ausgabe der Fragen an den Nutzer.}
-\label{img:question-output-to-user}
-\end{figure}
 
 \chapter{Ausführung der Lösung}
 %\todo{Die Ausführung der Lösung dient zur Erarbeitung von Konzepten zu den jeweiligen Ansätzen aus dem vorherigen Kapitel.}
