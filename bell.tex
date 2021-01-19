@@ -847,7 +847,7 @@ Ist die Eingabe vollständig erfasst, beginnt das Programm mit der Ausführung d
 Hier wird je nach Querytyp ein verschiedenes Timeout gesetzt, nachdem die Ergebnisse der Query angefordert werden.
 In Folge dessen werden nach Erhalt der Daten die Daten formatiert und die Werte auf einen Array übertragen.
 Weiterhin werden die Werte des Array genutzt, um daraus die Frage und die 4 Antworten zu generieren.
-Hier werden beispielsweise für die RESPONSIBLE-FOR-Query erst einmal alle Beziehungen verworfen, die nicht mit "is" beginnen.
+Hier werden beispielsweise für die CONTAINS-Query erst einmal alle Beziehungen verworfen, die nicht mit "is" beginnen.
 Nun wird der String für den Fragenkopf beispielhaft wie folgt zusammengesetzt:\\
 \textit{Wofür ist \textcolor{blue}{ein Doktor} \textcolor{red}{verantwortlich}}?
 Der String wird an der Stelle des 1. (0.) Element des Array eingesetzt.
@@ -870,15 +870,18 @@ Genutzt wurden hierbei unter anderem Eigenschaften wie etwa die Definition oder 
 Die Rohdaten wurden mithilfe eines Python-Demoprogrammes verarbeitet, sodass am Ende reguläre Quizfragen als Ergebnis erreicht wurden.
 Hierbei wurde die öffentlich verfügbare Python-Bibliothek SPARQLWrapper mit Python 3.7 zur Verbindung zum Endpunkt genutzt.
 
+Die am Anfang der Arbeit gestellten Ziele wurden bei der Ausführung zum größten Teil erfüllt. Als Ausblick hätte man beispielsweise eine GUI zu dem Python-Programm entwerfen können, welche Nutzern die Nutzung erleichtert.
+Auch eine Implementierung einer Übersetzungsfunktion wäre in Betracht zu ziehen, da ich bei der Implementierung dieser leider gescheitert bin, da sowohl Google Übersetzer als auch DeepL ausschließlich kostenpflichtige APIs für Übersetzer bieten.\\
 
-\chapter{Diskussion und Ausblick \todo{1--2 Seiten}}
-\todo{
-In der Diskussion wird das Ergebnis der Arbeit noch einmal kritisch bewertet.
-Dies umfasst auch neue Probleme, die erst während der Bearbeitung erkannt wurden.
-Die Eignung für ein konkretes Forschungsprojekt sollte hier diskutiert werden.
-In der Diskussion kann auch die Kritik des Autors an dem stehen, was er in der Literatur zu dem zu bearbeitenden Thema hier und da gelesen hat.
-Außerdem soll ein Ausblick gegeben werden, welche weiteren Fragestellungen noch bearbeitet werden sollten.
-}
+Die entwickelten Queries und das Programm stehen unter \\
+https://github.com/cubexy/sparql-converter/ zum Download bereit und können durch Klick auf den grünen Download-Button und "Download ZIP" heruntergeladen werden.
+
+\chapter{Selbstständigkeitserklärung}
+Hiermit erkläre ich, dass ich die vorliegende Arbeit selbstständig angefertigt, nicht anderweitig zu Prüfungszwecken vorgelegt und keine anderen als die angegeben Hilfsmittel verwendet habe. Sämtliche wissenschaftlich verwendete Textausschnitte, Zitate oder Inhalte anderer Verfasser wurden ausdrücklich als solche gekennzeichnet.\\\\\\
+
+Leipzig, den 19.01.2021
+
+
 \newpage
 \subsubsection{Anhang}
 
