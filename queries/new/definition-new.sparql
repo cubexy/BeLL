@@ -1,0 +1,35 @@
+SELECT
+?cDef ?corrAns ?d1 ?d2 ?d3 ?class
+{
+?class rdfs:label ?corrAns.
+FILTER(LANGMATCHES(LANG(?corrAns),"en"))
+{
+SELECT ?class
+SAMPLE(str(?AnswDefinition)) as ?cDef
+SAMPLE(str(?dist1l)) as ?d1
+SAMPLE(str(?dist2l)) as ?d2
+SAMPLE(str(?dist3l)) as ?d3
+WHERE
+{
+?class a owl:Class.
+?class rdfs:label ?cAns.
+?class skos:definition ?AnswDefinition.
+FILTER(LANGMATCHES(LANG(?AnswDefinition),"en"))
+?class (!(meta:subTopClass|meta:chapter)){1,2} ?dist1,?dist2,?dist3.
+owl:Class ^a ?dist1,?dist2,?dist3.
+FILTER(?class!=?dist1&&?class!=?dist2&&?class!=?dist3&&?dist1<?dist2&&?dist2<?dist3)
+?dist1 rdfs:label ?dist1l.
+FILTER(LANGMATCHES(LANG(?dist1l),"en"))
+?dist2 rdfs:label ?dist2l.
+FILTER(LANGMATCHES(LANG(?dist2l),"en"))
+?dist3 rdfs:label ?dist3l.
+FILTER(LANGMATCHES(LANG(?dist3l),"en"))
+FILTER (STRLEN(?AnswDefinition)<225 && STRLEN(?AnswDefinition)>50).
+FILTER ( 1 > <bif:rnd> (10, ?class) )
+FILTER (UCASE(SUBSTR(str(?AnswDefinition), 1, 1)))
+}
+ORDER BY RAND() LIMIT 50
+}
+}
+GROUP BY ?class
+ORDER BY RAND()

@@ -1,0 +1,61 @@
+SELECT DISTINCT
+SAMPLE(str(?corrAns)) as ?corrAns
+SAMPLE(str(?responsibleFor)) as ?responsibleFor
+SAMPLE(str(?responsibility)) as ?responsibility
+SAMPLE(str(?distractor1)) as ?distractor1
+SAMPLE(str(?distractor2)) as ?distractor2
+SAMPLE(str(?distractor3)) as ?distractor3
+{
+?c1 rdfs:label ?corrAns.
+FILTER(LANGMATCHES(LANG(?corrAns),"en"))
+?p rdfs:label ?responsibleFor.
+FILTER(LANGMATCHES(LANG(?responsibleFor),"en"))
+?y rdfs:label ?responsibility.
+FILTER(LANGMATCHES(LANG(?responsibility),"en"))
+?c2 rdfs:label ?distractor1.
+FILTER(LANGMATCHES(LANG(?distractor1),"en"))
+?c3 rdfs:label ?distractor2.
+FILTER(LANGMATCHES(LANG(?distractor2),"en"))
+?c4 rdfs:label ?distractor3.
+FILTER(LANGMATCHES(LANG(?distractor3),"en"))
+{
+SELECT DISTINCT
+?c1 ?p ?y ?c2 ?c3 (SAMPLE(?c4) as ?c4)
+{
+meta:Role ^meta:subTopClass ?c4.
+?c1 (!meta:subTopClass){1,2} ?c4.
+filter(?c1!=?c4&&?c2!=?c4&&?c3!=?c4&&?c1!=?y&&?c2!=?y&&?c3!=?y&&?c4!=?y)
+{
+SELECT DISTINCT ?c1 ?p ?y ?c2 (SAMPLE(?c3) as ?c3)
+{
+meta:Role ^meta:subTopClass ?c3.
+?c1 (!meta:subTopClass){1,2} ?c3.
+filter(?c1!=?c3&&?c2!=?c3)
+{
+SELECT DISTINCT ?c1 ?p ?y
+(SAMPLE(?c2) as ?c2)
+{
+meta:Role ^meta:subTopClass ?c2.
+?c1 (!meta:subTopClass){1,2} ?c2.
+filter(?c1!=?c2)
+{
+SELECT DISTINCT
+MIN(?c1) as ?c1 ?p ?y
+{
+?y a owl:Class.
+?c1 ?p ?y.
+?c1 meta:subTopClass meta:Role.
+FILTER ( 1 > <bif:rnd> (10, ?y) )
+}
+GROUP BY ?y ?p
+}
+}
+GROUP BY ?c1 ?p ?y
+}
+}
+}
+}
+}
+}
+GROUP BY ?corrAns
+ORDER BY RAND()
